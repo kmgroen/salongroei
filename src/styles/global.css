@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - Primary (Forest Green - distinct from SalonUp's Teal) */
+  --color-primary: #059669;
+  --color-primary-dark: #047857;
+  --color-primary-light: rgba(5, 150, 105, 0.1);
+
+  /* Colors - Text */
+  --color-navy: #1E3A5F;
+  --color-gold: #D97706;
+
+  /* Font Family */
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+}
