@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  salongroei:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: salongroei-dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "4321:4321"
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.salongroei.rule=Host(`sg.localhost`)"
+      - "traefik.http.routers.salongroei.entrypoints=websecure"
+      - "traefik.http.routers.salongroei.tls=true"
+      - "traefik.http.services.salongroei.loadbalancer.server.port=4321"
+
+networks:
+  proxy:
+    external: true
