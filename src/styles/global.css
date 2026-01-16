@@ -1,15 +1,19 @@
-@import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@theme {
-  /* Colors - Primary (Forest Green - distinct from SalonUp's Teal) */
-  --color-primary: #059669;
-  --color-primary-dark: #047857;
-  --color-primary-light: rgba(5, 150, 105, 0.1);
-
-  /* Colors - Text */
-  --color-navy: #1E3A5F;
-  --color-gold: #D97706;
-
-  /* Font Family */
-  --font-family-sans: 'Inter', system-ui, sans-serif;
-}
+.scribble-underline {
+    position: relative
+    }
+.scribble-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBURAHtU2mXqneEyfBgRMnWkcrDzcosKGtACHsmT7KSgImYPYGvokuQljGTfxwHxvP9rwZhrh9_PM0_fkmWzWL7rVonAETneOdLqURr_MSjinarShz-qHDVu6UOWcAbUZ7BsY52ooTYvWgCflzC2KMzz2GFfT42N0Vm_4e54N5tqZMsVoXD-ZR2QhzSbOPm7eMHTAHDGuqlYkCg12PfwdVYJf7n-I3KtXD8oTdCSKlqw7tvDJ9ISvQORs7ExAZo0Q6DNCHlAyq49Gs);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: -1
+    }
