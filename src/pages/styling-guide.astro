@@ -1,0 +1,39 @@
+---
+// Main Styling Guide page - showcases the Salongroei brand design system
+import BrandIdentity from '../components/styling-guide/BrandIdentity.astro';
+import ColorPalette from '../components/styling-guide/ColorPalette.astro';
+import ComponentShowcase from '../components/styling-guide/ComponentShowcase.astro';
+import ContentPatterns from '../components/styling-guide/ContentPatterns.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Styling Guide - Salongroei</title>
+  <meta name="description" content="The definitive manual for the Salongroei boutique aesthetic." />
+
+  <!-- Preconnect to Google Fonts for faster loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Optimized Fonts with display=swap and Latin subset -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Serif:wght@700;900&display=swap&subset=latin" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-background-light text-expert-navy">
+  <div class="max-w-[1200px] mx-auto px-6 py-16">
+    <header class="mb-20 text-center">
+      <h1 class="font-display text-5xl font-black mb-6">Styling Guide</h1>
+      <p class="text-xl text-expert-navy/60">
+        The definitive manual for the Salongroei boutique aesthetic.
+      </p>
+    </header>
+
+    <BrandIdentity />
+    <ColorPalette />
+    <ComponentShowcase />
+    <ContentPatterns />
+  </div>
+</body>
+</html>

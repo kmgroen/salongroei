@@ -1,0 +1,111 @@
+---
+interface StatRow {
+  label: string;
+  value: string;
+  source?: string;
+  highlight?: boolean;
+}
+
+interface Props {
+  title?: string;
+  stats: StatRow[];
+  caption?: string;
+  class?: string;
+  showSource?: boolean;
+}
+
+const { title, stats, caption, class: className = '', showSource = true } = Astro.props;
+---
+
+<div class={`statistics-table-wrapper ${className}`}>
+  {title && (
+    <h3 class="font-display text-xl md:text-2xl font-black text-expert-navy dark:text-white mb-4">
+      {title}
+    </h3>
+  )}
+
+  <div class="overflow-x-auto">
+    <table class="statistics-table w-full border-2 border-expert-navy/10 rounded-xl overflow-hidden">
+      {caption && (
+        <caption class="text-sm text-expert-navy/60 dark:text-white/60 italic mb-2 text-left px-4">
+          {caption}
+        </caption>
+      )}
+
+      <thead>
+        <tr class="bg-expert-navy text-white">
+          <th class="px-4 py-4 text-left font-bold text-sm md:text-base w-1/2">
+            Statistiek
+          </th>
+          <th class="px-4 py-4 text-left font-bold text-sm md:text-base">
+            Waarde
+          </th>
+          {showSource && (
+            <th class="px-4 py-4 text-left font-bold text-sm md:text-base hidden md:table-cell">
+              Bron
+            </th>
+          )}
+        </tr>
+      </thead>
+
+      <tbody>
+        {stats.map((stat, index) => (
+          <tr
+            class={`border-t border-expert-navy/10 hover:bg-soft-sage/10 transition-colors ${
+              stat.highlight ? 'bg-sunshine-yellow/10' : ''
+            } ${
+              index % 2 === 0 ? 'bg-white dark:bg-expert-navy/5' : 'bg-expert-navy/[0.02] dark:bg-expert-navy/10'
+            }`}
+          >
+            <td class="px-4 py-3 font-medium text-expert-navy dark:text-white">
+              {stat.label}
+            </td>
+            <td class={`px-4 py-3 ${stat.highlight ? 'font-black text-primary text-lg' : 'text-expert-navy/80 dark:text-white/80'}`}>
+              {stat.value}
+            </td>
+            {showSource && (
+              <td class="px-4 py-3 text-sm text-expert-navy/60 dark:text-white/60 hidden md:table-cell">
+                {stat.source || '-'}
+              </td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .statistics-table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .statistics-table thead th:first-child {
+    border-top-left-radius: 0.75rem;
+  }
+
+  .statistics-table thead th:last-child {
+    border-top-right-radius: 0.75rem;
+  }
+
+  .statistics-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 0.75rem;
+  }
+
+  .statistics-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 0.75rem;
+  }
+
+  /* Responsive: Improve mobile display */
+  @media (max-width: 768px) {
+    .statistics-table {
+      font-size: 0.875rem;
+    }
+
+    .statistics-table th,
+    .statistics-table td {
+      padding: 0.5rem;
+    }
+  }
+</style>

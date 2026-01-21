@@ -1,0 +1,130 @@
+{
+  "name": "Booksy",
+  "slug": "booksy",
+  "tagline": {
+    "nl": "Best voor barbers en kleine teams",
+    "en": "Best for barbers and small teams"
+  },
+  "description": {
+    "nl": "Booksy is speciaal ontworpen voor barbers en kleine beauty teams. Met een sterke focus op mobiele ervaring en snelle boekingen, perfect voor drukke professionals die onderweg werken.",
+    "en": "Booksy is specially designed for barbers and small beauty teams. With a strong focus on mobile experience and quick bookings, perfect for busy professionals working on the go."
+  },
+  "accentColor": "sunshine-yellow",
+  "isEditorsPick": false,
+  "imageUrl": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&auto=format&fit=crop",
+  "imageAlt": "Booksy mobile app interface",
+  "rating": {
+    "score": 4.7,
+    "count": 6842
+  },
+  "pricing": {
+    "starter": {
+      "price": 29.99,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Starter",
+        "en": "Starter"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte boekingen",
+          "en": "Unlimited bookings"
+        },
+        {
+          "nl": "Marketplace zichtbaarheid",
+          "en": "Marketplace visibility"
+        },
+        {
+          "nl": "Automatische herinneringen",
+          "en": "Automated reminders"
+        },
+        {
+          "nl": "Basis rapportage",
+          "en": "Basic reporting"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 49.99,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Premium",
+        "en": "Premium"
+      },
+      "features": [
+        {
+          "nl": "Alles in Starter",
+          "en": "Everything in Starter"
+        },
+        {
+          "nl": "Marketing tools",
+          "en": "Marketing tools"
+        },
+        {
+          "nl": "Instagram integratie",
+          "en": "Instagram integration"
+        },
+        {
+          "nl": "Prioriteit ondersteuning",
+          "en": "Priority support"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": false,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Excellente mobiele app",
+      "en": "Excellent mobile app"
+    },
+    {
+      "nl": "Grote marketplace voor barbers",
+      "en": "Large marketplace for barbers"
+    },
+    {
+      "nl": "Instagram integratie",
+      "en": "Instagram integration"
+    },
+    {
+      "nl": "Makkelijk te gebruiken",
+      "en": "Easy to use"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Beperkte inventaris features",
+      "en": "Limited inventory features"
+    },
+    {
+      "nl": "Minder geschikt voor grote salons",
+      "en": "Less suitable for large salons"
+    },
+    {
+      "nl": "Focus op barbers kan beperkend zijn",
+      "en": "Focus on barbers can be limiting"
+    }
+  ],
+  "bestFor": {
+    "nl": "Barbers, kappers en kleine beauty teams (1-5 medewerkers)",
+    "en": "Barbers, hairdressers and small beauty teams (1-5 staff)"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 14
+  },
+  "website": "https://www.booksy.com",
+  "affiliateLink": "https://www.booksy.com"
+}

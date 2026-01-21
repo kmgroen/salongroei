@@ -1,0 +1,130 @@
+{
+  "name": "Planty",
+  "slug": "planty",
+  "tagline": {
+    "nl": "Best voor Nederlandse salons",
+    "en": "Best for Dutch salons"
+  },
+  "description": {
+    "nl": "Planty is een Nederlandse ontwikkelde salonsoftware die perfect aansluit bij de lokale markt. Met Nederlandse ondersteuning, integraties met lokale betaalsystemen en compliance met EU-regelgeving.",
+    "en": "Planty is Dutch-developed salon software that perfectly fits the local market. With Dutch support, integrations with local payment systems, and EU regulation compliance."
+  },
+  "accentColor": "primary",
+  "isEditorsPick": false,
+  "imageUrl": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&auto=format&fit=crop",
+  "imageAlt": "Planty software dashboard",
+  "rating": {
+    "score": 4.5,
+    "count": 892
+  },
+  "pricing": {
+    "starter": {
+      "price": 19,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Basis",
+        "en": "Basic"
+      },
+      "features": [
+        {
+          "nl": "1 medewerker",
+          "en": "1 staff member"
+        },
+        {
+          "nl": "Online agenda",
+          "en": "Online calendar"
+        },
+        {
+          "nl": "SMS herinneringen",
+          "en": "SMS reminders"
+        },
+        {
+          "nl": "Basis rapportage",
+          "en": "Basic reporting"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 39,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Professional",
+        "en": "Professional"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte medewerkers",
+          "en": "Unlimited staff"
+        },
+        {
+          "nl": "Online betalingen (iDeal)",
+          "en": "Online payments (iDeal)"
+        },
+        {
+          "nl": "Voorraad beheer",
+          "en": "Inventory management"
+        },
+        {
+          "nl": "Marketing automatisering",
+          "en": "Marketing automation"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": false,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Nederlandse klantenservice",
+      "en": "Dutch customer service"
+    },
+    {
+      "nl": "iDeal integratie",
+      "en": "iDeal integration"
+    },
+    {
+      "nl": "AVG compliant",
+      "en": "GDPR compliant"
+    },
+    {
+      "nl": "Betaalbaar",
+      "en": "Affordable"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Geen multi-locatie ondersteuning",
+      "en": "No multi-location support"
+    },
+    {
+      "nl": "Beperkte internationale features",
+      "en": "Limited international features"
+    },
+    {
+      "nl": "Kleinere gebruikersbasis",
+      "en": "Smaller user base"
+    }
+  ],
+  "bestFor": {
+    "nl": "Nederlandse salons met 1-10 medewerkers die lokale ondersteuning waarderen",
+    "en": "Dutch salons with 1-10 staff who value local support"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 30
+  },
+  "website": "https://www.planty.com",
+  "affiliateLink": "https://www.planty.com"
+}

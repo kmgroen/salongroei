@@ -1,0 +1,211 @@
+---
+import { getLangFromUrl } from '../../i18n/utils';
+
+interface Props {
+  tools: Array<{
+    data: {
+      name: string;
+      pricing: any;
+      features: any;
+      pros: Array<{ nl: string; en: string }>;
+      cons: Array<{ nl: string; en: string }>;
+      bestFor: { nl: string; en: string };
+      rating: { score: number; count: number };
+    };
+  }>;
+}
+
+const { tools } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const featureLabels = {
+  booking: { nl: 'Online Boekingen', en: 'Online Bookings' },
+  payments: { nl: 'Betalingsverwerking', en: 'Payment Processing' },
+  marketing: { nl: 'Marketing Tools', en: 'Marketing Tools' },
+  inventory: { nl: 'Voorraad Beheer', en: 'Inventory Management' },
+  reporting: { nl: 'Rapportage', en: 'Reporting' },
+  multiLocation: { nl: 'Multi-Locatie', en: 'Multi-Location' },
+  mobileApp: { nl: 'Mobiele App', en: 'Mobile App' },
+  clientPortal: { nl: 'Klanten Portaal', en: 'Client Portal' },
+};
+---
+
+<div class="bg-white rounded-xl border-2 border-gray-200 overflow-hidden">
+  <div class="bg-gradient-to-r from-primary/10 to-primary/5 p-6 border-b border-gray-200">
+    <h2 class="font-display text-2xl font-black text-expert-navy flex items-center gap-2">
+      <span class="material-symbols-outlined">analytics</span>
+      {lang === 'nl' ? 'Tools Vergelijking' : 'Tools Comparison'}
+    </h2>
+    <p class="text-sm text-expert-navy/60 mt-2">
+      {lang === 'nl'
+        ? 'Vergelijk functies, prijzen en beoordelingen naast elkaar'
+        : 'Compare features, pricing, and ratings side by side'
+      }
+    </p>
+  </div>
+
+  <!-- Pricing Comparison -->
+  <div class="p-6 border-b border-gray-200">
+    <h3 class="font-display text-xl font-black text-expert-navy mb-4 flex items-center gap-2">
+      <div class="w-4 h-4 rounded bg-green-500"></div>
+      {lang === 'nl' ? 'Prijzen' : 'Pricing'}
+    </h3>
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th class="text-left p-3 text-sm font-medium text-gray-700"></th>
+            {tools.map((tool) => (
+              <th class="text-center p-3 font-bold text-expert-navy">{tool.data.name}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 text-sm font-medium text-gray-700">{lang === 'nl' ? 'Startprijs' : 'Starting Price'}</td>
+            {tools.map((tool) => (
+              <td class="p-3 text-center">
+                {tool.data.pricing.starter.isFree ? (
+                  <span class="font-bold text-primary">{lang === 'nl' ? 'Gratis' : 'Free'}</span>
+                ) : (
+                  <span class="font-bold text-expert-navy">
+                    {tool.data.pricing.starter.currency}{tool.data.pricing.starter.price}/{lang === 'nl' ? 'mnd' : 'mo'}
+                  </span>
+                )}
+              </td>
+            ))}
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 text-sm font-medium text-gray-700">{lang === 'nl' ? 'Pro Prijs' : 'Pro Price'}</td>
+            {tools.map((tool) => (
+              <td class="p-3 text-center">
+                {tool.data.pricing.pro ? (
+                  <span class="font-semibold text-expert-navy">
+                    {tool.data.pricing.pro.currency}{tool.data.pricing.pro.price}/{lang === 'nl' ? 'mnd' : 'mo'}
+                  </span>
+                ) : (
+                  <span class="text-gray-400">-</span>
+                )}
+              </td>
+            ))}
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 text-sm font-medium text-gray-700">{lang === 'nl' ? 'Commissie' : 'Commission'}</td>
+            {tools.map((tool) => (
+              <td class="p-3 text-center">
+                {tool.data.pricing.starter.hasCommission ? (
+                  <span class="text-orange-600 font-medium">
+                    {tool.data.pricing.starter.commissionRate}%
+                  </span>
+                ) : (
+                  <span class="text-green-600">
+                    <span class="material-symbols-outlined text-sm align-middle">check_circle</span>
+                  </span>
+                )}
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Features Comparison -->
+  <div class="p-6 border-b border-gray-200">
+    <h3 class="font-display text-xl font-black text-expert-navy mb-4 flex items-center gap-2">
+      <div class="w-4 h-4 rounded bg-blue-500"></div>
+      {lang === 'nl' ? 'Functies' : 'Features'}
+    </h3>
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead>
+          <tr class="border-b border-gray-200">
+            <th class="text-left p-3 text-sm font-medium text-gray-700"></th>
+            {tools.map((tool) => (
+              <th class="text-center p-3 font-bold text-expert-navy">{tool.data.name}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(featureLabels).map(([key, label]) => (
+            <tr class="border-b border-gray-100">
+              <td class="p-3 text-sm font-medium text-gray-700">{label[lang]}</td>
+              {tools.map((tool) => (
+                <td class="p-3 text-center">
+                  {tool.data.features[key] ? (
+                    <span class="material-symbols-outlined text-green-600">check_circle</span>
+                  ) : (
+                    <span class="material-symbols-outlined text-gray-300">cancel</span>
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Ratings Comparison -->
+  <div class="p-6 border-b border-gray-200">
+    <h3 class="font-display text-xl font-black text-expert-navy mb-4 flex items-center gap-2">
+      <div class="w-4 h-4 rounded bg-yellow-500"></div>
+      {lang === 'nl' ? 'Beoordelingen' : 'Ratings'}
+    </h3>
+    <div class="grid gap-4" style={`grid-template-columns: repeat(${tools.length}, 1fr)`}>
+      {tools.map((tool) => (
+        <div class="text-center p-4 bg-gray-50 rounded-xl">
+          <div class="font-display text-3xl font-black text-expert-navy mb-1">
+            {tool.data.rating.score}
+          </div>
+          <div class="text-xs text-expert-navy/60">
+            {tool.data.rating.count.toLocaleString()} {lang === 'nl' ? 'reviews' : 'reviews'}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Pros & Cons -->
+  <div class="p-6">
+    <h3 class="font-display text-xl font-black text-expert-navy mb-4 flex items-center gap-2">
+      <div class="w-4 h-4 rounded bg-purple-500"></div>
+      {lang === 'nl' ? 'Voor- en Nadelen' : 'Pros & Cons'}
+    </h3>
+    <div class="grid gap-6" style={`grid-template-columns: repeat(${tools.length}, 1fr)`}>
+      {tools.map((tool) => (
+        <div>
+          <h4 class="font-bold text-expert-navy mb-3">{tool.data.name}</h4>
+          <div class="space-y-4">
+            <div>
+              <div class="text-sm font-semibold text-green-700 mb-2">
+                {lang === 'nl' ? 'Voordelen' : 'Pros'}
+              </div>
+              <ul class="space-y-1">
+                {tool.data.pros.map((pro) => (
+                  <li class="text-sm flex items-start gap-2">
+                    <span class="material-symbols-outlined text-green-600 text-base mt-0.5">add_circle</span>
+                    <span>{pro[lang]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-red-700 mb-2">
+                {lang === 'nl' ? 'Nadelen' : 'Cons'}
+              </div>
+              <ul class="space-y-1">
+                {tool.data.cons.map((con) => (
+                  <li class="text-sm flex items-start gap-2">
+                    <span class="material-symbols-outlined text-red-400 text-base mt-0.5">remove_circle</span>
+                    <span>{con[lang]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

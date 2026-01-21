@@ -1,0 +1,72 @@
+---
+/**
+ * Article Structured Data (JSON-LD) Component
+ * For blog posts and articles
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  author: string;
+  publishedDate: Date;
+  modifiedDate?: Date;
+  image?: string;
+  url: string;
+  lang: 'nl' | 'en';
+}
+
+const {
+  title,
+  description,
+  author,
+  publishedDate,
+  modifiedDate,
+  image = 'https://salongroei.com/images/og-default.jpg',
+  url,
+  lang,
+} = Astro.props;
+
+const siteUrl = 'https://salongroei.com';
+const fullUrl = `${siteUrl}${url}`;
+const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description: description,
+  image: {
+    '@type': 'ImageObject',
+    url: fullImageUrl,
+    width: 1200,
+    height: 630,
+  },
+  author: {
+    '@type': 'Organization',
+    name: author,
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Salongroei',
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/favicon.svg`,
+      width: 60,
+      height: 60,
+    },
+  },
+  datePublished: publishedDate.toISOString(),
+  dateModified: modifiedDate ? modifiedDate.toISOString() : publishedDate.toISOString(),
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': fullUrl,
+  },
+  inLanguage: lang === 'nl' ? 'nl-NL' : 'en-US',
+  articleSection: 'Salon Software',
+  keywords: 'salon software, booking management, salon tools, appointment scheduling',
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

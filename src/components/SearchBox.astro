@@ -1,0 +1,57 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+  placeholder?: string;
+  autoFocus?: boolean;
+}
+
+const { placeholder = t('404.search.placeholder'), autoFocus = false } = Astro.props;
+
+// Determine the blog URL based on language
+const blogUrl = lang === 'nl' ? '/blog' : '/en/blog';
+---
+
+<div class="search-box-container">
+  <form action={blogUrl} method="get" class="relative w-full max-w-2xl mx-auto">
+    <div class="relative">
+      <span
+        class="material-symbols-outlined absolute left-6 top-1/2 -translate-y-1/2 text-primary text-2xl"
+        aria-hidden="true"
+      >
+        search
+      </span>
+      <input
+        type="text"
+        name="q"
+        placeholder={placeholder}
+        class="w-full pl-16 pr-6 py-5 bg-white dark:bg-expert-navy/10 border-2 border-expert-navy/10 dark:border-white/10 rounded-3xl text-lg font-sans text-expert-navy dark:text-white placeholder:text-expert-navy/40 dark:placeholder:text-white/40 focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all shadow-lg hover:shadow-xl"
+        autofocus={autoFocus}
+        aria-label={t('404.search.label')}
+      />
+      <button
+        type="submit"
+        class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg shadow-primary/30 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 transition-all focus:outline-none focus:ring-4 focus:ring-primary/20"
+      >
+        {t('404.search.button')}
+      </button>
+    </div>
+  </form>
+
+  <p class="text-center text-sm text-expert-navy/60 dark:text-white/60 mt-4 font-sans">
+    {lang === 'nl' ? 'Zoek door onze 50+ artikelen over salon groei en software' : 'Search through our 50+ articles about salon growth and software'}
+  </p>
+</div>
+
+<style>
+  .search-box-container input:focus {
+    transform: translateY(-2px);
+  }
+
+  .search-box-container button:active {
+    transform: translateY(-50%) scale(0.98);
+  }
+</style>

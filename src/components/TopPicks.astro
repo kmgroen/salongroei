@@ -1,63 +1,47 @@
 ---
+import ToolCard from './ToolCard.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const allTools = await getCollection('tools');
+const topTools = allTools
+    .sort((a, b) => {
+        // Prioritize Editor's Pick
+        if (a.data.isEditorsPick && !b.data.isEditorsPick) return -1;
+        if (!a.data.isEditorsPick && b.data.isEditorsPick) return 1;
+        // Then by rating
+        return b.data.rating.score - a.data.rating.score;
+    })
+    .slice(0, 3);
+
+const tools = topTools.map(tool => ({
+    name: tool.data.name,
+    tagline: tool.data.tagline[lang],
+    rating: `${tool.data.rating.score}/5 Rating`,
+    badge: tool.data.isEditorsPick ? "Editor's Pick" : undefined,
+    imageUrl: tool.data.imageUrl,
+    imageAlt: tool.data.imageAlt,
+    accentColor: tool.data.accentColor,
+    icon: tool.data.isEditorsPick ? 'star' : 'verified',
+    metadata: tool.data.isEditorsPick ? "Editor's Pick" : 'Expert Pick',
+    slug: tool.data.slug
+}));
 ---
 <section class="mb-24">
-<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-<div class="max-w-xl">
-<h2 class="font-display text-4xl font-black mb-4">Top Picks for Your Salon</h2>
-<p class="text-lg text-expert-navy/60">Hand-selected by our experts for their exceptional value, ease of use, and design aesthetic.</p>
-</div>
-<button class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
-                    View all software <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Tool 1 -->
-<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-expert-navy/5 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden group">
-<div class="absolute top-0 right-0 p-4">
-<div class="bg-soft-sage text-white text-[10px] font-black uppercase px-2 py-1 rounded">Editor's Pick</div>
-</div>
-<div class="w-full aspect-video rounded-xl mb-6 bg-soft-sage/10 overflow-hidden">
-<div class="w-full h-full bg-cover bg-center transition-transform group-hover:scale-110" data-alt="GlossGenius software dashboard interface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjPzBdW6bn-hwQP-degs80GZ1yMbCaW434E3tcsJxpEM8Mf7XRJckInPPd5TJcyQkaHjkZPOTKcY8mz_D3HTZtIt-sgEhHS9I6UnnBOYVwGAYxDlSkNr9p8ekwbOfAqqx2u9vODTMfRCgxc6plWzNkueOCycSuBrx5soHQngZicuwTR_oLSK7F7UWEcGppbXPJB7Pc1MMl85hXB27PbCXNXSQtikkjqswYch1Iw6z2yU824VkgwQ8xcWmDYdjRwcBtqjxXlRDKi3U");'></div>
-</div>
-<h3 class="font-display text-2xl font-bold mb-1">GlossGenius</h3>
-<p class="text-primary text-sm font-bold mb-4">Best for independent pros</p>
-<div class="flex items-center gap-2 mb-6 text-sm text-expert-navy/60">
-<span class="material-symbols-outlined text-primary text-lg">star</span>
-<span class="font-bold">4.9/5 Rating</span>
-<span>•</span>
-<span>Soft Sage Accents</span>
-</div>
-<button class="w-full py-3 bg-expert-navy text-white rounded-lg font-bold text-sm hover:bg-expert-navy/90 transition-colors">Read Full Review</button>
-</div>
-<!-- Tool 2 -->
-<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-expert-navy/5 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden group">
-<div class="w-full aspect-video rounded-xl mb-6 bg-sunshine-yellow/10 overflow-hidden">
-<div class="w-full h-full bg-cover bg-center transition-transform group-hover:scale-110" data-alt="Phorest software dashboard interface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjvqMl2dLPSfOnFrkSMwKsNmpfPCfw-w2TBiowe-vz7Rc3IgpYd1Oz2MhxpQZhvosNyHrYDUb4KzZ1umlmZ0dvSuFVPeW0jd5FSYgtFF5Cs6J0MsuA8PkWFHz1WNImNkywKGdNFD02b9Oi9SCow1IPnmT0VzAZkUKGNzYz26FWS1vHTvZoPQA8phmKFsN09ZeWY6BDyaSaxmuZgSnZm0fcWn2KFMNQgdbxpnc9BvdDWtkU7kmOFFbO7Fm2yrbJV6O4L-i3a5DO-Rw");'></div>
-</div>
-<h3 class="font-display text-2xl font-bold mb-1">Phorest</h3>
-<p class="text-primary text-sm font-bold mb-4">Best for multi-location</p>
-<div class="flex items-center gap-2 mb-6 text-sm text-expert-navy/60">
-<span class="material-symbols-outlined text-primary text-lg">verified</span>
-<span class="font-bold">4.8/5 Rating</span>
-<span>•</span>
-<span>Expert Pick</span>
-</div>
-<button class="w-full py-3 bg-expert-navy text-white rounded-lg font-bold text-sm hover:bg-expert-navy/90 transition-colors">Read Full Review</button>
-</div>
-<!-- Tool 3 -->
-<div class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-expert-navy/5 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden group">
-<div class="w-full aspect-video rounded-xl mb-6 bg-primary/10 overflow-hidden">
-<div class="w-full h-full bg-cover bg-center transition-transform group-hover:scale-110" data-alt="Fresha software dashboard interface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8pPYvvIi2iBp2wbPu26bGNmVBzTOyhkAHa1TwxfNgTE4bjEzjpdVqTRyap0wRlBpb4kwI6Mza-gRWd8rrQ9XQiWyF5QBbf3SZ9D-uFiBiD0IZqkceTRXMlZcGXO-1Poa3ThJRy-8JEDqIjonoNZpykhwkan2LAyKT1QP5q_XnCitXFinvSyN75N3XiA93Id7ncaeOGRIYa72HcQR7a6KId0qeIcICQYMzjqSs3EWSu_ij1aryeVYxBSMGWBKWSD5ccL0caj8z8dQ");'></div>
-</div>
-<h3 class="font-display text-2xl font-bold mb-1">Fresha</h3>
-<p class="text-primary text-sm font-bold mb-4">Best for team building</p>
-<div class="flex items-center gap-2 mb-6 text-sm text-expert-navy/60">
-<span class="material-symbols-outlined text-primary text-lg">payments</span>
-<span class="font-bold">4.7/5 Rating</span>
-<span>•</span>
-<span>Free to Start</span>
-</div>
-<button class="w-full py-3 bg-expert-navy text-white rounded-lg font-bold text-sm hover:bg-expert-navy/90 transition-colors">Read Full Review</button>
-</div>
-</div>
+    <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div class="max-w-xl">
+            <h2 class="font-display text-4xl font-black mb-4">Top Picks for Your Salon</h2>
+            <p class="text-lg text-expert-navy/60">Hand-selected by our experts for their exceptional value, ease of use, and design aesthetic.</p>
+        </div>
+        <button class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+            View all software <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {tools.map(tool => (
+            <ToolCard {...tool} />
+        ))}
+    </div>
 </section>

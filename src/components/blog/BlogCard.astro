@@ -1,0 +1,78 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  category: string;
+  date: Date;
+  image?: string;
+  featured?: boolean;
+}
+
+const { slug, title, description, category, date, image, featured = false } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('nl-NL', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+}).format(date);
+---
+
+<article class="group h-full flex flex-col">
+  <a href={`/blog/${slug}`} class="block h-full flex flex-col focus:outline-2 focus:outline-primary focus:outline-offset-2 rounded-xl">
+    {/* Image */}
+    <div class="aspect-[16/9] rounded-xl overflow-hidden mb-4 shadow-sm group-hover:shadow-xl transition-all bg-expert-navy/5">
+      {image ? (
+        <img
+          src={image}
+          alt=""
+          width="800"
+          height="450"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-expert-navy/10 to-soft-sage/10">
+          <span class="material-symbols-outlined text-6xl text-expert-navy/30" aria-hidden="true">
+            article
+          </span>
+        </div>
+      )}
+    </div>
+
+    {/* Content */}
+    <div class="flex-1 flex flex-col">
+      {/* Meta */}
+      <div class="flex gap-3 items-center mb-3">
+        {featured && (
+          <span class="text-[10px] font-black uppercase tracking-widest bg-primary/10 text-primary px-2 py-1 rounded">
+            Featured
+          </span>
+        )}
+        <span class="text-[10px] font-black uppercase tracking-widest bg-expert-navy/10 text-expert-navy dark:bg-white/10 dark:text-white px-2 py-1 rounded">
+          {category}
+        </span>
+        <span class="text-xs text-expert-navy/40 dark:text-white/40 font-bold">
+          {formattedDate}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h2 class="font-display text-xl md:text-2xl font-black leading-tight text-expert-navy dark:text-white group-hover:text-primary transition-colors mb-3">
+        {title}
+      </h2>
+
+      {/* Description */}
+      <p class="text-sm md:text-base text-expert-navy/70 dark:text-white/70 line-clamp-3 mb-4">
+        {description}
+      </p>
+
+      {/* Read more link */}
+      <div class="mt-auto flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
+        <span>Lees verder</span>
+        <span class="material-symbols-outlined text-lg" aria-hidden="true">arrow_forward</span>
+      </div>
+    </div>
+  </a>
+</article>

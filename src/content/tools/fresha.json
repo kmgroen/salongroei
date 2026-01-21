@@ -1,0 +1,167 @@
+{
+  "name": "Fresha",
+  "slug": "fresha",
+  "tagline": {
+    "nl": "Best voor team building",
+    "en": "Best for team building"
+  },
+  "description": {
+    "nl": "Fresha positioneert zich als 'gratis', maar rekent 15% commissie per boeking in het basisplan. Voor commissievrij werken heb je Solo (€14,95/maand) of Team (€9,95/maand per gebruiker) nodig. Verbindt salons met nieuwe klanten via hun marketplace.",
+    "en": "Fresha positions itself as 'free', but charges 15% commission per booking on the basic plan. For commission-free operation, you need Solo (€14.95/month) or Team (€9.95/month per user). Connects salons with new clients through their marketplace."
+  },
+  "accentColor": "primary",
+  "isEditorsPick": false,
+  "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA8pPYvvIi2iBp2wbPu26bGNmVBzTOyhkAHa1TwxfNgTE4bjEzjpdVqTRyap0wRlBpb4kwI6Mza-gRWd8rrQ9XQiWyF5QBbf3SZ9D-uFiBiD0IZqkceTRXMlZcGXO-1Poa3ThJRy-8JEDqIjonoNZpykhwkan2LAyKT1QP5q_XnCitXFinvSyN75N3XiA93Id7ncaeOGRIYa72HcQR7a6KId0qeIcICQYMzjqSs3EWSu_ij1aryeVYxBSMGWBKWSD5ccL0caj8z8dQ",
+  "imageAlt": "Fresha software dashboard interface",
+  "rating": {
+    "score": 4.7,
+    "count": 5621
+  },
+  "pricing": {
+    "starter": {
+      "price": 0,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Basis (15% commissie)",
+        "en": "Basic (15% commission)"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte boekingen",
+          "en": "Unlimited bookings"
+        },
+        {
+          "nl": "15% commissie per boeking",
+          "en": "15% commission per booking"
+        },
+        {
+          "nl": "Marketplace toegang",
+          "en": "Marketplace access"
+        },
+        {
+          "nl": "Basis rapportage",
+          "en": "Basic reporting"
+        },
+        {
+          "nl": "Clientbeheer",
+          "en": "Client management"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": true,
+      "commissionRate": 15
+    },
+    "pro": {
+      "price": 14.95,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Solo",
+        "en": "Solo"
+      },
+      "features": [
+        {
+          "nl": "Alles in Gratis",
+          "en": "Everything in Free"
+        },
+        {
+          "nl": "Geen commissie",
+          "en": "No commission"
+        },
+        {
+          "nl": "Prioriteit ondersteuning",
+          "en": "Priority support"
+        },
+        {
+          "nl": "Extra marketing tools",
+          "en": "Extra marketing tools"
+        }
+      ]
+    },
+    "team": {
+      "price": 9.95,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Team",
+        "en": "Team"
+      },
+      "perUser": true,
+      "minimumUsers": 2,
+      "features": [
+        {
+          "nl": "Alles in Solo",
+          "en": "Everything in Solo"
+        },
+        {
+          "nl": "€9,95 per teamlid",
+          "en": "€9.95 per team member"
+        },
+        {
+          "nl": "Minimaal 2 gebruikers",
+          "en": "Minimum 2 users"
+        },
+        {
+          "nl": "Team planning tools",
+          "en": "Team scheduling tools"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Geen maandelijkse vaste kosten in basisplan",
+      "en": "No monthly fixed costs in basic plan"
+    },
+    {
+      "nl": "Grote marketplace voor nieuwe klanten",
+      "en": "Large marketplace for new clients"
+    },
+    {
+      "nl": "Commissievrije plannen vanaf €14,95/maand",
+      "en": "Commission-free plans from €14.95/month"
+    },
+    {
+      "nl": "Makkelijk te gebruiken",
+      "en": "Easy to use"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Gratis versie heeft 15% commissie per boeking",
+      "en": "Free version has 15% commission per booking"
+    },
+    {
+      "nl": "Betaalde plannen nodig om commissie te vermijden",
+      "en": "Paid plans needed to avoid commission"
+    },
+    {
+      "nl": "Minder controle over branding",
+      "en": "Less control over branding"
+    },
+    {
+      "nl": "Klanten kunnen concurrenten zien in marketplace",
+      "en": "Clients can see competitors in marketplace"
+    }
+  ],
+  "bestFor": {
+    "nl": "Salons die toegang willen tot hun marketplace en bereid zijn 15% commissie te betalen, of vanaf €14,95/maand voor commissievrij gebruik",
+    "en": "Salons wanting marketplace access and willing to pay 15% commission, or from €14.95/month for commission-free usage"
+  },
+  "freeTrial": {
+    "available": false
+  },
+  "website": "https://www.fresha.com",
+  "affiliateLink": "https://www.fresha.com"
+}

@@ -1,0 +1,37 @@
+{
+  "reduce-no-shows": {
+    "success": true,
+    "path": "/Users/kaspergroen/GitHub/salongroei/public/images/infographics/no-shows-statistics-infographic.png",
+    "filename": "no-shows-statistics-infographic.png",
+    "alt_nl": "Infographic toont 67% minder no-shows, €75 kosten per no-show, en €13.000 jaarlijks verlies",
+    "alt_en": "Infographic shows 67% fewer no-shows, €75 cost per no-show, and €13,000 annual loss"
+  },
+  "24-7-booking-benefits": {
+    "success": true,
+    "path": "/Users/kaspergroen/GitHub/salongroei/public/images/infographics/online-booking-benefits-infographic.png",
+    "filename": "online-booking-benefits-infographic.png",
+    "alt_nl": "Infographic toont 80% boekingen buiten kantooruren, 5-10 uur per week bespaard, 15-20% hogere winstmarge",
+    "alt_en": "Infographic shows 80% bookings outside office hours, 5-10 hours saved per week, 15-20% higher profit margin"
+  },
+  "waitlist-management": {
+    "success": true,
+    "path": "/Users/kaspergroen/GitHub/salongroei/public/images/infographics/waitlist-management-infographic.png",
+    "filename": "waitlist-management-infographic.png",
+    "alt_nl": "Infographic vergelijkt salon zonder en met waitlist: 2-3 dagen vs 1-2 uur opvulling, €65 vs €78 omzet",
+    "alt_en": "Infographic compares salon without and with waitlist: 2-3 days vs 1-2 hours fill time, €65 vs €78 revenue"
+  },
+  "prevent-double-bookings": {
+    "success": true,
+    "path": "/Users/kaspergroen/GitHub/salongroei/public/images/infographics/prevent-double-bookings-infographic.png",
+    "filename": "prevent-double-bookings-infographic.png",
+    "alt_nl": "Infographic toont probleem van double bookings, oplossing met real-time sync, en resultaat van 0% double bookings",
+    "alt_en": "Infographic shows double booking problem, real-time sync solution, and result of 0% double bookings"
+  },
+  "capacity-planning": {
+    "success": true,
+    "path": "/Users/kaspergroen/GitHub/salongroei/public/images/infographics/capacity-planning-infographic.png",
+    "filename": "capacity-planning-infographic.png",
+    "alt_nl": "Infographic toont weekpatroon van salonboekingen met zaterdag als piekdag en optimale bezetting van 75-80%",
+    "alt_en": "Infographic shows weekly salon booking pattern with Saturday as peak day and optimal occupancy of 75-80%"
+  }
+}

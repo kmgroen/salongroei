@@ -1,16 +1,21 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
-<section class="mb-32 text-center py-20 bg-expert-navy text-white rounded-[3rem] overflow-hidden relative">
-<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px]"></div>
-<div class="absolute bottom-0 left-0 w-64 h-64 bg-soft-sage/20 rounded-full blur-[100px]"></div>
+<section class="mb-32 text-center py-20 bg-expert-navy text-white rounded-[3rem] overflow-hidden relative" aria-labelledby="newsletter-heading">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[100px]" aria-hidden="true"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-soft-sage/20 rounded-full blur-[100px]" aria-hidden="true"></div>
 <div class="relative z-10 max-w-2xl mx-auto px-6">
-<span class="material-symbols-outlined text-sunshine-yellow text-6xl mb-6">mail</span>
-<h2 class="font-display text-4xl md:text-5xl font-black mb-6">Stay Ahead of the Curve</h2>
-<p class="text-white/70 text-lg mb-10">Get our weekly "Expert's Letter" with the latest salon tech news, design trends, and growth hacks. No spam, ever.</p>
+<span class="material-symbols-outlined text-sunshine-yellow text-6xl mb-6" aria-hidden="true">{t('newsletter.icon')}</span>
+<h2 id="newsletter-heading" class="font-display text-4xl md:text-5xl font-black mb-6">{t('newsletter.title')}</h2>
+<p class="text-white/70 text-lg mb-10">{t('newsletter.subtitle')}</p>
 <form class="flex flex-col sm:flex-row gap-4">
-<input class="flex-1 px-8 py-4 rounded-xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:border-primary focus:ring-0" placeholder="Your salon's email" type="email"/>
-<button class="bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform">Join 5k Owners</button>
+<label for="newsletter-input" class="sr-only">{t('newsletter.placeholder')}</label>
+<input id="newsletter-input" class="flex-1 px-8 py-4 rounded-xl bg-white/10 border-2 border-white/20 text-white placeholder:text-white/40 focus:border-primary focus:ring-2 focus:ring-primary/50" placeholder={t('newsletter.placeholder')} type="email" required aria-required="true"/>
+<button class="bg-primary text-white px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition-transform focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-expert-navy">{t('newsletter.cta')}</button>
 </form>
-<p class="mt-6 text-sm text-white/40 italic">Trusted by independent artists and luxury chains alike.</p>
+<p class="mt-6 text-sm text-white/40 italic">{t('newsletter.trusted')}</p>
 </div>
 </section>

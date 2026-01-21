@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CalculatorForm from '../components/CalculatorForm';
+---
+
+<BaseLayout
+  title="ROI Calculator"
+  description="Estimate how much you'll save by switching to the right salon software."
+>
+  <Header />
+  <main class="max-w-[1200px] mx-auto px-6 py-16">
+    <CalculatorForm client:load />
+  </main>
+  <Footer />
+</BaseLayout>

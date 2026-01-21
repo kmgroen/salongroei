@@ -1,0 +1,27 @@
+VPS Temporary Access (expires in 1 hour)
+
+SSH: ssh aabb94_e9c7e065@31.97.217.189
+
+Paths:
+  WEBSITE=/var/www/salongroei
+  NGINX_CONFIG=/etc/nginx/sites-available/salongroei
+  NGINX_LOGS=/var/log/nginx/
+
+Auth: Uses same SSH key as kasper (no password needed)
+
+Useful Commands:
+  # Nginx
+  sudo systemctl status nginx
+  sudo nginx -t
+  sudo tail -f /var/log/nginx/access.log
+  sudo cat /var/log/nginx/error.log
+
+  # Docker (if containers exist)
+  sudo docker ps
+  sudo docker stats
+  sudo docker logs <container_name>
+  sudo docker exec -it <container_name> bash
+
+  # Files
+  sudo ls -la /var/www/salongroei
+  sudo cat /var/www/salongroei/index.html

@@ -1,0 +1,130 @@
+{
+  "name": "Vagaro",
+  "slug": "vagaro",
+  "tagline": {
+    "nl": "Best voor marketing automatisering",
+    "en": "Best for marketing automation"
+  },
+  "description": {
+    "nl": "Vagaro combineert salonsoftware met krachtige marketing tools. Van email campagnes tot social media integratie, het helpt salons automatisch klanten te werven en behouden.",
+    "en": "Vagaro combines salon software with powerful marketing tools. From email campaigns to social media integration, it helps salons automatically acquire and retain clients."
+  },
+  "accentColor": "soft-sage",
+  "isEditorsPick": false,
+  "imageUrl": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&auto=format&fit=crop",
+  "imageAlt": "Vagaro marketing automation dashboard",
+  "rating": {
+    "score": 4.5,
+    "count": 3156
+  },
+  "pricing": {
+    "starter": {
+      "price": 25,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Basic",
+        "en": "Basic"
+      },
+      "features": [
+        {
+          "nl": "Online boekingen",
+          "en": "Online bookings"
+        },
+        {
+          "nl": "Email marketing",
+          "en": "Email marketing"
+        },
+        {
+          "nl": "Clientbeheer",
+          "en": "Client management"
+        },
+        {
+          "nl": "SMS herinneringen",
+          "en": "SMS reminders"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 55,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Professional",
+        "en": "Professional"
+      },
+      "features": [
+        {
+          "nl": "Alles in Basic",
+          "en": "Everything in Basic"
+        },
+        {
+          "nl": "Marketing automatisering",
+          "en": "Marketing automation"
+        },
+        {
+          "nl": "Social media tools",
+          "en": "Social media tools"
+        },
+        {
+          "nl": "Geavanceerde analytics",
+          "en": "Advanced analytics"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Krachtige marketing tools",
+      "en": "Powerful marketing tools"
+    },
+    {
+      "nl": "Email & SMS campagnes",
+      "en": "Email & SMS campaigns"
+    },
+    {
+      "nl": "Social media integratie",
+      "en": "Social media integration"
+    },
+    {
+      "nl": "Marketplace toegang",
+      "en": "Marketplace access"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Interface kan overweldigend zijn",
+      "en": "Interface can be overwhelming"
+    },
+    {
+      "nl": "Extra kosten voor SMS",
+      "en": "Extra costs for SMS"
+    },
+    {
+      "nl": "Leercurve voor alle features",
+      "en": "Learning curve for all features"
+    }
+  ],
+  "bestFor": {
+    "nl": "Marketing-gerichte salons die actief klanten willen werven",
+    "en": "Marketing-focused salons actively acquiring clients"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 30
+  },
+  "website": "https://www.vagaro.com",
+  "affiliateLink": "https://www.vagaro.com"
+}

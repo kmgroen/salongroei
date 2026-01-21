@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ToolComparison from '../../components/tools/ToolComparison.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get selected tools from query params
+const url = new URL(Astro.request.url);
+const selectedSlugs = url.searchParams.getAll('tools');
+
+const allTools = await getCollection('tools');
+
+// Filter tools based on selected slugs
+const selectedTools = selectedSlugs.length > 0
+  ? allTools.filter((tool) => selectedSlugs.includes(tool.data.slug))
+  : allTools.slice(0, 3); // Default to first 3 if none selected
+
+// Ensure we have 2-4 tools
+if (selectedTools.length < 2) {
+  // If less than 2 selected, add top-rated tools
+  const additionalTools = allTools
+    .filter((tool) => !selectedSlugs.includes(tool.data.slug))
+    .sort((a, b) => b.data.rating.score - a.data.rating.score)
+    .slice(0, 2 - selectedTools.length);
+  selectedTools.push(...additionalTools);
+}
+
+// Limit to 4 tools max
+const toolsToCompare = selectedTools.slice(0, 4);
+---
+
+<BaseLayout
+  title={lang === 'nl' ? 'Vergelijk Salon Software' : 'Compare Salon Software'}
+  description={lang === 'nl'
+    ? 'Vergelijk salon software side-by-side. Zie prijzen, functies en beoordelingen naast elkaar.'
+    : 'Compare salon software side-by-side. See pricing, features, and ratings next to each other.'
+  }
+>
+  <Header />
+
+  <main class="max-w-[1400px] mx-auto px-6 py-12">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 text-sm">
+      <a href="/" class="text-primary hover:underline">Home</a>
+      <span class="mx-2 text-gray-400">/</span>
+      <a href="/tools" class="text-primary hover:underline">
+        {lang === 'nl' ? 'Tools' : 'Tools'}
+      </a>
+      <span class="mx-2 text-gray-400">/</span>
+      <span class="text-expert-navy font-semibold">
+        {lang === 'nl' ? 'Vergelijk' : 'Compare'}
+      </span>
+    </nav>
+
+    <!-- Header -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 md:p-12 border-2 border-primary/20">
+        <h1 class="font-display text-4xl md:text-5xl font-black mb-4 text-expert-navy">
+          {lang === 'nl' ? 'Salon Software Vergelijking' : 'Salon Software Comparison'}
+        </h1>
+        <p class="text-lg text-expert-navy/70 mb-6">
+          {lang === 'nl'
+            ? `Vergelijk ${toolsToCompare.length} salon software oplossingen naast elkaar. Zie direct de verschillen in prijzen, functies en beoordelingen.`
+            : `Compare ${toolsToCompare.length} salon software solutions side-by-side. See the differences in pricing, features, and ratings at a glance.`
+          }
+        </p>
+
+        <!-- Selected Tools Pills -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          {toolsToCompare.map((tool) => (
+            <span class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-gray-200 font-semibold text-expert-navy">
+              <span class="w-2 h-2 rounded-full bg-primary"></span>
+              {tool.data.name}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href="/tools"
+          class="inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-xl font-bold border-2 border-primary hover:bg-primary hover:text-white transition-colors"
+        >
+          <span class="material-symbols-outlined">edit</span>
+          {lang === 'nl' ? 'Wijzig Selectie' : 'Change Selection'}
+        </a>
+      </div>
+    </section>
+
+    <!-- Comparison Component -->
+    <section class="mb-12">
+      <ToolComparison tools={toolsToCompare} />
+    </section>
+
+    <!-- Individual Tool Cards -->
+    <section class="mb-12">
+      <h2 class="font-display text-3xl font-black mb-6 text-expert-navy">
+        {lang === 'nl' ? 'Gedetailleerde Informatie' : 'Detailed Information'}
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {toolsToCompare.map((tool) => (
+          <div class="bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-primary hover:shadow-xl transition-all">
+            <div class="h-48 overflow-hidden">
+              <img
+                src={tool.data.imageUrl}
+                alt={tool.data.imageAlt}
+                width="600"
+                height="400"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <h3 class="font-display text-2xl font-black text-expert-navy mb-1">
+                    {tool.data.name}
+                  </h3>
+                  <p class="text-sm text-expert-navy/60">
+                    {tool.data.tagline[lang]}
+                  </p>
+                </div>
+                <div class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold border border-primary/20">
+                  {tool.data.rating.score}/5
+                </div>
+              </div>
+
+              <p class="text-sm text-expert-navy/70 mb-4 line-clamp-3">
+                {tool.data.description[lang]}
+              </p>
+
+              <div class="border-t border-gray-100 pt-4 mb-4">
+                <div class="flex items-baseline gap-2 mb-2">
+                  {tool.data.pricing.starter.isFree ? (
+                    <span class="font-display text-2xl font-black text-primary">
+                      {lang === 'nl' ? 'Gratis' : 'Free'}
+                    </span>
+                  ) : (
+                    <>
+                      <span class="font-display text-2xl font-black text-expert-navy">
+                        {tool.data.pricing.starter.currency}{tool.data.pricing.starter.price}
+                      </span>
+                      <span class="text-sm text-expert-navy/60">/{lang === 'nl' ? 'maand' : 'month'}</span>
+                    </>
+                  )}
+                </div>
+                {tool.data.pricing.starter.hasCommission && (
+                  <div class="text-xs text-orange-600 mb-3">
+                    + {tool.data.pricing.starter.commissionRate}% {lang === 'nl' ? 'commissie' : 'commission'}
+                  </div>
+                )}
+              </div>
+
+              <div class="flex gap-2">
+                <a
+                  href={`/tools/${tool.data.slug}`}
+                  class="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl font-bold text-sm text-center hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+                >
+                  {lang === 'nl' ? 'Volledige Review' : 'Full Review'}
+                </a>
+                <a
+                  href={tool.data.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-4 py-2.5 border-2 border-primary text-primary rounded-xl font-bold text-sm hover:bg-primary hover:text-white transition-colors"
+                >
+                  <span class="material-symbols-outlined text-lg">open_in_new</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-12 text-center text-white">
+      <h2 class="font-display text-4xl font-black mb-4">
+        {lang === 'nl' ? 'Keuze Gemaakt?' : 'Made Your Choice?'}
+      </h2>
+      <p class="text-xl mb-8 opacity-90">
+        {lang === 'nl'
+          ? 'Bekijk meer tools of start direct met een gratis proefperiode.'
+          : 'Explore more tools or start with a free trial right away.'
+        }
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/tools"
+          class="inline-flex items-center gap-2 bg-white text-primary px-8 py-3.5 rounded-xl font-bold text-lg shadow-lg hover:scale-105 transition-transform"
+        >
+          {lang === 'nl' ? 'Bekijk Alle Tools' : 'View All Tools'}
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+        <a
+          href="/tools"
+          class="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-white hover:text-primary transition-colors"
+        >
+          <span class="material-symbols-outlined">edit</span>
+          {lang === 'nl' ? 'Andere Vergelijking' : 'Different Comparison'}
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,98 @@
+---
+import { getLangFromUrl } from '../../i18n/utils';
+
+interface Props {
+  tools: Array<{
+    data: {
+      name: string;
+      pricing: any;
+      freeTrial: { available: boolean; days?: number };
+    };
+  }>;
+}
+
+const { tools } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200">
+        <th class="text-left p-4 font-display font-black text-expert-navy">
+          {lang === 'nl' ? 'Software' : 'Software'}
+        </th>
+        <th class="text-right p-4 font-display font-black text-expert-navy">
+          {lang === 'nl' ? 'Startprijs' : 'Starting Price'}
+        </th>
+        <th class="text-right p-4 font-display font-black text-expert-navy">
+          {lang === 'nl' ? 'Pro Plan' : 'Pro Plan'}
+        </th>
+        <th class="text-right p-4 font-display font-black text-expert-navy">
+          {lang === 'nl' ? 'Enterprise' : 'Enterprise'}
+        </th>
+        <th class="text-center p-4 font-display font-black text-expert-navy">
+          {lang === 'nl' ? 'Gratis Proef' : 'Free Trial'}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {tools.map((tool, index) => (
+        <tr class={`border-b border-gray-100 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'} hover:bg-primary/5 transition-colors`}>
+          <td class="p-4">
+            <span class="font-semibold text-expert-navy">{tool.data.name}</span>
+          </td>
+          <td class="p-4 text-right">
+            {tool.data.pricing.starter.isFree ? (
+              <div>
+                <span class="font-bold text-primary">{lang === 'nl' ? 'Gratis' : 'Free'}</span>
+                {tool.data.pricing.starter.hasCommission && (
+                  <div class="text-xs text-orange-600 mt-1">
+                    +{tool.data.pricing.starter.commissionRate}%
+                  </div>
+                )}
+              </div>
+            ) : (
+              <span class="font-semibold text-expert-navy">
+                {tool.data.pricing.starter.currency}{tool.data.pricing.starter.price}/{lang === 'nl' ? 'mnd' : 'mo'}
+              </span>
+            )}
+          </td>
+          <td class="p-4 text-right">
+            {tool.data.pricing.pro ? (
+              <span class="font-semibold text-expert-navy">
+                {tool.data.pricing.pro.currency}{tool.data.pricing.pro.price}/{lang === 'nl' ? 'mnd' : 'mo'}
+              </span>
+            ) : (
+              <span class="text-gray-400">-</span>
+            )}
+          </td>
+          <td class="p-4 text-right">
+            {tool.data.pricing.enterprise ? (
+              <span class="text-sm text-expert-navy/70">{lang === 'nl' ? 'Op aanvraag' : 'On request'}</span>
+            ) : (
+              <span class="text-gray-400">-</span>
+            )}
+          </td>
+          <td class="p-4 text-center">
+            {tool.data.freeTrial.available ? (
+              <span class="inline-flex items-center gap-1 text-sm font-medium text-green-600">
+                <span class="material-symbols-outlined text-base">check_circle</span>
+                {tool.data.freeTrial.days} {lang === 'nl' ? 'dagen' : 'days'}
+              </span>
+            ) : (
+              <span class="text-gray-400">-</span>
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-4 text-xs text-expert-navy/50 italic">
+  {lang === 'nl'
+    ? `Prijzen exclusief BTW. Gecontroleerd op: ${new Date().toLocaleDateString('nl-NL', { year: 'numeric', month: 'long', day: 'numeric' })}`
+    : `Prices exclude VAT. Verified on: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`
+  }
+</div>

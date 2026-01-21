@@ -1,0 +1,135 @@
+---
+interface TableHeader {
+  text: string;
+  highlight?: boolean;
+}
+
+interface TableRow {
+  label: string;
+  cells: {
+    value: string | boolean;
+    highlight?: boolean;
+  }[];
+  isGroupHeader?: boolean;
+}
+
+interface Props {
+  headers: TableHeader[];
+  rows: TableRow[];
+  caption?: string;
+  class?: string;
+}
+
+const { headers, rows, caption, class: className = '' } = Astro.props;
+
+// Helper function to render cell value
+const renderCellValue = (value: string | boolean) => {
+  if (typeof value === 'boolean') {
+    return value
+      ? '<span class="material-symbols-outlined text-soft-sage text-2xl" aria-label="Yes">check_circle</span>'
+      : '<span class="material-symbols-outlined text-expert-navy/30 text-2xl" aria-label="No">cancel</span>';
+  }
+  return value;
+};
+---
+
+<div class={`overflow-x-auto ${className}`}>
+  <table class="comparison-table w-full border-2 border-expert-navy/10 rounded-xl overflow-hidden">
+    {caption && (
+      <caption class="text-sm text-expert-navy/60 dark:text-white/60 italic mb-2 text-left px-4">
+        {caption}
+      </caption>
+    )}
+
+    <thead>
+      <tr class="bg-expert-navy text-white">
+        {headers.map((header) => (
+          <th
+            class={`px-4 py-4 text-left font-bold text-sm md:text-base ${
+              header.highlight ? 'bg-primary text-white' : ''
+            }`}
+          >
+            {header.text}
+          </th>
+        ))}
+      </tr>
+    </thead>
+
+    <tbody>
+      {rows.map((row, index) => (
+        row.isGroupHeader ? (
+          <tr class="bg-expert-navy/5 dark:bg-expert-navy/20">
+            <td
+              colspan={headers.length}
+              class="px-4 py-3 font-bold text-expert-navy dark:text-white"
+            >
+              {row.label}
+            </td>
+          </tr>
+        ) : (
+          <tr
+            class={`border-t border-expert-navy/10 hover:bg-soft-sage/10 transition-colors ${
+              index % 2 === 0 ? 'bg-white dark:bg-expert-navy/5' : 'bg-background-light dark:bg-expert-navy/10'
+            }`}
+          >
+            <td class="px-4 py-3 font-medium text-expert-navy dark:text-white">
+              {row.label}
+            </td>
+            {row.cells.map((cell) => (
+              <td
+                class={`px-4 py-3 text-expert-navy dark:text-white/90 ${
+                  cell.highlight ? 'font-bold bg-primary/5 text-primary dark:text-primary' : ''
+                }`}
+                set:html={renderCellValue(cell.value)}
+              />
+            ))}
+          </tr>
+        )
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .comparison-table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .comparison-table thead th:first-child {
+    border-top-left-radius: 0.75rem;
+  }
+
+  .comparison-table thead th:last-child {
+    border-top-right-radius: 0.75rem;
+  }
+
+  .comparison-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 0.75rem;
+  }
+
+  .comparison-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 0.75rem;
+  }
+
+  /* Material Symbols Icons */
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
+
+  /* Responsive: Stack table on mobile if needed */
+  @media (max-width: 768px) {
+    .comparison-table {
+      font-size: 0.875rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.5rem;
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +10,12 @@ export default defineConfig({
   build: {
     format: 'directory'
   },
-  integrations: [tailwind()]
+  i18n: {
+    defaultLocale: 'nl',
+    locales: ['nl', 'en'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
+  integrations: [tailwind(), react()]
 });

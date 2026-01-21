@@ -1,0 +1,142 @@
+{
+  "name": "SalonUp",
+  "slug": "salonup",
+  "tagline": {
+    "nl": "Best voor teams en multi-locaties",
+    "en": "Best for teams and multi-locations"
+  },
+  "description": {
+    "nl": "SalonUp is een complete salon management oplossing met focus op teamfuncties en geavanceerde planning. Met parallel booking, resource management en onbeperkte staff accounts is het ideaal voor groeiende salons en kapsalons met meerdere vestigingen.",
+    "en": "SalonUp is a complete salon management solution focused on team features and advanced scheduling. With parallel booking, resource management and unlimited staff accounts, it's ideal for growing salons and multi-location hair salons."
+  },
+  "accentColor": "primary",
+  "isEditorsPick": true,
+  "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA8pPYvvIi2iBp2wbPu26bGNmVBzTOyhkAHa1TwxfNgTE4bjEzjpdVqTRyap0wRlBpb4kwI6Mza-gRWd8rrQ9XQiWyF5QBbf3SZ9D-uFiBiD0IZqkceTRXMlZcGXO-1Poa3ThJRy-8JEDqIjonoNZpykhwkan2LAyKT1QP5q_XnCitXFinvSyN75N3XiA93Id7ncaeOGRIYa72HcQR7a6KId0qeIcICQYMzjqSs3EWSu_ij1aryeVYxBSMGWBKWSD5ccL0caj8z8dQ",
+  "imageAlt": "SalonUp software dashboard interface",
+  "rating": {
+    "score": 4.5,
+    "count": 1247
+  },
+  "pricing": {
+    "starter": {
+      "price": 19,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Basis",
+        "en": "Basic"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte medewerkers",
+          "en": "Unlimited staff"
+        },
+        {
+          "nl": "Online boekingen 24/7",
+          "en": "24/7 online booking"
+        },
+        {
+          "nl": "Real-time synchronisatie",
+          "en": "Real-time synchronization"
+        },
+        {
+          "nl": "Automatische herinneringen",
+          "en": "Automated reminders"
+        },
+        {
+          "nl": "Clientbeheer",
+          "en": "Client management"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 39,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Pro",
+        "en": "Pro"
+      },
+      "features": [
+        {
+          "nl": "Alles in Basis",
+          "en": "Everything in Basic"
+        },
+        {
+          "nl": "Multi-locatie ondersteuning",
+          "en": "Multi-location support"
+        },
+        {
+          "nl": "Parallel booking",
+          "en": "Parallel booking"
+        },
+        {
+          "nl": "Resource management (stoelen, wasbakken)",
+          "en": "Resource management (chairs, washbasins)"
+        },
+        {
+          "nl": "Geavanceerde rapportage",
+          "en": "Advanced reporting"
+        },
+        {
+          "nl": "Marketing automatisering",
+          "en": "Marketing automation"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Onbeperkte staff accounts inbegrepen",
+      "en": "Unlimited staff accounts included"
+    },
+    {
+      "nl": "Geavanceerde team planning functies",
+      "en": "Advanced team scheduling features"
+    },
+    {
+      "nl": "Parallel booking voor efficiëntie",
+      "en": "Parallel booking for efficiency"
+    },
+    {
+      "nl": "Two-way calendar synchronisatie",
+      "en": "Two-way calendar synchronization"
+    },
+    {
+      "nl": "Resource management (stoelen, wasbakken)",
+      "en": "Resource management (chairs, washbasins)"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Meer functies kunnen overweldigend zijn voor beginners",
+      "en": "More features can be overwhelming for beginners"
+    },
+    {
+      "nl": "Hogere leercurve voor geavanceerde features",
+      "en": "Steeper learning curve for advanced features"
+    }
+  ],
+  "bestFor": {
+    "nl": "Salons met teams, meerdere medewerkers of multi-locaties die geavanceerde planning en resource management nodig hebben",
+    "en": "Salons with teams, multiple staff members or multi-locations that need advanced scheduling and resource management"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 14
+  },
+  "website": "https://salonup.nl",
+  "affiliateLink": "https://salonup.nl"
+}

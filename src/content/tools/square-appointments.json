@@ -1,0 +1,129 @@
+{
+  "name": "Square Appointments",
+  "slug": "square-appointments",
+  "tagline": {
+    "nl": "Best voor geïntegreerde betalingen",
+    "en": "Best for integrated payments"
+  },
+  "description": {
+    "nl": "Square Appointments maakt deel uit van het Square ecosysteem, wat naadloze integratie met betalingen, POS en e-commerce biedt. Ideaal voor salons die een complete business oplossing zoeken.",
+    "en": "Square Appointments is part of the Square ecosystem, offering seamless integration with payments, POS, and e-commerce. Ideal for salons seeking a complete business solution."
+  },
+  "accentColor": "primary",
+  "isEditorsPick": false,
+  "imageUrl": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
+  "imageAlt": "Square Appointments dashboard",
+  "rating": {
+    "score": 4.6,
+    "count": 4287
+  },
+  "pricing": {
+    "starter": {
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Gratis",
+        "en": "Free"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte afspraken",
+          "en": "Unlimited appointments"
+        },
+        {
+          "nl": "Online boekingen",
+          "en": "Online bookings"
+        },
+        {
+          "nl": "Square POS integratie",
+          "en": "Square POS integration"
+        },
+        {
+          "nl": "Basis rapportage",
+          "en": "Basic reporting"
+        }
+      ],
+      "isFree": true,
+      "hasCommission": true,
+      "commissionRate": 2.6
+    },
+    "pro": {
+      "price": 50,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Plus",
+        "en": "Plus"
+      },
+      "features": [
+        {
+          "nl": "Alles in Gratis",
+          "en": "Everything in Free"
+        },
+        {
+          "nl": "Geen transactiekosten",
+          "en": "No transaction fees"
+        },
+        {
+          "nl": "Geavanceerde marketing",
+          "en": "Advanced marketing"
+        },
+        {
+          "nl": "Loyaliteitsprogramma",
+          "en": "Loyalty program"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Naadloze betalings integratie",
+      "en": "Seamless payment integration"
+    },
+    {
+      "nl": "Gratis basisplan",
+      "en": "Free basic plan"
+    },
+    {
+      "nl": "Complete POS systeem",
+      "en": "Complete POS system"
+    },
+    {
+      "nl": "E-commerce mogelijkheden",
+      "en": "E-commerce capabilities"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Transactiekosten op gratis plan",
+      "en": "Transaction fees on free plan"
+    },
+    {
+      "nl": "Gebonden aan Square ecosystem",
+      "en": "Tied to Square ecosystem"
+    },
+    {
+      "nl": "Beperkte aanpassingsmogelijkheden",
+      "en": "Limited customization options"
+    }
+  ],
+  "bestFor": {
+    "nl": "Salons die een alles-in-één POS en boekingssysteem willen",
+    "en": "Salons wanting an all-in-one POS and booking system"
+  },
+  "freeTrial": {
+    "available": false
+  },
+  "website": "https://squareup.com/appointments",
+  "affiliateLink": "https://squareup.com/appointments"
+}

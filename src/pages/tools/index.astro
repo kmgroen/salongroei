@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ToolDetailCard from '../../components/tools/ToolDetailCard.astro';
+import ToolSelector from '../../components/tools/ToolSelector.astro';
+import PricingTable from '../../components/tools/PricingTable.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allTools = await getCollection('tools');
+const sortedTools = allTools.sort((a, b) => {
+  if (a.data.isEditorsPick && !b.data.isEditorsPick) return -1;
+  if (!a.data.isEditorsPick && b.data.isEditorsPick) return 1;
+  return b.data.rating.score - a.data.rating.score;
+});
+---
+
+<BaseLayout
+  title={lang === 'nl' ? 'Vergelijk Salon Software' : 'Compare Salon Software'}
+  description={lang === 'nl'
+    ? 'Vergelijk 10+ salon software oplossingen. Vind de perfecte booking software voor jouw salon.'
+    : 'Compare 10+ salon software solutions. Find the perfect booking software for your salon.'
+  }
+>
+  <Header />
+
+  <main id="main-content" class="max-w-[1200px] mx-auto px-6 py-12">
+    <!-- Hero Section -->
+    <section class="mb-16">
+      <div class="text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          <span class="material-symbols-outlined text-base" aria-hidden="true">verified</span>
+          {lang === 'nl' ? '10 Tools Vergeleken' : '10 Tools Compared'}
+        </div>
+        <h1 class="font-display text-5xl md:text-6xl font-black mb-6 text-expert-navy">
+          {lang === 'nl'
+            ? 'Vind de Perfecte <span class="scribble-underline">Salon Software</span>'
+            : 'Find the Perfect <span class="scribble-underline">Salon Software</span>'
+          }
+        </h1>
+        <p class="text-xl text-expert-navy/70 mb-8">
+          {lang === 'nl'
+            ? 'We vergelijken prijzen, functies en reviews van de beste salon management software. Bespaar uren research met onze expert vergelijkingen.'
+            : 'We compare prices, features, and reviews of the best salon management software. Save hours of research with our expert comparisons.'
+          }
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#compare"
+            class="bg-primary text-white px-8 py-3.5 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 hover:scale-105 transition-transform inline-flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">compare_arrows</span>
+            {lang === 'nl' ? 'Vergelijk Tools' : 'Compare Tools'}
+          </a>
+          <a
+            href="#pricing"
+            class="border-2 border-primary text-primary px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-primary hover:text-white transition-colors inline-flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">table_chart</span>
+            {lang === 'nl' ? 'Bekijk Prijzen' : 'View Pricing'}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-6 text-center border border-primary/20">
+        <div class="font-display text-4xl font-black text-primary mb-2">10+</div>
+        <div class="text-sm font-semibold text-expert-navy">
+          {lang === 'nl' ? 'Tools Vergeleken' : 'Tools Compared'}
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-soft-sage/10 to-soft-sage/5 rounded-xl p-6 text-center border border-soft-sage/20">
+        <div class="font-display text-4xl font-black text-soft-sage mb-2">€19-€249</div>
+        <div class="text-sm font-semibold text-expert-navy">
+          {lang === 'nl' ? 'Prijsbereik per Maand' : 'Price Range per Month'}
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-sunshine-yellow/10 to-sunshine-yellow/5 rounded-xl p-6 text-center border border-sunshine-yellow/20">
+        <div class="font-display text-4xl font-black text-sunshine-yellow-dark mb-2">25k+</div>
+        <div class="text-sm font-semibold text-expert-navy">
+          {lang === 'nl' ? 'Verified Reviews' : 'Verified Reviews'}
+        </div>
+      </div>
+    </section>
+
+    <!-- All Tools Grid -->
+    <section class="mb-16">
+      <div class="mb-8">
+        <h2 class="font-display text-4xl font-black mb-4 text-expert-navy">
+          {lang === 'nl' ? 'Alle Salon Software' : 'All Salon Software'}
+        </h2>
+        <p class="text-lg text-expert-navy/70">
+          {lang === 'nl'
+            ? 'Ontdek gedetailleerde reviews, prijzen en functies van elke tool.'
+            : 'Discover detailed reviews, pricing, and features of each tool.'
+          }
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedTools.map((tool) => (
+          <ToolDetailCard tool={tool} />
+        ))}
+      </div>
+    </section>
+
+    <!-- Tool Selector for Comparison -->
+    <section id="compare" class="mb-16 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="font-display text-4xl font-black mb-4 text-expert-navy">
+          {lang === 'nl' ? 'Vergelijk Tools' : 'Compare Tools'}
+        </h2>
+        <p class="text-lg text-expert-navy/70">
+          {lang === 'nl'
+            ? 'Selecteer 2-4 tools om een gedetailleerde side-by-side vergelijking te zien.'
+            : 'Select 2-4 tools to see a detailed side-by-side comparison.'
+          }
+        </p>
+      </div>
+      <ToolSelector tools={sortedTools} />
+    </section>
+
+    <!-- Pricing Table -->
+    <section id="pricing" class="mb-16 scroll-mt-24">
+      <div class="mb-8">
+        <h2 class="font-display text-4xl font-black mb-4 text-expert-navy">
+          {lang === 'nl' ? 'Prijsvergelijking' : 'Pricing Comparison'}
+        </h2>
+        <p class="text-lg text-expert-navy/70">
+          {lang === 'nl'
+            ? 'Vergelijk prijzen en plannen van alle tools in één overzicht.'
+            : 'Compare prices and plans of all tools at a glance.'
+          }
+        </p>
+      </div>
+      <div class="bg-white rounded-xl border-2 border-gray-200 overflow-hidden p-6">
+        <PricingTable tools={sortedTools} />
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-12 text-center text-white">
+      <h2 class="font-display text-4xl font-black mb-4">
+        {lang === 'nl' ? 'Klaar om te Kiezen?' : 'Ready to Choose?'}
+      </h2>
+      <p class="text-xl mb-8 opacity-90">
+        {lang === 'nl'
+          ? 'Start vandaag nog met je gratis proefperiode van de perfecte salon software.'
+          : 'Start your free trial of the perfect salon software today.'
+        }
+      </p>
+      <a
+        href="#compare"
+        class="inline-flex items-center gap-2 bg-white text-primary px-8 py-3.5 rounded-xl font-bold text-lg shadow-lg hover:scale-105 transition-transform"
+      >
+        {lang === 'nl' ? 'Vergelijk Nu' : 'Compare Now'}
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .scribble-underline {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 30'%3E%3Cpath fill='none' stroke='%23FF6B6B' stroke-width='3' d='M5,20 Q250,5 495,20'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 1em;
+    padding-bottom: 0.25em;
+  }
+</style>

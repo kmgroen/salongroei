@@ -1,0 +1,151 @@
+{
+  "name": "Phorest",
+  "slug": "phorest",
+  "tagline": {
+    "nl": "Best voor multi-locatie salons",
+    "en": "Best for multi-location salons"
+  },
+  "description": {
+    "nl": "Phorest is een krachtig salonbeheersysteem ontworpen voor groeiende bedrijven met meerdere locaties. Het biedt geavanceerde rapportage, centraal beheer en diepgaande analyse om uw salons efficiënt te runnen.",
+    "en": "Phorest is a powerful salon management system designed for growing businesses with multiple locations. It offers advanced reporting, centralized management, and deep analytics to run your salons efficiently."
+  },
+  "accentColor": "sunshine-yellow",
+  "isEditorsPick": false,
+  "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuDjvqMl2dLPSfOnFrkSMwKsNmpfPCfw-w2TBiowe-vz7Rc3IgpYd1Oz2MhxpQZhvosNyHrYDUb4KzZ1umlmZ0dvSuFVPeW0jd5FSYgtFF5Cs6J0MsuA8PkWFHz1WNImNkywKGdNFD02b9Oi9SCow1IPnmT0VzAZkUKGNzYz26FWS1vHTvZoPQA8phmKFsN09ZeWY6BDyaSaxmuZgSnZm0fcWn2KFMNQgdbxpnc9BvdDWtkU7kmOFFbO7Fm2yrbJV6O4L-i3a5DO-Rw",
+  "imageAlt": "Phorest software dashboard interface",
+  "rating": {
+    "score": 4.8,
+    "count": 1923
+  },
+  "pricing": {
+    "starter": {
+      "price": 129,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Essential",
+        "en": "Essential"
+      },
+      "features": [
+        {
+          "nl": "Tot 5 medewerkers",
+          "en": "Up to 5 staff members"
+        },
+        {
+          "nl": "Online boekingen",
+          "en": "Online bookings"
+        },
+        {
+          "nl": "POS systeem",
+          "en": "POS system"
+        },
+        {
+          "nl": "Basis rapportage",
+          "en": "Basic reporting"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 249,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Professional",
+        "en": "Professional"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte medewerkers",
+          "en": "Unlimited staff"
+        },
+        {
+          "nl": "Multi-locatie beheer",
+          "en": "Multi-location management"
+        },
+        {
+          "nl": "Geavanceerde marketing",
+          "en": "Advanced marketing"
+        },
+        {
+          "nl": "API toegang",
+          "en": "API access"
+        }
+      ]
+    },
+    "enterprise": {
+      "isCustom": true,
+      "label": {
+        "nl": "Enterprise",
+        "en": "Enterprise"
+      },
+      "features": [
+        {
+          "nl": "Dedicated accountmanager",
+          "en": "Dedicated account manager"
+        },
+        {
+          "nl": "Custom integraties",
+          "en": "Custom integrations"
+        },
+        {
+          "nl": "White label opties",
+          "en": "White label options"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Uitstekend voor multi-locatie",
+      "en": "Excellent for multi-location"
+    },
+    {
+      "nl": "Krachtige rapportage tools",
+      "en": "Powerful reporting tools"
+    },
+    {
+      "nl": "Ingebouwde marketingtools",
+      "en": "Built-in marketing tools"
+    },
+    {
+      "nl": "Goede inventaris beheer",
+      "en": "Great inventory management"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Hogere prijspunt",
+      "en": "Higher price point"
+    },
+    {
+      "nl": "Steilere leercurve",
+      "en": "Steeper learning curve"
+    },
+    {
+      "nl": "Overkill voor kleine salons",
+      "en": "Overkill for small salons"
+    }
+  ],
+  "bestFor": {
+    "nl": "Middelgrote tot grote salons met meerdere locaties (10+ medewerkers)",
+    "en": "Medium to large salons with multiple locations (10+ staff)"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 30
+  },
+  "website": "https://www.phorest.com",
+  "affiliateLink": "https://www.phorest.com"
+}

@@ -1,0 +1,151 @@
+{
+  "name": "Salonized",
+  "slug": "salonized",
+  "tagline": {
+    "nl": "Best voor inventaris beheer",
+    "en": "Best for inventory management"
+  },
+  "description": {
+    "nl": "Salonized combineert krachtig voorraadbeheer met een intuïtief boekingssysteem. Perfect voor salons die veel producten verkopen en nauwkeurige voorraadcontrole willen.",
+    "en": "Salonized combines powerful inventory management with an intuitive booking system. Perfect for salons that sell many products and want accurate stock control."
+  },
+  "accentColor": "sunshine-yellow",
+  "isEditorsPick": true,
+  "imageUrl": "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&auto=format&fit=crop",
+  "imageAlt": "Salonized inventory dashboard",
+  "rating": {
+    "score": 4.7,
+    "count": 1456
+  },
+  "pricing": {
+    "starter": {
+      "price": 29,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Starter",
+        "en": "Starter"
+      },
+      "features": [
+        {
+          "nl": "1 medewerker",
+          "en": "1 staff member"
+        },
+        {
+          "nl": "Basis agenda",
+          "en": "Basic calendar"
+        },
+        {
+          "nl": "Beperkte voorraad",
+          "en": "Limited inventory"
+        },
+        {
+          "nl": "Email herinneringen",
+          "en": "Email reminders"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 59,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Professional",
+        "en": "Professional"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte medewerkers",
+          "en": "Unlimited staff"
+        },
+        {
+          "nl": "Volledig voorraad beheer",
+          "en": "Full inventory management"
+        },
+        {
+          "nl": "Leveranciers integratie",
+          "en": "Supplier integration"
+        },
+        {
+          "nl": "Geavanceerde rapportage",
+          "en": "Advanced reporting"
+        }
+      ]
+    },
+    "enterprise": {
+      "isCustom": true,
+      "label": {
+        "nl": "Enterprise",
+        "en": "Enterprise"
+      },
+      "features": [
+        {
+          "nl": "Multi-locatie ondersteuning",
+          "en": "Multi-location support"
+        },
+        {
+          "nl": "API toegang",
+          "en": "API access"
+        },
+        {
+          "nl": "Custom training",
+          "en": "Custom training"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Uitstekend voorraad systeem",
+      "en": "Excellent inventory system"
+    },
+    {
+      "nl": "Barcode scanning",
+      "en": "Barcode scanning"
+    },
+    {
+      "nl": "Leveranciers tracking",
+      "en": "Supplier tracking"
+    },
+    {
+      "nl": "Productverkoop rapportage",
+      "en": "Product sales reporting"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Hogere prijs voor starter plan",
+      "en": "Higher price for starter plan"
+    },
+    {
+      "nl": "Complexer dan nodig voor kleine salons",
+      "en": "More complex than needed for small salons"
+    },
+    {
+      "nl": "Leercurve voor voorraad features",
+      "en": "Learning curve for inventory features"
+    }
+  ],
+  "bestFor": {
+    "nl": "Salons met significante productverkoop en meerdere leveranciers",
+    "en": "Salons with significant product sales and multiple suppliers"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 14
+  },
+  "website": "https://www.salonized.com",
+  "affiliateLink": "https://www.salonized.com"
+}

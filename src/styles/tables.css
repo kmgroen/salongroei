@@ -1,0 +1,190 @@
+/*
+ * Table Styling for Blog Posts
+ * Consistent styling for comparison and statistics tables
+ */
+
+/* Base table styling from markdown */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid theme('colors.expert-navy' / 0.1);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.prose thead {
+  background-color: theme('colors.expert-navy');
+  color: white;
+}
+
+.prose thead th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prose thead th:first-child {
+  border-top-left-radius: 0.75rem;
+}
+
+.prose thead th:last-child {
+  border-top-right-radius: 0.75rem;
+}
+
+.prose tbody tr {
+  border-top: 1px solid theme('colors.expert-navy' / 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.prose tbody tr:nth-child(even) {
+  background-color: theme('colors.expert-navy' / 0.02);
+}
+
+.prose tbody tr:hover {
+  background-color: theme('colors.soft-sage' / 0.1);
+}
+
+.prose tbody td {
+  padding: 0.75rem 1rem;
+  color: theme('colors.expert-navy' / 0.8);
+}
+
+.prose tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 0.75rem;
+}
+
+.prose tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 0.75rem;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .prose table {
+    border-color: theme('colors.white' / 0.1);
+  }
+
+  .prose tbody tr {
+    border-top-color: theme('colors.white' / 0.1);
+  }
+
+  .prose tbody tr:nth-child(even) {
+    background-color: theme('colors.expert-navy' / 0.1);
+  }
+
+  .prose tbody td {
+    color: theme('colors.white' / 0.8);
+  }
+}
+
+/* Material Symbols Icons in tables */
+.prose table .material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  vertical-align: middle;
+}
+
+/* Checkmark and cancel icons */
+.prose table .material-symbols-outlined.check {
+  color: theme('colors.soft-sage');
+}
+
+.prose table .material-symbols-outlined.cancel {
+  color: theme('colors.expert-navy' / 0.3);
+}
+
+/* Bold/highlighted cells */
+.prose tbody td strong,
+.prose tbody td b {
+  color: theme('colors.primary');
+  font-weight: 900;
+}
+
+/* Caption/source notes */
+.prose table + p em,
+.prose table + em {
+  display: block;
+  font-size: 0.875rem;
+  color: theme('colors.expert-navy' / 0.6);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Responsive tables */
+@media (max-width: 768px) {
+  .prose table {
+    font-size: 0.875rem;
+  }
+
+  .prose thead th,
+  .prose tbody td {
+    padding: 0.5rem;
+  }
+
+  /* Hide less critical columns on mobile if needed */
+  .prose table .mobile-hidden {
+    display: none;
+  }
+}
+
+/* Comparison table specific styling */
+.comparison-table-container {
+  margin: 2rem 0;
+}
+
+.comparison-table-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: theme('colors.expert-navy' / 0.6);
+}
+
+.comparison-table-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Statistics table specific styling */
+.statistics-highlight {
+  background-color: theme('colors.sunshine-yellow' / 0.1);
+  font-weight: 700;
+  color: theme('colors.primary');
+}
+
+/* Table container for overflow scrolling */
+.table-container {
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 0.75rem;
+}
+
+/* Scroll hint shadow on mobile */
+@media (max-width: 768px) {
+  .table-container {
+    position: relative;
+  }
+
+  .table-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 2rem;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.8), transparent);
+    pointer-events: none;
+  }
+
+  .table-container.scrolled::after {
+    display: none;
+  }
+}

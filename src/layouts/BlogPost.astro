@@ -1,0 +1,192 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ArticleStructuredData from '../components/seo/ArticleStructuredData.astro';
+import { getVersionedImageUrl } from '../utils/imageVersion';
+import '../styles/tables.css';
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  date: Date;
+  image?: string;
+  author?: string;
+  lang?: 'nl' | 'en';
+}
+
+const { title, description, category, date, image, author = 'Salongroei Editorial Team', lang = 'nl' } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat(lang === 'nl' ? 'nl-NL' : 'en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+}).format(date);
+
+const readingTime = lang === 'nl' ? '8 min leestijd' : '8 min read';
+
+// Get current URL for structured data
+const currentUrl = Astro.url.pathname;
+---
+
+<BaseLayout title={title} description={description} type="article" image={image}>
+  <!-- Article Structured Data -->
+  <ArticleStructuredData
+    slot="head"
+    title={title}
+    description={description}
+    author={author}
+    publishedDate={date}
+    image={image}
+    url={currentUrl}
+    lang={lang}
+  />
+  <main id="main-content">
+  <article class="max-w-[900px] mx-auto px-6 py-16">
+    {/* Header */}
+    <header class="mb-12">
+      {/* Category & Date */}
+      <div class="flex flex-wrap gap-3 items-center mb-6">
+        <span class="text-[10px] font-black uppercase tracking-widest bg-expert-navy/10 text-expert-navy dark:bg-white/10 dark:text-white px-3 py-1.5 rounded">
+          {category}
+        </span>
+        <span class="text-sm text-expert-navy/60 dark:text-white/60 font-bold">
+          {formattedDate}
+        </span>
+        <span class="text-sm text-expert-navy/60 dark:text-white/60">•</span>
+        <span class="text-sm text-expert-navy/60 dark:text-white/60">
+          {readingTime}
+        </span>
+      </div>
+
+      {/* Title */}
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-expert-navy dark:text-white mb-6">
+        {title}
+      </h1>
+
+      {/* Description */}
+      <p class="text-lg md:text-xl text-expert-navy/70 dark:text-white/70 leading-relaxed mb-6">
+        {description}
+      </p>
+
+      {/* Author */}
+      <div class="flex items-center gap-3 text-sm">
+        <div class="w-10 h-10 rounded-full bg-expert-navy/10 flex items-center justify-center">
+          <span class="material-symbols-outlined text-expert-navy dark:text-white" aria-hidden="true">
+            edit_note
+          </span>
+        </div>
+        <div>
+          <p class="font-bold text-expert-navy dark:text-white">{author}</p>
+          <p class="text-expert-navy/60 dark:text-white/60">Expert Editorial</p>
+        </div>
+      </div>
+    </header>
+
+    {/* Featured Image */}
+    {image && (
+      <figure class="aspect-[21/9] rounded-2xl overflow-hidden mb-12 shadow-lg">
+        <img
+          src={getVersionedImageUrl(image)}
+          alt=""
+          width="1200"
+          height="514"
+          loading="eager"
+          decoding="async"
+          class="w-full h-full object-cover"
+        />
+      </figure>
+    )}
+
+    {/* Content */}
+    <div class="prose prose-lg max-w-none
+      prose-headings:font-display prose-headings:font-black prose-headings:text-expert-navy dark:prose-headings:text-white
+      prose-h2:text-3xl prose-h2:md:text-4xl prose-h2:mt-12 prose-h2:mb-6
+      prose-h3:text-2xl prose-h3:md:text-3xl prose-h3:mt-10 prose-h3:mb-4
+      prose-h4:text-xl prose-h4:md:text-2xl prose-h4:mt-8 prose-h4:mb-3
+      prose-p:text-expert-navy/80 dark:prose-p:text-white/80 prose-p:leading-relaxed prose-p:mb-6
+      prose-strong:text-expert-navy dark:prose-strong:text-white prose-strong:font-bold
+      prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-a:font-semibold
+      prose-ul:my-6 prose-ul:list-disc prose-ul:ml-6
+      prose-ol:my-6 prose-ol:list-decimal prose-ol:ml-6
+      prose-li:text-expert-navy/80 dark:prose-li:text-white/80 prose-li:mb-2
+      prose-code:bg-expert-navy/5 dark:prose-code:bg-white/5 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-primary prose-code:font-mono prose-code:text-sm
+      prose-pre:bg-expert-navy/5 dark:prose-pre:bg-white/5 prose-pre:p-4 prose-pre:rounded-xl prose-pre:overflow-x-auto
+      prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-expert-navy/70 dark:prose-blockquote:text-white/70
+      prose-hr:border-expert-navy/10 dark:prose-hr:border-white/10 prose-hr:my-12
+      prose-img:rounded-xl prose-img:shadow-lg
+    ">
+      <slot />
+    </div>
+
+    {/* Footer CTA */}
+    <footer class="mt-16 pt-12 border-t-2 border-expert-navy/10 dark:border-white/10">
+      <div class="bg-gradient-to-br from-expert-navy/5 to-soft-sage/10 dark:from-expert-navy/10 dark:to-soft-sage/5 rounded-2xl p-8 md:p-12">
+        <div class="flex items-start gap-4 mb-6">
+          <span class="material-symbols-outlined text-4xl text-primary" aria-hidden="true">
+            lightbulb
+          </span>
+          <div>
+            <h2 class="font-display text-2xl md:text-3xl font-black text-expert-navy dark:text-white mb-3">
+              {lang === 'nl' ? 'Klaar om te Starten?' : 'Ready to Get Started?'}
+            </h2>
+            <p class="text-expert-navy/70 dark:text-white/70 mb-6">
+              {lang === 'nl'
+                ? 'Ontdek hoe SalonUp je kan helpen met slimme booking management, automatische herinneringen en capaciteitsplanning.'
+                : 'Discover how SalonUp can help you with smart booking management, automatic reminders and capacity planning.'}
+            </p>
+            <a
+              href={lang === 'nl' ? '/' : '/en'}
+              class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-full transition-all hover:gap-3 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <span>{lang === 'nl' ? 'Bekijk SalonUp' : 'Explore SalonUp'}</span>
+              <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Related Articles */}
+      <nav class="mt-12" aria-label={lang === 'nl' ? 'Gerelateerde artikelen' : 'Related articles'}>
+        <h2 class="font-display text-2xl font-black text-expert-navy dark:text-white mb-6">
+          {lang === 'nl' ? 'Meer Artikelen' : 'More Articles'}
+        </h2>
+        <a
+          href={lang === 'nl' ? '/blog' : '/en/blog'}
+          class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all focus:outline-2 focus:outline-primary focus:outline-offset-2"
+        >
+          <span>{lang === 'nl' ? 'Bekijk alle artikelen' : 'View all articles'}</span>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </a>
+      </nav>
+    </footer>
+  </article>
+  </main>
+
+  {/* Material Symbols Icons */}
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+</BaseLayout>
+
+<style>
+  /* Material Symbols Icons */
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
+
+  /* Custom prose styles for better readability */
+  .prose {
+    color: theme('colors.expert-navy' / 0.8);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .prose {
+      color: theme('colors.white' / 0.8);
+    }
+  }
+</style>

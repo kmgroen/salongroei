@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Temporary files
+temp/
+workspace/
+*.zip
+salongroei---salon-growth-platform/

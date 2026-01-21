@@ -1,0 +1,102 @@
+{
+  "name": "Treatwell",
+  "slug": "treatwell",
+  "tagline": {
+    "nl": "Best voor marketplace exposure",
+    "en": "Best for marketplace exposure"
+  },
+  "description": {
+    "nl": "Treatwell is Europa's grootste beautymarketplace met miljoenen actieve gebruikers. Perfect voor salons die hun klantenbasis willen uitbreiden via een gevestigd platform. Betaal per boeking in plaats van vaste maandkosten.",
+    "en": "Treatwell is Europe's largest beauty marketplace with millions of active users. Perfect for salons looking to expand their client base through an established platform. Pay per booking instead of fixed monthly costs."
+  },
+  "accentColor": "soft-sage",
+  "isEditorsPick": true,
+  "imageUrl": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&auto=format&fit=crop",
+  "imageAlt": "Treatwell marketplace platform",
+  "rating": {
+    "score": 4.6,
+    "count": 3421
+  },
+  "pricing": {
+    "starter": {
+      "currency": "€",
+      "period": "booking",
+      "label": {
+        "nl": "Marketplace",
+        "en": "Marketplace"
+      },
+      "features": [
+        {
+          "nl": "Toegang tot millioenen klanten",
+          "en": "Access to millions of clients"
+        },
+        {
+          "nl": "Online boekingssysteem",
+          "en": "Online booking system"
+        },
+        {
+          "nl": "Betalingsverwerking",
+          "en": "Payment processing"
+        },
+        {
+          "nl": "Basis rapportage",
+          "en": "Basic reporting"
+        }
+      ],
+      "isFree": true,
+      "hasCommission": true,
+      "commissionRate": 30
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": false,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Enorme klantenbasis",
+      "en": "Huge client base"
+    },
+    {
+      "nl": "Geen voorinvestering nodig",
+      "en": "No upfront investment"
+    },
+    {
+      "nl": "Gevestigde merknaam",
+      "en": "Established brand name"
+    },
+    {
+      "nl": "Goede mobiele ervaring",
+      "en": "Great mobile experience"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Hoge commissie per boeking (30%)",
+      "en": "High commission per booking (30%)"
+    },
+    {
+      "nl": "Weinig branding mogelijkheden",
+      "en": "Limited branding options"
+    },
+    {
+      "nl": "Concurrentie zichtbaar voor klanten",
+      "en": "Competition visible to clients"
+    }
+  ],
+  "bestFor": {
+    "nl": "Salons die nieuwe klanten zoeken en een marketplace strategie willen gebruiken",
+    "en": "Salons seeking new clients and wanting to use a marketplace strategy"
+  },
+  "freeTrial": {
+    "available": false
+  },
+  "website": "https://www.treatwell.nl",
+  "affiliateLink": "https://www.treatwell.nl"
+}

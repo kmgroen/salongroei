@@ -1,0 +1,38 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+interface SocialLink {
+    icon: string;
+    href: string;
+}
+
+interface Props {
+    links?: SocialLink[];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { links = [
+    { icon: 'share', href: '#' },
+    { icon: 'public', href: '#' },
+    { icon: 'alternate_email', href: '#' }
+] } = Astro.props;
+---
+<nav aria-label={lang === 'nl' ? 'Social media links' : 'Social media links'}>
+    <h4 class="font-bold text-sm uppercase tracking-widest mb-6 text-primary">{t('footer.socialMedia')}</h4>
+    <div class="flex gap-4">
+        {links.map((link, index) => {
+            const socialNames = ['Social Media', 'Website', 'Email'];
+            return (
+                <a
+                    class="size-10 rounded-full border border-expert-navy/20 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all focus:outline-2 focus:outline-primary focus:outline-offset-2"
+                    href={link.href}
+                    aria-label={socialNames[index] || 'Social link'}
+                >
+                    <span class="material-symbols-outlined text-lg" aria-hidden="true">{link.icon}</span>
+                </a>
+            );
+        })}
+    </div>
+</nav>

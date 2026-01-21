@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import GuideCard from '../../../components/guides/GuideCard.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get all guides for current language
+const allGuides = await getCollection('guides', ({ data }) => {
+  return data.lang === lang;
+});
+
+// Sort by publish date (newest first)
+const sortedGuides = allGuides.sort((a, b) =>
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+// Group by type
+const buyingGuides = sortedGuides.filter(g => g.data.type === 'buying-guide');
+const howTos = sortedGuides.filter(g => g.data.type === 'how-to');
+const comparisons = sortedGuides.filter(g => g.data.type === 'comparison');
+const checklists = sortedGuides.filter(g => g.data.type === 'checklist');
+
+const pageTitle = lang === 'nl' ? 'Salon Gidsen' : 'Salon Guides';
+const pageDescription = lang === 'nl'
+  ? 'Complete gidsen om je salon te laten groeien. Van software kiezen tot no-shows verminderen.'
+  : 'Complete guides to grow your salon. From choosing software to reducing no-shows.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+
+  <div class="bg-gradient-to-br from-primary/5 to-primary/10 py-16">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto">
+        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-black uppercase tracking-widest mb-4">
+          {lang === 'nl' ? 'Expert Gidsen' : 'Expert Guides'}
+        </div>
+        <h1 class="font-display text-5xl md:text-6xl font-black text-expert-navy dark:text-white mb-6">
+          {lang === 'nl' ? 'Leer. Groei. Win.' : 'Learn. Grow. Win.'}
+        </h1>
+        <p class="text-lg text-expert-navy/70 dark:text-white/70 mb-8">
+          {lang === 'nl'
+            ? 'Complete gidsen geschreven door salon experts. Van basis tot geavanceerd - stap voor stap uitgelegd.'
+            : 'Complete guides written by salon experts. From basics to advanced - explained step by step.'
+          }
+        </p>
+
+        <div class="flex flex-wrap gap-4 justify-center">
+          <div class="bg-white dark:bg-expert-navy/20 rounded-xl px-6 py-4 shadow-sm">
+            <div class="font-display text-3xl font-black text-primary">{sortedGuides.length}</div>
+            <div class="text-sm text-expert-navy/60 dark:text-white/60">
+              {lang === 'nl' ? 'Gidsen' : 'Guides'}
+            </div>
+          </div>
+          <div class="bg-white dark:bg-expert-navy/20 rounded-xl px-6 py-4 shadow-sm">
+            <div class="font-display text-3xl font-black text-primary">50k+</div>
+            <div class="text-sm text-expert-navy/60 dark:text-white/60">
+              {lang === 'nl' ? 'Lezers' : 'Readers'}
+            </div>
+          </div>
+          <div class="bg-white dark:bg-expert-navy/20 rounded-xl px-6 py-4 shadow-sm">
+            <div class="font-display text-3xl font-black text-primary">4.8★</div>
+            <div class="text-sm text-expert-navy/60 dark:text-white/60">
+              {lang === 'nl' ? 'Waardering' : 'Rating'}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-[1200px] mx-auto px-6 py-16">
+    <!-- All Guides Grid -->
+    <section class="mb-20">
+      <h2 class="font-display text-3xl font-black text-expert-navy dark:text-white mb-8">
+        {lang === 'nl' ? 'Alle Gidsen' : 'All Guides'}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {sortedGuides.map((guide) => (
+          <GuideCard
+            title={guide.data.title}
+            description={guide.data.description}
+            type={guide.data.type}
+            difficulty={guide.data.difficulty}
+            estimatedTime={guide.data.estimatedTime}
+            slug={guide.slug}
+            image={guide.data.image}
+            publishDate={guide.data.publishDate}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Buying Guides Section -->
+    {buyingGuides.length > 0 && (
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-4xl text-primary">shopping_cart</span>
+          <h2 class="font-display text-3xl font-black text-expert-navy dark:text-white">
+            {lang === 'nl' ? 'Koopgidsen' : 'Buying Guides'}
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {buyingGuides.map((guide) => (
+            <GuideCard
+              title={guide.data.title}
+              description={guide.data.description}
+              type={guide.data.type}
+              difficulty={guide.data.difficulty}
+              estimatedTime={guide.data.estimatedTime}
+              slug={guide.slug}
+              image={guide.data.image}
+              publishDate={guide.data.publishDate}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- How-To Guides Section -->
+    {howTos.length > 0 && (
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-4xl text-primary">construction</span>
+          <h2 class="font-display text-3xl font-black text-expert-navy dark:text-white">
+            {lang === 'nl' ? 'Handleidingen' : 'How-To Guides'}
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {howTos.map((guide) => (
+            <GuideCard
+              title={guide.data.title}
+              description={guide.data.description}
+              type={guide.data.type}
+              difficulty={guide.data.difficulty}
+              estimatedTime={guide.data.estimatedTime}
+              slug={guide.slug}
+              image={guide.data.image}
+              publishDate={guide.data.publishDate}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Comparison Guides Section -->
+    {comparisons.length > 0 && (
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-4xl text-primary">compare_arrows</span>
+          <h2 class="font-display text-3xl font-black text-expert-navy dark:text-white">
+            {lang === 'nl' ? 'Vergelijkingen' : 'Comparisons'}
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {comparisons.map((guide) => (
+            <GuideCard
+              title={guide.data.title}
+              description={guide.data.description}
+              type={guide.data.type}
+              difficulty={guide.data.difficulty}
+              estimatedTime={guide.data.estimatedTime}
+              slug={guide.slug}
+              image={guide.data.image}
+              publishDate={guide.data.publishDate}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Checklist Guides Section -->
+    {checklists.length > 0 && (
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-4xl text-primary">checklist</span>
+          <h2 class="font-display text-3xl font-black text-expert-navy dark:text-white">
+            {lang === 'nl' ? 'Checklists' : 'Checklists'}
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {checklists.map((guide) => (
+            <GuideCard
+              title={guide.data.title}
+              description={guide.data.description}
+              type={guide.data.type}
+              difficulty={guide.data.difficulty}
+              estimatedTime={guide.data.estimatedTime}
+              slug={guide.slug}
+              image={guide.data.image}
+              publishDate={guide.data.publishDate}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Newsletter CTA -->
+    <section class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-3xl p-12 text-center">
+      <span class="material-symbols-outlined text-5xl text-primary mb-4 inline-block">mail</span>
+      <h2 class="font-display text-3xl font-black text-expert-navy dark:text-white mb-4">
+        {lang === 'nl' ? 'Mis Geen Nieuwe Gidsen' : 'Don\'t Miss New Guides'}
+      </h2>
+      <p class="text-lg text-expert-navy/70 dark:text-white/70 mb-8 max-w-2xl mx-auto">
+        {lang === 'nl'
+          ? 'Ontvang nieuwe gidsen direct in je inbox. Plus exclusieve tips en salon groei strategieën.'
+          : 'Get new guides straight to your inbox. Plus exclusive tips and salon growth strategies.'
+        }
+      </p>
+      <div class="flex gap-3 max-w-md mx-auto">
+        <input
+          type="email"
+          placeholder={lang === 'nl' ? 'je@email.com' : 'your@email.com'}
+          class="flex-1 px-6 py-3 rounded-full border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/50 outline-none"
+        />
+        <button class="bg-primary text-white px-8 py-3 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+          {lang === 'nl' ? 'Aanmelden' : 'Subscribe'}
+        </button>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,122 @@
+---
+import { getLangFromUrl } from '../../i18n/utils';
+
+interface Props {
+  tool: {
+    data: {
+      name: string;
+      slug: string;
+      tagline: { nl: string; en: string };
+      description: { nl: string; en: string };
+      accentColor: 'soft-sage' | 'sunshine-yellow' | 'primary';
+      isEditorsPick: boolean;
+      imageUrl: string;
+      imageAlt: string;
+      rating: { score: number; count: number };
+      pricing: any;
+      features: any;
+      pros: Array<{ nl: string; en: string }>;
+      cons: Array<{ nl: string; en: string }>;
+      bestFor: { nl: string; en: string };
+      freeTrial: { available: boolean; days?: number };
+      website: string;
+    };
+  };
+}
+
+const { tool } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const accentColorClasses = {
+  'soft-sage': 'bg-soft-sage/10 border-soft-sage/20 text-soft-sage',
+  'sunshine-yellow': 'bg-sunshine-yellow/10 border-sunshine-yellow/20 text-sunshine-yellow-dark',
+  'primary': 'bg-primary/10 border-primary/20 text-primary',
+};
+
+const accentClass = accentColorClasses[tool.data.accentColor];
+---
+
+<article class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+  <div class="relative h-48 overflow-hidden">
+    <img
+      src={tool.data.imageUrl}
+      alt={tool.data.imageAlt}
+      width="600"
+      height="400"
+      loading="lazy"
+      decoding="async"
+      class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+    />
+    {tool.data.isEditorsPick && (
+      <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+        <span class="material-symbols-outlined text-sm align-middle mr-1">star</span>
+        {lang === 'nl' ? "Editor's Pick" : "Editor's Pick"}
+      </div>
+    )}
+  </div>
+
+  <div class="p-6 flex-1 flex flex-col">
+    <div class="flex items-start justify-between mb-3">
+      <div>
+        <h3 class="font-display text-2xl font-black text-expert-navy mb-1">
+          {tool.data.name}
+        </h3>
+        <p class="text-sm text-expert-navy/60">
+          {tool.data.tagline[lang]}
+        </p>
+      </div>
+      <div class={`px-3 py-1 rounded-full text-xs font-semibold border ${accentClass}`}>
+        {tool.data.rating.score}/5
+      </div>
+    </div>
+
+    <p class="text-sm text-expert-navy/70 mb-4 line-clamp-3">
+      {tool.data.description[lang]}
+    </p>
+
+    <div class="flex items-center gap-2 mb-4 text-xs text-expert-navy/50">
+      <span class="material-symbols-outlined text-base">star</span>
+      <span>{tool.data.rating.score} ({tool.data.rating.count.toLocaleString()} {lang === 'nl' ? 'reviews' : 'reviews'})</span>
+    </div>
+
+    <div class="border-t border-gray-100 pt-4 mt-auto">
+      <div class="flex items-baseline gap-2 mb-3">
+        {tool.data.pricing.starter.isFree ? (
+          <span class="font-display text-2xl font-black text-primary">
+            {lang === 'nl' ? 'Gratis' : 'Free'}
+          </span>
+        ) : (
+          <>
+            <span class="font-display text-2xl font-black text-expert-navy">
+              {tool.data.pricing.starter.currency}{tool.data.pricing.starter.price}
+            </span>
+            <span class="text-sm text-expert-navy/60">/{lang === 'nl' ? 'maand' : 'month'}</span>
+          </>
+        )}
+      </div>
+
+      {tool.data.pricing.starter.hasCommission && (
+        <div class="text-xs text-orange-600 mb-3">
+          + {tool.data.pricing.starter.commissionRate}% {lang === 'nl' ? 'commissie per boeking' : 'commission per booking'}
+        </div>
+      )}
+
+      <div class="flex gap-2">
+        <a
+          href={`/tools/${tool.data.slug}`}
+          class="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl font-bold text-sm text-center hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+        >
+          {lang === 'nl' ? 'Bekijk Details' : 'View Details'}
+        </a>
+        <a
+          href={tool.data.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-4 py-2.5 border-2 border-primary text-primary rounded-xl font-bold text-sm hover:bg-primary hover:text-white transition-colors"
+        >
+          <span class="material-symbols-outlined text-lg">open_in_new</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

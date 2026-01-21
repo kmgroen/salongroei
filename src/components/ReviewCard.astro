@@ -1,0 +1,67 @@
+---
+interface Props {
+    quote: string;
+    authorName: string;
+    businessName: string;
+    variant: 'soft-sage' | 'primary' | 'sunshine-yellow';
+    icon: string;
+    bubbleAlignment?: 'left' | 'right';
+}
+
+const { quote, authorName, businessName, variant, icon, bubbleAlignment = 'left' } = Astro.props;
+
+const variantStyles = {
+    'soft-sage': {
+        bg: 'bg-white dark:bg-background-dark',
+        border: 'border-expert-navy',
+        iconBg: 'bg-soft-sage/30',
+        iconColor: 'text-soft-sage',
+        tailBg: 'bg-expert-navy',
+        decorIcon: 'text-sunshine-yellow',
+        decorIconName: 'chat_bubble'
+    },
+    'primary': {
+        bg: 'bg-primary/10 dark:bg-primary/20',
+        border: 'border-primary',
+        iconBg: 'bg-primary/30',
+        iconColor: 'text-primary',
+        tailBg: 'bg-primary',
+        decorIcon: 'text-primary',
+        decorIconName: 'favorite'
+    },
+    'sunshine-yellow': {
+        bg: 'bg-sunshine-yellow/10',
+        border: 'border-sunshine-yellow',
+        iconBg: 'bg-sunshine-yellow/30',
+        iconColor: 'text-sunshine-yellow',
+        tailBg: 'bg-sunshine-yellow',
+        decorIcon: 'text-soft-sage',
+        decorIconName: 'auto_awesome'
+    }
+};
+
+const styles = variantStyles[variant];
+const roundedTail = bubbleAlignment === 'left' ? 'rounded-bl-none' : 'rounded-br-none';
+const tailPosition = bubbleAlignment === 'left' ? '-left-3' : '-right-3';
+const decorPosition = bubbleAlignment === 'left' ? '-right-4' : '-left-4';
+const hoverRotate = bubbleAlignment === 'left' ? 'group-hover:rotate-12' : 'group-hover:-rotate-12';
+const scaleHover = variant === 'sunshine-yellow' ? 'group-hover:scale-110' : hoverRotate;
+---
+<div class="relative group">
+    <div class={`${styles.bg} p-8 rounded-[2rem] ${roundedTail} border-2 ${styles.border} shadow-sm group-hover:shadow-lg transition-shadow relative z-10`}>
+        <p class="text-lg font-medium italic leading-relaxed text-expert-navy mb-4">"{quote}"</p>
+        <div class="flex items-center gap-3">
+            <div class={`size-10 rounded-full ${styles.iconBg} flex items-center justify-center ${styles.iconColor}`}>
+                <span class="material-symbols-outlined">{icon}</span>
+            </div>
+            <div>
+                <p class="text-sm font-bold">{authorName}</p>
+                <p class="text-xs text-expert-navy/60">{businessName}</p>
+            </div>
+        </div>
+    </div>
+    <div class={`absolute -bottom-3 ${tailPosition} w-8 h-8 ${styles.tailBg} rotate-45 rounded-sm`}></div>
+    <div class={`absolute -top-6 ${decorPosition} ${styles.decorIcon} opacity-40 ${scaleHover} transition-transform`}>
+        <span class="material-symbols-outlined text-5xl">{styles.decorIconName}</span>
+    </div>
+</div>

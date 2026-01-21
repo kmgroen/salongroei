@@ -7,6 +7,27 @@
 SSH_AGENT_TIMEOUT=86400  # 24 hours
 SSH_AGENT_ENV="/tmp/.ssh-agent-env-${USER}"
 
+ssh_base_args() {
+    local args=( $SSH_OPTIONS -p "${SSH_PORT}" )
+
+    if [ -n "${SSH_IDENTITY_FILE}" ]; then
+        args+=( -i "${SSH_IDENTITY_FILE}" )
+    fi
+
+    printf '%s ' "${args[@]}"
+}
+
+scp_base_args() {
+    # SCP uses -P (uppercase) for port, not -p
+    local args=( $SSH_OPTIONS -P "${SSH_PORT}" )
+
+    if [ -n "${SSH_IDENTITY_FILE}" ]; then
+        args+=( -i "${SSH_IDENTITY_FILE}" )
+    fi
+
+    printf '%s ' "${args[@]}"
+}
+
 ensure_ssh_agent() {
     if [ -f "$SSH_AGENT_ENV" ]; then
         . "$SSH_AGENT_ENV" > /dev/null
@@ -36,7 +57,7 @@ setup_ssh_auth() {
     if [ -f "$SSH_AGENT_ENV" ]; then
         . "$SSH_AGENT_ENV" > /dev/null 2>&1
         if kill -0 $SSH_AGENT_PID 2>/dev/null && ssh-add -l 2>/dev/null | grep -q -E "(id_|ssh)"; then
-            if ssh $SSH_OPTIONS -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
+            if ssh $(ssh_base_args) -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
                 echo -e "${GREEN}✓ SSH key authentication successful (using cached key)${NC}"
                 export SSH_AUTH_METHOD="key"
                 return 0
@@ -45,7 +66,7 @@ setup_ssh_auth() {
     fi
 
     # Test key auth without agent
-    if ssh $SSH_OPTIONS -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
+    if ssh $(ssh_base_args) -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
         echo -e "${GREEN}✓ SSH key authentication successful${NC}"
         export SSH_AUTH_METHOD="key"
         return 0
@@ -56,7 +77,7 @@ setup_ssh_auth() {
 
     # Check if key already loaded
     if ssh-add -l 2>/dev/null | grep -q -E "(id_|ssh)"; then
-        if ssh $SSH_OPTIONS -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
+        if ssh $(ssh_base_args) -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
             export SSH_AUTH_METHOD="key"
             return 0
         fi
@@ -65,22 +86,19 @@ setup_ssh_auth() {
     # Add key with passphrase prompt
     echo -e "${YELLOW}SSH key requires passphrase (will be cached for 24 hours)${NC}"
 
-    if ssh-add -t $SSH_AGENT_TIMEOUT 2>/dev/null; then
-        echo -e "${GREEN}✓ SSH key added to agent${NC}"
+    if [ -n "${SSH_IDENTITY_FILE}" ] && [ -f "${SSH_IDENTITY_FILE}" ]; then
+        echo -e "${YELLOW}Using configured key: ${SSH_IDENTITY_FILE}${NC}"
+        ssh-add -t $SSH_AGENT_TIMEOUT "${SSH_IDENTITY_FILE}" || true
     else
-        for key in ~/.ssh/id_rsa ~/.ssh/id_ed25519 ~/.ssh/id_ecdsa; do
-            if [ -f "$key" ]; then
-                echo -e "${YELLOW}Trying key: $key${NC}"
-                if ssh-add -t $SSH_AGENT_TIMEOUT "$key" 2>/dev/null; then
-                    echo -e "${GREEN}✓ SSH key added${NC}"
-                    break
-                fi
-            fi
-        done
+        ssh-add -t $SSH_AGENT_TIMEOUT 2>/dev/null || true
+    fi
+
+    if ssh-add -l 2>/dev/null | grep -q -E "(id_|ssh)"; then
+        echo -e "${GREEN}✓ SSH key added to agent${NC}"
     fi
 
     # Test again
-    if ssh $SSH_OPTIONS -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
+    if ssh $(ssh_base_args) -o BatchMode=yes -o ConnectTimeout=5 ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
         echo -e "${GREEN}✓ SSH key authentication successful${NC}"
         export SSH_AUTH_METHOD="key"
         return 0
@@ -88,20 +106,16 @@ setup_ssh_auth() {
 
     # Fallback to password
     if ! command -v sshpass &> /dev/null; then
-        echo -e "${YELLOW}Installing sshpass...${NC}"
-        if command -v brew &> /dev/null; then
-            brew install sshpass
-        else
-            echo -e "${RED}Error: sshpass not available. Please set up SSH key auth.${NC}"
-            exit 1
-        fi
+        echo -e "${RED}Error: SSH key authentication failed and sshpass is not installed.${NC}"
+        echo -e "${YELLOW}Fix: set up SSH key auth (recommended) or install sshpass manually.${NC}"
+        exit 1
     fi
 
     echo -e "${YELLOW}Enter VPS password:${NC}"
     read -sp "Password for ${SERVER_USER}@${SERVER}: " VPS_PASSWORD
     echo
 
-    if sshpass -p "$VPS_PASSWORD" ssh $SSH_OPTIONS ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
+    if sshpass -p "$VPS_PASSWORD" ssh $(ssh_base_args) ${SERVER_USER}@${SERVER} exit 2>/dev/null; then
         echo -e "${GREEN}✓ Password authentication successful${NC}"
         export SSH_AUTH_METHOD="password"
         export VPS_PASSWORD
@@ -114,9 +128,9 @@ setup_ssh_auth() {
 
 ssh_exec() {
     if [ "$SSH_AUTH_METHOD" = "key" ]; then
-        ssh $SSH_OPTIONS ${SERVER_USER}@${SERVER} "$@"
+        ssh $(ssh_base_args) ${SERVER_USER}@${SERVER} "$@"
     else
-        sshpass -p "$VPS_PASSWORD" ssh $SSH_OPTIONS ${SERVER_USER}@${SERVER} "$@"
+        sshpass -p "$VPS_PASSWORD" ssh $(ssh_base_args) ${SERVER_USER}@${SERVER} "$@"
     fi
 }
 
@@ -125,8 +139,8 @@ rsync_exec() {
     local destination="$2"
 
     if [ "$SSH_AUTH_METHOD" = "key" ]; then
-        rsync -avz --delete -e "ssh $SSH_OPTIONS" "$source" ${SERVER_USER}@${SERVER}:"$destination"
+        rsync -avz --delete -e "ssh $(ssh_base_args)" "$source" ${SERVER_USER}@${SERVER}:"$destination"
     else
-        sshpass -p "$VPS_PASSWORD" rsync -avz --delete -e "ssh $SSH_OPTIONS" "$source" ${SERVER_USER}@${SERVER}:"$destination"
+        sshpass -p "$VPS_PASSWORD" rsync -avz --delete -e "ssh $(ssh_base_args)" "$source" ${SERVER_USER}@${SERVER}:"$destination"
     fi
 }

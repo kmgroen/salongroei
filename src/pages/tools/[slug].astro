@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import SoftwareStructuredData from '../../components/seo/SoftwareStructuredData.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  return tools.map((tool) => ({
+    params: { slug: tool.data.slug },
+    props: { tool },
+  }));
+}
+
+const { tool } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allTools = await getCollection('tools');
+const relatedTools = allTools
+  .filter((t) => t.data.slug !== tool.data.slug)
+  .sort((a, b) => b.data.rating.score - a.data.rating.score)
+  .slice(0, 3);
+
+const accentColorClasses = {
+  'soft-sage': 'from-soft-sage/20 to-soft-sage/10 border-soft-sage/30',
+  'sunshine-yellow': 'from-sunshine-yellow/20 to-sunshine-yellow/10 border-sunshine-yellow/30',
+  'primary': 'from-primary/20 to-primary/10 border-primary/30',
+};
+
+// Get current URL for structured data
+const currentUrl = Astro.url.pathname;
+
+// Build feature list for structured data
+const featuresList = [
+  tool.data.features.booking && (lang === 'nl' ? 'Online boekingen' : 'Online booking'),
+  tool.data.features.payments && (lang === 'nl' ? 'Betalingen' : 'Payments'),
+  tool.data.features.marketing && (lang === 'nl' ? 'Marketing tools' : 'Marketing tools'),
+  tool.data.features.inventory && (lang === 'nl' ? 'Voorraad beheer' : 'Inventory management'),
+  tool.data.features.reporting && (lang === 'nl' ? 'Rapportages' : 'Reporting'),
+  tool.data.features.multiLocation && (lang === 'nl' ? 'Multi-locatie' : 'Multi-location'),
+  tool.data.features.mobileApp && (lang === 'nl' ? 'Mobiele app' : 'Mobile app'),
+  tool.data.features.clientPortal && (lang === 'nl' ? 'Klantportaal' : 'Client portal'),
+].filter(Boolean) as string[];
+---
+
+<BaseLayout
+  title={tool.data.name}
+  description={tool.data.description[lang]}
+  type="product"
+  image={tool.data.imageUrl}
+>
+  <!-- Software Structured Data -->
+  <SoftwareStructuredData
+    slot="head"
+    name={tool.data.name}
+    description={tool.data.description[lang]}
+    url={currentUrl}
+    image={tool.data.imageUrl}
+    applicationCategory="BusinessApplication"
+    operatingSystem="Web Browser, iOS, Android"
+    offers={tool.data.pricing}
+    rating={tool.data.rating}
+    features={featuresList}
+    lang={lang}
+  />
+  <Header />
+
+  <main class="max-w-[1200px] mx-auto px-6 py-12">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 text-sm">
+      <a href="/" class="text-primary hover:underline">Home</a>
+      <span class="mx-2 text-gray-400">/</span>
+      <a href="/tools" class="text-primary hover:underline">
+        {lang === 'nl' ? 'Tools' : 'Tools'}
+      </a>
+      <span class="mx-2 text-gray-400">/</span>
+      <span class="text-expert-navy font-semibold">{tool.data.name}</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class={`bg-gradient-to-br ${accentColorClasses[tool.data.accentColor]} rounded-2xl p-8 md:p-12 mb-12 border-2`}>
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          {tool.data.isEditorsPick && (
+            <div class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <span class="material-symbols-outlined text-base">star</span>
+              {lang === 'nl' ? "Editor's Pick" : "Editor's Pick"}
+            </div>
+          )}
+          <h1 class="font-display text-5xl font-black mb-4 text-expert-navy">
+            {tool.data.name}
+          </h1>
+          <p class="text-2xl text-expert-navy/80 mb-6 font-semibold">
+            {tool.data.tagline[lang]}
+          </p>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-yellow-500">star</span>
+              <span class="font-bold text-2xl text-expert-navy">{tool.data.rating.score}</span>
+              <span class="text-expert-navy/60">
+                ({tool.data.rating.count.toLocaleString()} {lang === 'nl' ? 'reviews' : 'reviews'})
+              </span>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <a
+              href={tool.data.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-primary text-white px-8 py-3.5 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 hover:scale-105 transition-transform inline-flex items-center gap-2"
+            >
+              {lang === 'nl' ? 'Bezoek Website' : 'Visit Website'}
+              <span class="material-symbols-outlined">open_in_new</span>
+            </a>
+            <a
+              href="/tools/compare?tools={tool.data.slug}"
+              class="border-2 border-primary text-primary px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-primary hover:text-white transition-colors inline-flex items-center gap-2"
+            >
+              {lang === 'nl' ? 'Vergelijk' : 'Compare'}
+              <span class="material-symbols-outlined">compare_arrows</span>
+            </a>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-2xl">
+          <img
+            src={tool.data.imageUrl}
+            alt={tool.data.imageAlt}
+            width="600"
+            height="400"
+            loading="eager"
+            decoding="async"
+            class="w-full h-auto"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="mb-12">
+      <h2 class="font-display text-3xl font-black mb-6 text-expert-navy">
+        {lang === 'nl' ? 'Prijzen & Plannen' : 'Pricing & Plans'}
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Starter Plan -->
+        <div class="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-primary hover:shadow-xl transition-all">
+          <h3 class="font-display text-xl font-black mb-2 text-expert-navy">
+            {tool.data.pricing.starter.label[lang]}
+          </h3>
+          <div class="mb-4">
+            {tool.data.pricing.starter.isFree ? (
+              <div class="font-display text-4xl font-black text-primary">
+                {lang === 'nl' ? 'Gratis' : 'Free'}
+              </div>
+            ) : (
+              <div class="flex items-baseline gap-2">
+                <span class="font-display text-4xl font-black text-expert-navy">
+                  {tool.data.pricing.starter.currency}{tool.data.pricing.starter.price}
+                </span>
+                <span class="text-expert-navy/60">/{lang === 'nl' ? 'maand' : 'month'}</span>
+              </div>
+            )}
+            {tool.data.pricing.starter.hasCommission && (
+              <div class="text-sm text-orange-600 mt-2">
+                + {tool.data.pricing.starter.commissionRate}% {lang === 'nl' ? 'commissie' : 'commission'}
+              </div>
+            )}
+          </div>
+          <ul class="space-y-2">
+            {tool.data.pricing.starter.features.map((feature) => (
+              <li class="flex items-start gap-2 text-sm">
+                <span class="material-symbols-outlined text-green-600 text-base mt-0.5">check_circle</span>
+                <span>{feature[lang]}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Pro Plan -->
+        {tool.data.pricing.pro && (
+          <div class="bg-white rounded-xl border-2 border-primary p-6 relative hover:shadow-xl transition-all">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold">
+              {lang === 'nl' ? 'Populair' : 'Popular'}
+            </div>
+            <h3 class="font-display text-xl font-black mb-2 text-expert-navy">
+              {tool.data.pricing.pro.label[lang]}
+            </h3>
+            <div class="flex items-baseline gap-2 mb-4">
+              <span class="font-display text-4xl font-black text-expert-navy">
+                {tool.data.pricing.pro.currency}{tool.data.pricing.pro.price}
+              </span>
+              <span class="text-expert-navy/60">/{lang === 'nl' ? 'maand' : 'month'}</span>
+            </div>
+            <ul class="space-y-2">
+              {tool.data.pricing.pro.features.map((feature) => (
+                <li class="flex items-start gap-2 text-sm">
+                  <span class="material-symbols-outlined text-green-600 text-base mt-0.5">check_circle</span>
+                  <span>{feature[lang]}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <!-- Enterprise Plan -->
+        {tool.data.pricing.enterprise && (
+          <div class="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-primary hover:shadow-xl transition-all">
+            <h3 class="font-display text-xl font-black mb-2 text-expert-navy">
+              {tool.data.pricing.enterprise.label[lang]}
+            </h3>
+            <div class="font-display text-2xl font-black text-expert-navy mb-4">
+              {lang === 'nl' ? 'Op aanvraag' : 'Custom'}
+            </div>
+            <ul class="space-y-2">
+              {tool.data.pricing.enterprise.features.map((feature) => (
+                <li class="flex items-start gap-2 text-sm">
+                  <span class="material-symbols-outlined text-green-600 text-base mt-0.5">check_circle</span>
+                  <span>{feature[lang]}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      {tool.data.freeTrial.available && (
+        <div class="mt-6 bg-green-50 border border-green-200 rounded-xl p-4 text-center">
+          <span class="material-symbols-outlined text-green-600 align-middle mr-2">verified</span>
+          <span class="font-semibold text-green-800">
+            {lang === 'nl'
+              ? `Gratis ${tool.data.freeTrial.days} dagen proefperiode beschikbaar`
+              : `Free ${tool.data.freeTrial.days}-day trial available`
+            }
+          </span>
+        </div>
+      )}
+    </section>
+
+    <!-- Description -->
+    <section class="mb-12 bg-white rounded-xl border-2 border-gray-200 p-8">
+      <h2 class="font-display text-3xl font-black mb-4 text-expert-navy">
+        {lang === 'nl' ? 'Over ' + tool.data.name : 'About ' + tool.data.name}
+      </h2>
+      <p class="text-lg text-expert-navy/80 leading-relaxed">
+        {tool.data.description[lang]}
+      </p>
+    </section>
+
+    <!-- Pros & Cons -->
+    <section class="mb-12 grid md:grid-cols-2 gap-6">
+      <div class="bg-green-50 rounded-xl border border-green-200 p-6">
+        <h3 class="font-display text-2xl font-black mb-4 text-green-800 flex items-center gap-2">
+          <span class="material-symbols-outlined">add_circle</span>
+          {lang === 'nl' ? 'Voordelen' : 'Pros'}
+        </h3>
+        <ul class="space-y-3">
+          {tool.data.pros.map((pro) => (
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-green-600 text-base mt-0.5">check_circle</span>
+              <span class="text-expert-navy">{pro[lang]}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-red-50 rounded-xl border border-red-200 p-6">
+        <h3 class="font-display text-2xl font-black mb-4 text-red-800 flex items-center gap-2">
+          <span class="material-symbols-outlined">remove_circle</span>
+          {lang === 'nl' ? 'Nadelen' : 'Cons'}
+        </h3>
+        <ul class="space-y-3">
+          {tool.data.cons.map((con) => (
+            <li class="flex items-start gap-2">
+              <span class="material-symbols-outlined text-red-400 text-base mt-0.5">cancel</span>
+              <span class="text-expert-navy">{con[lang]}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Best For -->
+    <section class="mb-12 bg-primary/10 rounded-xl border border-primary/20 p-6">
+      <h3 class="font-display text-2xl font-black mb-3 text-expert-navy flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">target</span>
+        {lang === 'nl' ? 'Best Voor' : 'Best For'}
+      </h3>
+      <p class="text-lg text-expert-navy/80">
+        {tool.data.bestFor[lang]}
+      </p>
+    </section>
+
+    <!-- Related Tools -->
+    {relatedTools.length > 0 && (
+      <section>
+        <h2 class="font-display text-3xl font-black mb-6 text-expert-navy">
+          {lang === 'nl' ? 'Andere Tools om te Overwegen' : 'Other Tools to Consider'}
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          {relatedTools.map((relatedTool) => (
+            <a
+              href={`/tools/${relatedTool.data.slug}`}
+              class="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-primary hover:shadow-xl transition-all"
+            >
+              <h3 class="font-display text-xl font-black mb-2 text-expert-navy">
+                {relatedTool.data.name}
+              </h3>
+              <p class="text-sm text-expert-navy/70 mb-3">
+                {relatedTool.data.tagline[lang]}
+              </p>
+              <div class="flex items-center gap-2 text-sm">
+                <span class="material-symbols-outlined text-yellow-500 text-base">star</span>
+                <span class="font-semibold">{relatedTool.data.rating.score}/5</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</BaseLayout>

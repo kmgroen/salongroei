@@ -1,56 +1,40 @@
 ---
+import FooterBrand from './FooterBrand.astro';
+import FooterLinkColumn from './FooterLinkColumn.astro';
+import SocialLinks from './SocialLinks.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const resourceLinks = [
+    { text: t('footer.resources.compare'), href: '#' },
+    { text: t('footer.resources.guides'), href: '#' },
+    { text: t('footer.resources.marketing'), href: '#' },
+    { text: t('footer.resources.blog'), href: '#' }
+];
+
+const communityLinks = [
+    { text: t('footer.community.stories'), href: '#' },
+    { text: t('footer.community.forum'), href: '#' },
+    { text: t('footer.community.events'), href: '#' }
+];
 ---
-<footer class="bg-background-light dark:bg-background-dark border-t border-expert-navy/10 pt-20 pb-10">
-<div class="max-w-[1200px] mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-<div class="col-span-1 md:col-span-1">
-<div class="flex items-center gap-2 mb-6">
-<div class="size-6 text-primary">
-<svg fill="currentColor" viewbox="0 0 48 48"><path d="M36.7273 44C33.9891 44 31.6043 39.8386 30.3636 33.69C29.123 39.8386 26.7382 44 24 44C21.2618 44 18.877 39.8386 17.6364 33.69C16.3957 39.8386 14.0109 44 11.2727 44C7.25611 44 4 35.0457 4 24C4 12.9543 7.25611 4 11.2727 4C14.0109 4 16.3957 8.16144 17.6364 14.31C18.877 8.16144 21.2618 4 24 4C26.7382 4 29.123 8.16144 30.3636 14.31C31.6043 8.16144 33.9891 4 36.7273 4C40.7439 4 44 12.9543 44 24C44 35.0457 40.7439 44 36.7273 44Z"></path></svg>
-</div>
-<h2 class="font-display text-xl font-black">salongroei.com</h2>
-</div>
-<p class="text-sm text-expert-navy/60 leading-relaxed">The boutique resource for modern salon owners. Curated with love, powered by data.</p>
-</div>
-<div>
-<h4 class="font-bold text-sm uppercase tracking-widest mb-6 text-primary">Resources</h4>
-<ul class="space-y-4 text-sm font-semibold">
-<li><a class="hover:text-primary transition-colors" href="#">Software Compare</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Booking Guides</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Marketing Tips</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Expert Blog</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-sm uppercase tracking-widest mb-6 text-primary">Community</h4>
-<ul class="space-y-4 text-sm font-semibold">
-<li><a class="hover:text-primary transition-colors" href="#">Success Stories</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Member Forum</a></li>
-<li><a class="hover:text-primary transition-colors" href="#">Events</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-bold text-sm uppercase tracking-widest mb-6 text-primary">Connect</h4>
-<div class="flex gap-4">
-<a class="size-10 rounded-full border border-expert-navy/20 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all" href="#">
-<span class="material-symbols-outlined text-lg">share</span>
-</a>
-<a class="size-10 rounded-full border border-expert-navy/20 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all" href="#">
-<span class="material-symbols-outlined text-lg">public</span>
-</a>
-<a class="size-10 rounded-full border border-expert-navy/20 flex items-center justify-center hover:bg-primary hover:border-primary hover:text-white transition-all" href="#">
-<span class="material-symbols-outlined text-lg">alternate_email</span>
-</a>
-</div>
-</div>
-</div>
-<div class="border-t border-expert-navy/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
-<p class="text-xs text-expert-navy/40">© 2024 Salongroei Editorial. All rights reserved.</p>
-<div class="flex gap-8 text-xs font-bold text-expert-navy/40">
-<a class="hover:text-expert-navy" href="#">Privacy Policy</a>
-<a class="hover:text-expert-navy" href="#">Terms of Service</a>
-<a class="hover:text-expert-navy" href="#">Cookie Settings</a>
-</div>
-</div>
-</div>
+<footer class="bg-background-light dark:bg-background-dark border-t border-expert-navy/10 pt-20 pb-10" role="contentinfo">
+    <div class="max-w-[1200px] mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+            <FooterBrand />
+            <FooterLinkColumn title={t('footer.resources')} links={resourceLinks} />
+            <FooterLinkColumn title={t('footer.community')} links={communityLinks} />
+            <SocialLinks />
+        </div>
+        <div class="border-t border-expert-navy/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-xs text-expert-navy/40">{t('footer.copyright')}</p>
+            <nav class="flex gap-8 text-xs font-bold text-expert-navy/40" aria-label={lang === 'nl' ? 'Juridische navigatie' : 'Legal navigation'}>
+                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href="#">{t('footer.privacy')}</a>
+                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href="#">{t('footer.terms')}</a>
+                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href="#">{t('footer.cookies')}</a>
+            </nav>
+        </div>
+    </div>
 </footer>

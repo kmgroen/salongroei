@@ -1,0 +1,130 @@
+{
+  "name": "GlossGenius",
+  "slug": "glossgenius",
+  "tagline": {
+    "nl": "Best voor onafhankelijke professionals",
+    "en": "Best for independent pros"
+  },
+  "description": {
+    "nl": "GlossGenius is een alles-in-één platform speciaal ontworpen voor onafhankelijke schoonheidsprofessionals. Met intuïtieve boekingen, betalingsverwerking en marketingtools, helpt het solo-ondernemers hun bedrijf te laten groeien zonder technische complexiteit.",
+    "en": "GlossGenius is an all-in-one platform specifically designed for independent beauty professionals. With intuitive booking, payment processing, and marketing tools, it helps solo entrepreneurs grow their business without technical complexity."
+  },
+  "accentColor": "soft-sage",
+  "isEditorsPick": false,
+  "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCjPzBdW6bn-hwQP-degs80GZ1yMbCaW434E3tcsJxpEM8Mf7XRJckInPPd5TJcyQkaHjkZPOTKcY8mz_D3HTZtIt-sgEhHS9I6UnnBOYVwGAYxDlSkNr9p8ekwbOfAqqx2u9vODTMfRCgxc6plWzNkueOCycSuBrx5soHQngZicuwTR_oLSK7F7UWEcGppbXPJB7Pc1MMl85hXB27PbCXNXSQtikkjqswYch1Iw6z2yU824VkgwQ8xcWmDYdjRwcBtqjxXlRDKi3U",
+  "imageAlt": "GlossGenius software dashboard interface",
+  "rating": {
+    "score": 4.9,
+    "count": 2847
+  },
+  "pricing": {
+    "starter": {
+      "price": 24,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Starter",
+        "en": "Starter"
+      },
+      "features": [
+        {
+          "nl": "Online boekingen 24/7",
+          "en": "24/7 online booking"
+        },
+        {
+          "nl": "Betalingsverwerking",
+          "en": "Payment processing"
+        },
+        {
+          "nl": "Clientbeheer",
+          "en": "Client management"
+        },
+        {
+          "nl": "Automatische herinneringen",
+          "en": "Automated reminders"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 44,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Pro",
+        "en": "Pro"
+      },
+      "features": [
+        {
+          "nl": "Alles in Starter",
+          "en": "Everything in Starter"
+        },
+        {
+          "nl": "Marketing automatisering",
+          "en": "Marketing automation"
+        },
+        {
+          "nl": "Geavanceerde rapportage",
+          "en": "Advanced reporting"
+        },
+        {
+          "nl": "Loyaliteitsprogramma's",
+          "en": "Loyalty programs"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": false,
+    "reporting": true,
+    "multiLocation": false,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Zeer intuïtieve interface",
+      "en": "Highly intuitive interface"
+    },
+    {
+      "nl": "Uitstekende mobiele app",
+      "en": "Excellent mobile app"
+    },
+    {
+      "nl": "Geen installatiekosten",
+      "en": "No setup fees"
+    },
+    {
+      "nl": "Goede klantenondersteuning",
+      "en": "Great customer support"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Beperkte inventaris tracking",
+      "en": "Limited inventory tracking"
+    },
+    {
+      "nl": "Niet ideaal voor grote teams",
+      "en": "Not ideal for large teams"
+    },
+    {
+      "nl": "Mist multi-locatie ondersteuning",
+      "en": "Lacks multi-location support"
+    }
+  ],
+  "bestFor": {
+    "nl": "Solo-schoonheidsspecialisten en kleine studios (1-3 medewerkers)",
+    "en": "Solo beauty professionals and small studios (1-3 staff)"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 14
+  },
+  "website": "https://www.glossgenius.com",
+  "affiliateLink": "https://www.glossgenius.com"
+}

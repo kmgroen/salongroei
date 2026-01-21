@@ -1,0 +1,65 @@
+---
+interface Props {
+    name: string;
+    tagline: string;
+    rating: string;
+    badge?: string;
+    imageUrl: string;
+    imageAlt: string;
+    accentColor: 'soft-sage' | 'sunshine-yellow' | 'primary';
+    icon: string;
+    metadata: string;
+    slug?: string;
+}
+
+const { name, tagline, rating, badge, imageUrl, imageAlt, accentColor, icon, metadata, slug } = Astro.props;
+
+const backgroundColorMap = {
+    'soft-sage': 'bg-soft-sage/10',
+    'sunshine-yellow': 'bg-sunshine-yellow/10',
+    'primary': 'bg-primary/10'
+};
+
+const textColorMap = {
+    'soft-sage': 'text-soft-sage',
+    'sunshine-yellow': 'text-sunshine-yellow',
+    'primary': 'text-primary'
+};
+
+const badgeColorMap = {
+    'soft-sage': 'bg-soft-sage',
+    'sunshine-yellow': 'bg-sunshine-yellow',
+    'primary': 'bg-primary'
+};
+---
+<article class="bg-white dark:bg-white/5 p-6 rounded-2xl border border-expert-navy/5 shadow-sm hover:shadow-xl transition-shadow relative overflow-hidden group">
+    {badge && (
+        <div class="absolute top-0 right-0 p-4">
+            <div class={`${badgeColorMap[accentColor]} text-white text-[10px] font-black uppercase px-2 py-1 rounded`}>{badge}</div>
+        </div>
+    )}
+    <div class={`w-full aspect-video rounded-xl mb-6 ${backgroundColorMap[accentColor]} overflow-hidden`}>
+        <img
+            src={imageUrl}
+            alt=""
+            width="800"
+            height="450"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover transition-transform group-hover:scale-110"
+        />
+    </div>
+    <h3 class="font-display text-2xl font-bold mb-1">{name}</h3>
+    <p class="text-primary text-sm font-bold mb-4">{tagline}</p>
+    <div class="flex items-center gap-2 mb-6 text-sm text-expert-navy/60">
+        <span class={`material-symbols-outlined ${textColorMap[accentColor]} text-lg`} aria-hidden="true">{icon}</span>
+        <span class="font-bold">{rating}</span>
+        <span aria-hidden="true">•</span>
+        <span>{metadata}</span>
+    </div>
+    {slug ? (
+        <a href={`/tools/${slug}`} class="block w-full py-3 bg-expert-navy text-white rounded-lg font-bold text-sm hover:bg-expert-navy/90 transition-colors text-center focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={`Read full review of ${name}`}>Read Full Review</a>
+    ) : (
+        <button class="w-full py-3 bg-expert-navy text-white rounded-lg font-bold text-sm hover:bg-expert-navy/90 transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={`Read full review of ${name}`}>Read Full Review</button>
+    )}
+</article>

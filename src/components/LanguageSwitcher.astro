@@ -1,0 +1,31 @@
+---
+import { languages } from '../i18n/config';
+import { getLangFromUrl, getLocalizedPath, removeLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const currentPath = removeLocalizedPath(Astro.url);
+---
+
+<nav aria-label={lang === 'nl' ? 'Taalselectie' : 'Language selection'} class="flex items-center gap-2 bg-white dark:bg-background-dark rounded-xl border-2 border-expert-navy/10 p-1">
+    {Object.entries(languages).map(([code, name]) => {
+        const isActive = code === lang;
+        const href = getLocalizedPath(currentPath, code);
+        return (
+            <a
+                href={href}
+                class={`
+                    px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all focus:outline-2 focus:outline-primary focus:outline-offset-2
+                    ${isActive
+                        ? 'bg-primary text-white shadow-sm'
+                        : 'text-expert-navy/60 hover:text-expert-navy hover:bg-expert-navy/5'
+                    }
+                `}
+                aria-label={lang === 'nl' ? `Schakel naar ${name}` : `Switch to ${name}`}
+                aria-current={isActive ? 'true' : undefined}
+                hreflang={code}
+            >
+                {code}
+            </a>
+        );
+    })}
+</nav>

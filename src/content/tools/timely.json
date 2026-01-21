@@ -1,0 +1,151 @@
+{
+  "name": "Timely",
+  "slug": "timely",
+  "tagline": {
+    "nl": "Best voor premium salons",
+    "en": "Best for premium salons"
+  },
+  "description": {
+    "nl": "Timely is een high-end salonsoftware met focus op gebruiksvriendelijkheid en design. Perfect voor premium salons die een luxe ervaring willen bieden aan hun klanten, met geavanceerde functies en elegant design.",
+    "en": "Timely is high-end salon software focused on usability and design. Perfect for premium salons wanting to offer a luxury experience to their clients, with advanced features and elegant design."
+  },
+  "accentColor": "primary",
+  "isEditorsPick": false,
+  "imageUrl": "https://images.unsplash.com/photo-1487611459768-bd414656ea10?w=800&auto=format&fit=crop",
+  "imageAlt": "Timely elegant dashboard interface",
+  "rating": {
+    "score": 4.8,
+    "count": 2134
+  },
+  "pricing": {
+    "starter": {
+      "price": 39,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Essentials",
+        "en": "Essentials"
+      },
+      "features": [
+        {
+          "nl": "Tot 3 medewerkers",
+          "en": "Up to 3 staff members"
+        },
+        {
+          "nl": "Online boekingen",
+          "en": "Online bookings"
+        },
+        {
+          "nl": "Clientbeheer",
+          "en": "Client management"
+        },
+        {
+          "nl": "Email marketing",
+          "en": "Email marketing"
+        }
+      ],
+      "isFree": false,
+      "hasCommission": false
+    },
+    "pro": {
+      "price": 89,
+      "currency": "€",
+      "period": "month",
+      "label": {
+        "nl": "Premium",
+        "en": "Premium"
+      },
+      "features": [
+        {
+          "nl": "Onbeperkte medewerkers",
+          "en": "Unlimited staff"
+        },
+        {
+          "nl": "Geavanceerde rapportage",
+          "en": "Advanced reporting"
+        },
+        {
+          "nl": "Marketing automatisering",
+          "en": "Marketing automation"
+        },
+        {
+          "nl": "API toegang",
+          "en": "API access"
+        }
+      ]
+    },
+    "enterprise": {
+      "isCustom": true,
+      "label": {
+        "nl": "Enterprise",
+        "en": "Enterprise"
+      },
+      "features": [
+        {
+          "nl": "Multi-locatie beheer",
+          "en": "Multi-location management"
+        },
+        {
+          "nl": "White label opties",
+          "en": "White label options"
+        },
+        {
+          "nl": "Dedicated support",
+          "en": "Dedicated support"
+        }
+      ]
+    }
+  },
+  "features": {
+    "booking": true,
+    "payments": true,
+    "marketing": true,
+    "inventory": true,
+    "reporting": true,
+    "multiLocation": true,
+    "mobileApp": true,
+    "clientPortal": true
+  },
+  "pros": [
+    {
+      "nl": "Prachtig, intuïtief design",
+      "en": "Beautiful, intuitive design"
+    },
+    {
+      "nl": "Uitstekende UX",
+      "en": "Excellent UX"
+    },
+    {
+      "nl": "Krachtige rapportage",
+      "en": "Powerful reporting"
+    },
+    {
+      "nl": "Premium klantenervaring",
+      "en": "Premium client experience"
+    }
+  ],
+  "cons": [
+    {
+      "nl": "Hoger prijspunt",
+      "en": "Higher price point"
+    },
+    {
+      "nl": "Overkill voor budget salons",
+      "en": "Overkill for budget salons"
+    },
+    {
+      "nl": "Sommige features alleen in Premium",
+      "en": "Some features only in Premium"
+    }
+  ],
+  "bestFor": {
+    "nl": "Premium salons en spas die waarde hechten aan design en klantervaring",
+    "en": "Premium salons and spas that value design and client experience"
+  },
+  "freeTrial": {
+    "available": true,
+    "days": 14
+  },
+  "website": "https://www.gettimely.com",
+  "affiliateLink": "https://www.gettimely.com"
+}

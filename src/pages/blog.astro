@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogGrid from '../components/blog/BlogGrid.astro';
+
+// Get all blog posts and sort by date (newest first)
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Separate featured posts
+const featuredPosts = sortedPosts.filter(post => post.data.featured);
+const regularPosts = sortedPosts.filter(post => !post.data.featured);
+
+const lang = 'nl';
+---
+
+<BaseLayout
+  title="Expert Blog"
+  description="Insights, hacks, en verhalen van de frontlinies van salon ownership. Ontdek bewezen strategieën voor booking management, marketing en groei."
+>
+  <main id="main-content" class="max-w-[1400px] mx-auto px-6 py-16">
+    <header class="mb-16">
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-expert-navy dark:text-white">
+        Expert Blog
+      </h1>
+      <p class="text-lg md:text-xl text-expert-navy/60 dark:text-white/60 max-w-[800px]">
+        Insights, hacks, en verhalen van de frontlinies van salon ownership. Ontdek bewezen strategieën voor booking management, marketing en groei.
+      </p>
+    </header>
+
+    {/* Featured Posts */}
+    {featuredPosts.length > 0 && (
+      <section class="mb-20" aria-labelledby="featured-heading">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">
+            star
+          </span>
+          <h2 id="featured-heading" class="font-display text-3xl font-black text-expert-navy dark:text-white">
+            Featured Articles
+          </h2>
+        </div>
+        <BlogGrid posts={featuredPosts} lang={lang} />
+      </section>
+    )}
+
+    {/* All Posts */}
+    <section aria-labelledby="all-posts-heading">
+      <h2 id="all-posts-heading" class="font-display text-3xl font-black text-expert-navy dark:text-white mb-8">
+        Alle Artikelen
+      </h2>
+      <BlogGrid posts={regularPosts.length > 0 ? regularPosts : sortedPosts} lang={lang} />
+    </section>
+  </main>
+
+  {/* Material Symbols Icons */}
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  />
+</BaseLayout>
+
+<style>
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24;
+  }
+</style>

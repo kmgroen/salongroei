@@ -1,0 +1,102 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { headings } = Astro.props;
+
+// Filter to only show h2 and h3 headings
+const filteredHeadings = headings.filter(h => h.depth <= 3);
+---
+
+<nav
+  id="table-of-contents"
+  class="bg-white dark:bg-expert-navy/20 rounded-xl p-6 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto"
+>
+  <h2 class="font-display text-lg font-black text-expert-navy dark:text-white mb-4">
+    {lang === 'nl' ? 'Inhoudsopgave' : 'Table of Contents'}
+  </h2>
+
+  <ul class="space-y-2">
+    {filteredHeadings.map((heading) => (
+      <li
+        class={heading.depth === 3 ? 'ml-4' : ''}
+      >
+        <a
+          href={`#${heading.slug}`}
+          class="toc-link block text-sm text-expert-navy/60 dark:text-white/60 hover:text-primary dark:hover:text-primary transition-colors py-1"
+          data-slug={heading.slug}
+        >
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  // Active section tracking
+  function setupTocTracking() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`a[data-slug="${id}"]`);
+
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            document.querySelectorAll('.toc-link').forEach((link) => {
+              link.classList.remove('text-primary', 'font-bold');
+              link.classList.add('text-expert-navy/60', 'dark:text-white/60');
+            });
+
+            // Add active class to current link
+            if (tocLink) {
+              tocLink.classList.remove('text-expert-navy/60', 'dark:text-white/60');
+              tocLink.classList.add('text-primary', 'font-bold');
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-100px 0px -66%',
+        threshold: 0
+      }
+    );
+
+    // Observe all headings
+    document.querySelectorAll('article h2[id], article h3[id]').forEach((heading) => {
+      observer.observe(heading);
+    });
+  }
+
+  // Run on page load
+  setupTocTracking();
+
+  // Re-run on navigation (for Astro view transitions)
+  document.addEventListener('astro:page-load', setupTocTracking);
+</script>
+
+<style>
+  #table-of-contents::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  #table-of-contents::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #table-of-contents::-webkit-scrollbar-thumb {
+    background: rgba(219, 160, 148, 0.3);
+    border-radius: 2px;
+  }
+
+  #table-of-contents::-webkit-scrollbar-thumb:hover {
+    background: rgba(219, 160, 148, 0.5);
+  }
+</style>

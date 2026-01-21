@@ -1,0 +1,104 @@
+---
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  type: 'buying-guide' | 'how-to' | 'comparison' | 'checklist';
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
+  estimatedTime?: string;
+  slug: string;
+  image?: string;
+  publishDate: Date;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const {
+  title,
+  description,
+  type,
+  difficulty,
+  estimatedTime,
+  slug,
+  image,
+  publishDate
+} = Astro.props;
+
+const typeLabels = {
+  'buying-guide': lang === 'nl' ? 'Koopgids' : 'Buying Guide',
+  'how-to': lang === 'nl' ? 'Handleiding' : 'How-To',
+  'comparison': lang === 'nl' ? 'Vergelijking' : 'Comparison',
+  'checklist': lang === 'nl' ? 'Checklist' : 'Checklist',
+};
+
+const difficultyLabels = {
+  'beginner': lang === 'nl' ? 'Beginner' : 'Beginner',
+  'intermediate': lang === 'nl' ? 'Gemiddeld' : 'Intermediate',
+  'advanced': lang === 'nl' ? 'Gevorderd' : 'Advanced',
+};
+
+const difficultyColors = {
+  'beginner': 'bg-green-100 text-green-700',
+  'intermediate': 'bg-yellow-100 text-yellow-700',
+  'advanced': 'bg-red-100 text-red-700',
+};
+
+const defaultImage = 'https://picsum.photos/seed/' + slug + '/600/400';
+---
+
+<article>
+<a
+  href={`/${lang}/guides/${slug}`}
+  class="group block bg-white dark:bg-expert-navy/20 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 focus:outline-2 focus:outline-primary focus:outline-offset-2"
+>
+  <div class="aspect-[16/9] overflow-hidden">
+    <img
+      src={image || defaultImage}
+      alt=""
+      width="600"
+      height="338"
+      loading="lazy"
+      decoding="async"
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+  </div>
+
+  <div class="p-6">
+    <div class="flex gap-2 items-center mb-3 flex-wrap">
+      <span class="text-[10px] font-black uppercase tracking-widest bg-primary/10 text-primary px-2 py-1 rounded">
+        {typeLabels[type]}
+      </span>
+
+      {difficulty && (
+        <span class={`text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded ${difficultyColors[difficulty]}`}>
+          {difficultyLabels[difficulty]}
+        </span>
+      )}
+
+      {estimatedTime && (
+        <span class="text-xs text-expert-navy/40 dark:text-white/40 flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm" aria-hidden="true">schedule</span>
+          {estimatedTime}
+        </span>
+      )}
+    </div>
+
+    <h3 class="font-display text-xl font-black leading-tight text-expert-navy dark:text-white group-hover:text-primary transition-colors mb-2">
+      {title}
+    </h3>
+
+    <p class="text-sm text-expert-navy/60 dark:text-white/60 line-clamp-2 mb-4">
+      {description}
+    </p>
+
+    <div class="flex items-center gap-2 text-primary font-bold text-sm">
+      <span>{lang === 'nl' ? 'Lees Gids' : 'Read Guide'}</span>
+      <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" aria-hidden="true">
+        arrow_forward
+      </span>
+    </div>
+  </div>
+</a>
+</article>

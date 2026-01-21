@@ -1,0 +1,194 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import TableOfContents from '../components/guides/TableOfContents.astro';
+import GuideStructuredData from '../components/seo/GuideStructuredData.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    type: 'buying-guide' | 'how-to' | 'comparison' | 'checklist';
+    difficulty?: 'beginner' | 'intermediate' | 'advanced';
+    estimatedTime?: string;
+    author?: string;
+    publishDate: Date;
+    updatedDate?: Date;
+    image?: string;
+    relatedTools?: string[];
+  };
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { frontmatter, headings } = Astro.props;
+
+// Get current URL for structured data
+const currentUrl = Astro.url.pathname;
+
+const typeLabels = {
+  'buying-guide': lang === 'nl' ? 'Koopgids' : 'Buying Guide',
+  'how-to': lang === 'nl' ? 'Handleiding' : 'How-To',
+  'comparison': lang === 'nl' ? 'Vergelijking' : 'Comparison',
+  'checklist': lang === 'nl' ? 'Checklist' : 'Checklist',
+};
+
+const difficultyLabels = {
+  'beginner': lang === 'nl' ? 'Beginner' : 'Beginner',
+  'intermediate': lang === 'nl' ? 'Gemiddeld' : 'Intermediate',
+  'advanced': lang === 'nl' ? 'Gevorderd' : 'Advanced',
+};
+
+const difficultyColors = {
+  'beginner': 'bg-green-100 text-green-700',
+  'intermediate': 'bg-yellow-100 text-yellow-700',
+  'advanced': 'bg-red-100 text-red-700',
+};
+
+const formattedDate = new Intl.DateTimeFormat(lang, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+}).format(frontmatter.publishDate);
+
+const formattedUpdatedDate = frontmatter.updatedDate
+  ? new Intl.DateTimeFormat(lang, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(frontmatter.updatedDate)
+  : null;
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description} type="article" image={frontmatter.image}>
+  <!-- Guide Structured Data -->
+  <GuideStructuredData
+    slot="head"
+    title={frontmatter.title}
+    description={frontmatter.description}
+    type={frontmatter.type}
+    author={frontmatter.author || 'Salongroei Team'}
+    publishedDate={frontmatter.publishDate}
+    updatedDate={frontmatter.updatedDate}
+    estimatedTime={frontmatter.estimatedTime}
+    url={currentUrl}
+    image={frontmatter.image}
+    lang={lang}
+  />
+  <Header />
+
+  <div class="bg-gradient-to-br from-primary/5 to-primary/10 py-12">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <div class="flex gap-2 items-center mb-4 flex-wrap">
+        <a
+          href={`/${lang}/guides`}
+          class="text-sm text-expert-navy/60 dark:text-white/60 hover:text-primary transition-colors flex items-center gap-1"
+        >
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          {lang === 'nl' ? 'Terug naar Gidsen' : 'Back to Guides'}
+        </a>
+        <span class="text-expert-navy/40">•</span>
+        <span class="text-[10px] font-black uppercase tracking-widest bg-primary/10 text-primary px-2 py-1 rounded">
+          {typeLabels[frontmatter.type]}
+        </span>
+        {frontmatter.difficulty && (
+          <>
+            <span class={`text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded ${difficultyColors[frontmatter.difficulty]}`}>
+              {difficultyLabels[frontmatter.difficulty]}
+            </span>
+          </>
+        )}
+      </div>
+
+      <h1 class="font-display text-4xl md:text-5xl font-black text-expert-navy dark:text-white mb-4 max-w-4xl">
+        {frontmatter.title}
+      </h1>
+
+      <p class="text-lg text-expert-navy/70 dark:text-white/70 mb-6 max-w-3xl">
+        {frontmatter.description}
+      </p>
+
+      <div class="flex flex-wrap gap-4 text-sm text-expert-navy/60 dark:text-white/60">
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">person</span>
+          {frontmatter.author || 'Salongroei Team'}
+        </div>
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">calendar_today</span>
+          {formattedDate}
+        </div>
+        {frontmatter.estimatedTime && (
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">schedule</span>
+            {frontmatter.estimatedTime}
+          </div>
+        )}
+        {formattedUpdatedDate && (
+          <div class="flex items-center gap-1">
+            <span class="material-symbols-outlined text-sm">update</span>
+            {lang === 'nl' ? 'Bijgewerkt' : 'Updated'}: {formattedUpdatedDate}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-[1200px] mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <aside class="lg:col-span-3 hidden lg:block">
+        <TableOfContents headings={headings} />
+      </aside>
+
+      <article class="lg:col-span-9 prose prose-lg max-w-none
+        prose-headings:font-display prose-headings:font-black prose-headings:text-expert-navy
+        prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:scroll-mt-24
+        prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:scroll-mt-24
+        prose-p:text-expert-navy/80 prose-p:leading-relaxed
+        prose-a:text-primary prose-a:no-underline prose-a:font-semibold hover:prose-a:underline
+        prose-strong:text-expert-navy prose-strong:font-bold
+        prose-ul:list-disc prose-ol:list-decimal
+        prose-li:text-expert-navy/80
+        prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5
+        prose-blockquote:rounded-r-xl prose-blockquote:py-4 prose-blockquote:px-6
+        prose-code:bg-expert-navy/5 prose-code:px-2 prose-code:py-1 prose-code:rounded
+        prose-pre:bg-expert-navy prose-pre:text-white prose-pre:rounded-xl
+        prose-table:border-collapse
+        prose-th:bg-primary/10 prose-th:border prose-th:border-primary/20 prose-th:p-3
+        prose-td:border prose-td:border-primary/20 prose-td:p-3
+        dark:prose-invert
+      ">
+        <slot />
+      </article>
+    </div>
+
+    {frontmatter.relatedTools && frontmatter.relatedTools.length > 0 && (
+      <div class="mt-16 pt-12 border-t border-primary/20">
+        <h2 class="font-display text-2xl font-black text-expert-navy dark:text-white mb-6">
+          {lang === 'nl' ? 'Gerelateerde Tools' : 'Related Tools'}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {frontmatter.relatedTools.map((tool) => (
+            <div class="bg-white dark:bg-expert-navy/20 rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+              <h3 class="font-display text-lg font-black text-expert-navy dark:text-white mb-2">
+                {tool}
+              </h3>
+              <p class="text-sm text-expert-navy/60 dark:text-white/60 mb-4">
+                {lang === 'nl' ? 'Meer informatie over deze tool' : 'Learn more about this tool'}
+              </p>
+              <a
+                href="#"
+                class="text-primary font-semibold text-sm flex items-center gap-1 hover:gap-2 transition-all"
+              >
+                {lang === 'nl' ? 'Bekijk tool' : 'View tool'}
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</BaseLayout>
