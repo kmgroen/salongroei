@@ -18,6 +18,12 @@ export const GET: APIRoute = async () => {
     { url: '/tools', priority: '0.9', changefreq: 'weekly' },
     { url: '/guides', priority: '0.8', changefreq: 'weekly' },
     { url: '/en/guides', priority: '0.8', changefreq: 'weekly' },
+    { url: '/privacy', priority: '0.3', changefreq: 'yearly' },
+    { url: '/en/privacy', priority: '0.3', changefreq: 'yearly' },
+    { url: '/terms', priority: '0.3', changefreq: 'yearly' },
+    { url: '/en/terms', priority: '0.3', changefreq: 'yearly' },
+    { url: '/cookies', priority: '0.3', changefreq: 'yearly' },
+    { url: '/en/cookies', priority: '0.3', changefreq: 'yearly' },
   ];
 
   // Build sitemap URLs

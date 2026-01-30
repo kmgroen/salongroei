@@ -8,10 +8,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const resourceLinks = [
-    { text: t('footer.resources.compare'), href: '#' },
-    { text: t('footer.resources.guides'), href: '#' },
-    { text: t('footer.resources.marketing'), href: '#' },
-    { text: t('footer.resources.blog'), href: '#' }
+    { text: t('footer.resources.compare'), href: lang === 'nl' ? '/tools' : '/en/tools' },
+    { text: t('footer.resources.guides'), href: lang === 'nl' ? '/guides' : '/en/guides' },
+    { text: t('footer.resources.marketing'), href: lang === 'nl' ? '/blog' : '/en/blog' },
+    { text: t('footer.resources.blog'), href: lang === 'nl' ? '/blog' : '/en/blog' }
 ];
 
 const communityLinks = [
@@ -31,9 +31,9 @@ const communityLinks = [
         <div class="border-t border-expert-navy/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <p class="text-xs text-expert-navy/40">{t('footer.copyright')}</p>
             <nav class="flex gap-8 text-xs font-bold text-expert-navy/40" aria-label={lang === 'nl' ? 'Juridische navigatie' : 'Legal navigation'}>
-                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href="#">{t('footer.privacy')}</a>
-                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href="#">{t('footer.terms')}</a>
-                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href="#">{t('footer.cookies')}</a>
+                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href={lang === 'nl' ? '/privacy' : '/en/privacy'}>{t('footer.privacy')}</a>
+                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href={lang === 'nl' ? '/terms' : '/en/terms'}>{t('footer.terms')}</a>
+                <a class="hover:text-expert-navy focus:outline-2 focus:outline-primary focus:outline-offset-2" href={lang === 'nl' ? '/cookies' : '/en/cookies'}>{t('footer.cookies')}</a>
             </nav>
         </div>
     </div>

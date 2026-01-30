@@ -17,7 +17,7 @@ export const ui = {
     'nav.home': 'Home',
 
     // Hero Section
-    'hero.badge': 'Expert Editor\'s Choice 2024',
+    'hero.badge': 'Expert Editor\'s Choice 2025',
     'hero.title': 'The <span class="scribble-underline">Expert</span> Guide to Growing Your Salon.',
     'hero.subtitle': 'We vergelijken 50+ tools zodat jij dat niet hoeft. Bespaar <span class="font-bold text-primary italic">10+ uur</span> per week met de juiste software.',
     'hero.cta.primary': 'Vergelijk Tools',
@@ -40,7 +40,7 @@ export const ui = {
     'footer.community.forum': 'Ledenforum',
     'footer.community.events': 'Evenementen',
     'footer.tagline': 'De vriendelijke expert gids voor het laten groeien van je salon.',
-    'footer.copyright': '© 2024 Salongroei Editorial. Alle rechten voorbehouden.',
+    'footer.copyright': '© 2025 Salongroei Editorial. Alle rechten voorbehouden.',
     'footer.privacy': 'Privacybeleid',
     'footer.terms': 'Algemene Voorwaarden',
     'footer.cookies': 'Cookie Instellingen',
@@ -89,7 +89,7 @@ export const ui = {
     'tools.days': 'dagen',
 
     // Top Picks Section
-    'topPicks.title': 'Top Picks 2024',
+    'topPicks.title': 'Top Picks 2025',
     'topPicks.subtitle': 'De absolute beste keuzes voor elke categorie',
 
     // Community Reviews Section
@@ -133,7 +133,7 @@ export const ui = {
     'nav.home': 'Home',
 
     // Hero Section
-    'hero.badge': 'Expert Editor\'s Choice 2024',
+    'hero.badge': 'Expert Editor\'s Choice 2025',
     'hero.title': 'The <span class="scribble-underline">Expert</span> Guide to Growing Your Salon.',
     'hero.subtitle': 'We compare 50+ tools so you don\'t have to. Save <span class="font-bold text-primary italic">10+ hours</span> weekly with the right software.',
     'hero.cta.primary': 'Compare Tools',
@@ -156,7 +156,7 @@ export const ui = {
     'footer.community.forum': 'Member Forum',
     'footer.community.events': 'Events',
     'footer.tagline': 'The friendly expert guide to growing your salon.',
-    'footer.copyright': '© 2024 Salongroei Editorial. All rights reserved.',
+    'footer.copyright': '© 2025 Salongroei Editorial. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
     'footer.cookies': 'Cookie Settings',
@@ -205,7 +205,7 @@ export const ui = {
     'tools.days': 'days',
 
     // Top Picks Section
-    'topPicks.title': 'Top Picks 2024',
+    'topPicks.title': 'Top Picks 2025',
     'topPicks.subtitle': 'The absolute best choices for every category',
 
     // Community Reviews Section

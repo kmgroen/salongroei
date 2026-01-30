@@ -1,0 +1,16 @@
+---
+// Google Analytics 4
+// Set your measurement ID here or via environment variable
+const GA_ID = import.meta.env.PUBLIC_GA_ID || '';
+---
+{GA_ID && (
+  <Fragment>
+    <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+    <script is:inline define:vars={{ GA_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    </script>
+  </Fragment>
+)}
