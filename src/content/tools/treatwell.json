@@ -11,6 +11,7 @@
   },
   "accentColor": "soft-sage",
   "isEditorsPick": true,
+  "displayOrder": 3,
   "imageUrl": "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&auto=format&fit=crop",
   "imageAlt": "Treatwell marketplace platform",
   "rating": {

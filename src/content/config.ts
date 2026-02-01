@@ -52,6 +52,7 @@ const toolsCollection = defineCollection({
     }),
     accentColor: z.enum(['soft-sage', 'sunshine-yellow', 'primary']),
     isEditorsPick: z.boolean().default(false),
+    displayOrder: z.number().optional(),
     imageUrl: z.string(),
     imageAlt: z.string(),
     rating: z.object({

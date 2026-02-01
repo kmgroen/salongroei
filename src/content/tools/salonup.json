@@ -11,10 +11,11 @@
   },
   "accentColor": "primary",
   "isEditorsPick": true,
-  "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuA8pPYvvIi2iBp2wbPu26bGNmVBzTOyhkAHa1TwxfNgTE4bjEzjpdVqTRyap0wRlBpb4kwI6Mza-gRWd8rrQ9XQiWyF5QBbf3SZ9D-uFiBiD0IZqkceTRXMlZcGXO-1Poa3ThJRy-8JEDqIjonoNZpykhwkan2LAyKT1QP5q_XnCitXFinvSyN75N3XiA93Id7ncaeOGRIYa72HcQR7a6KId0qeIcICQYMzjqSs3EWSu_ij1aryeVYxBSMGWBKWSD5ccL0caj8z8dQ",
+  "displayOrder": 2,
+  "imageUrl": "/images/tools/salonup-hero.png",
   "imageAlt": "SalonUp software dashboard interface",
   "rating": {
-    "score": 4.5,
+    "score": 4.7,
     "count": 1247
   },
   "pricing": {

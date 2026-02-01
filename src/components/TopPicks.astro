@@ -11,6 +11,10 @@ const topTools = allTools
         // Prioritize Editor's Pick
         if (a.data.isEditorsPick && !b.data.isEditorsPick) return -1;
         if (!a.data.isEditorsPick && b.data.isEditorsPick) return 1;
+        // Then by explicit display order (if set)
+        const orderA = a.data.displayOrder ?? 999;
+        const orderB = b.data.displayOrder ?? 999;
+        if (orderA !== orderB) return orderA - orderB;
         // Then by rating
         return b.data.rating.score - a.data.rating.score;
     })
