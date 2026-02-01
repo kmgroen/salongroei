@@ -17,5 +17,10 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
+  vite: {
+    server: {
+      allowedHosts: ['dev.salongroei.com']
+    }
+  },
   integrations: [tailwind(), react()]
 });
