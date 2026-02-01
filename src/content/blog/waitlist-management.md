@@ -7,7 +7,7 @@ description:
   en: "A complete guide on how intelligent waitlist systems convert last-minute cancellations into additional revenue with automatic notifications and VIP prioritization."
 category: "Agenda Optimization"
 date: 2026-01-13
-image: "https://picsum.photos/seed/waitlist/1200/630"
+image: "/images/hero/blog-waitlist-management-hero.png"
 tags: ["waitlist", "agenda-optimalisatie", "last-minute-bookings"]
 featured: false
 ---

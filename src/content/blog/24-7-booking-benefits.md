@@ -7,7 +7,7 @@ description:
   en: "Research shows nearly half of salon appointments are made outside business hours. Discover why 24/7 online booking is essential in 2026."
 category: "Digital Transformation"
 date: 2026-01-14
-image: "https://picsum.photos/seed/247booking/1200/630"
+image: "/images/hero/blog-24-7-booking-hero.png"
 tags: ["online-booking", "24-7", "automatisering"]
 featured: true
 ---

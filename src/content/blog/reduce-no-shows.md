@@ -7,7 +7,7 @@ description:
   en: "A practical guide on how salons can reduce no-shows from 20-30% to 8-12% with automated reminders, waitlist management and smart policies."
 category: "Booking Management"
 date: 2026-01-15
-image: "https://picsum.photos/seed/noshow/1200/630"
+image: "/images/hero/blog-reduce-no-shows-hero.png"
 tags: ["no-shows", "afspraak-herinneringen", "salon-booking"]
 featured: true
 ---

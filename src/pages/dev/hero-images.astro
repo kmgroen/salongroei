@@ -1,0 +1,132 @@
+---
+// Dev page — hero image style guide preview
+// Not linked from anywhere, access directly at /dev/hero-images/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SalonGroei — Blog Hero Images (Style Guide)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f7f4;
+      color: #1a1a1a;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .subtitle { color: #666; margin-bottom: 2rem; font-size: 0.95rem; }
+    .style-notes {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .style-notes h2 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .style-notes ul { padding-left: 1.5rem; line-height: 1.8; color: #444; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e5e5e5;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .card img { width: 100%; height: auto; display: block; }
+    .card-info { padding: 1rem 1.5rem; }
+    .card-info h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+    .card-info p { color: #666; font-size: 0.85rem; }
+    .badge {
+      display: inline-block; padding: 2px 10px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600; margin-top: 0.5rem;
+      background: #d4edda; color: #155724;
+    }
+    .status-row { display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; }
+    .status-chip {
+      background: #e8f5e9; color: #2e7d32; padding: 0.4rem 1rem;
+      border-radius: 8px; font-size: 0.85rem; font-weight: 500;
+    }
+    .status-chip.waiting { background: #fff3e0; color: #e65100; }
+    @media (min-width: 768px) { .grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <h1>🎨 SalonGroei Blog Hero Images</h1>
+  <p class="subtitle">Style guide & preview — generated hero images for salongroei.com blog posts</p>
+
+  <div class="status-row">
+    <span class="status-chip">5 / 5 generated</span>
+    <span class="status-chip waiting">⏳ Awaiting style approval</span>
+  </div>
+
+  <div class="style-notes">
+    <h2>Style Guide</h2>
+    <ul>
+      <li><strong>Style:</strong> 3D clay/morphism — soft, rounded, toy-like illustration</li>
+      <li><strong>Palette:</strong> Warm pastels — cream/peach background, sage green, teal/mint, coral/salmon, gold accents</li>
+      <li><strong>Dimensions:</strong> 1200×630px (OG image compatible)</li>
+      <li><strong>Composition:</strong> Central focal object (salon-related) with floating supporting icons</li>
+      <li><strong>Mood:</strong> Professional yet approachable, modern SaaS aesthetic</li>
+      <li><strong>No text overlay</strong> — clean illustration only</li>
+    </ul>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <img src="/images/hero/blog-reduce-no-shows-hero.png" alt="Reduce No-Shows hero image" loading="lazy">
+      <div class="card-info">
+        <h3>5 Bewezen Strategieën om No-Shows te Verminderen</h3>
+        <p><a href="/blog/reduce-no-shows/">/blog/reduce-no-shows/</a></p>
+        <span class="badge">✅ Generated</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="/images/hero/blog-24-7-booking-hero.png" alt="24/7 Booking Benefits hero image" loading="lazy">
+      <div class="card-info">
+        <h3>24/7 Online Boeken: Waarom Het Essentieel Is</h3>
+        <p><a href="/blog/24-7-booking-benefits/">/blog/24-7-booking-benefits/</a></p>
+        <span class="badge">✅ Generated</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="/images/hero/blog-capacity-planning-hero.png" alt="Capacity Planning hero image" loading="lazy">
+      <div class="card-info">
+        <h3>Capaciteitsplanning voor Salons</h3>
+        <p><a href="/blog/capacity-planning/">/blog/capacity-planning/</a></p>
+        <span class="badge">✅ Generated</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="/images/hero/blog-prevent-double-bookings-hero.png" alt="Prevent Double Bookings hero image" loading="lazy">
+      <div class="card-info">
+        <h3>Dubbele Boekingen Voorkomen</h3>
+        <p><a href="/blog/prevent-double-bookings/">/blog/prevent-double-bookings/</a></p>
+        <span class="badge">✅ Generated</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="/images/hero/blog-waitlist-management-hero.png" alt="Waitlist Management hero image" loading="lazy">
+      <div class="card-info">
+        <h3>Wachtlijst Management</h3>
+        <p><a href="/blog/waitlist-management/">/blog/waitlist-management/</a></p>
+        <span class="badge">✅ Generated</span>
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e5e5e5; color: #999; font-size: 0.8rem;">
+    SalonGroei Dev — Hero Image Preview
+  </footer>
+</body>
+</html>

@@ -7,7 +7,7 @@ description:
   en: "How modern salon software with real-time calendar synchronization prevents double bookings and perfectly coordinates teams with practical tips for multi-stylist salons."
 category: "Operations"
 date: 2026-01-12
-image: "https://picsum.photos/seed/doublebooking/1200/630"
+image: "/images/hero/blog-prevent-double-bookings-hero.png"
 tags: ["double-booking", "planning-software", "real-time-sync"]
 featured: false
 ---

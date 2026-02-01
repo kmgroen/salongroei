@@ -7,7 +7,7 @@ description:
   en: "Learn how to use analytics to recognize patterns, effectively schedule staff for peak hours, and use waitlist data for smarter decisions."
 category: "Planning & Analytics"
 date: 2026-01-11
-image: "https://picsum.photos/seed/capacity/1200/630"
+image: "/images/hero/blog-capacity-planning-hero.png"
 tags: ["capaciteitsplanning", "booking-analytics", "personeelsplanning"]
 featured: false
 ---
