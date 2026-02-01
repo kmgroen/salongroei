@@ -62,23 +62,21 @@
   border-bottom-right-radius: 0.75rem;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .prose table {
-    border-color: theme('colors.white' / 0.1);
-  }
+/* Dark mode support (class-based to match Tailwind config) */
+.dark .prose table {
+  border-color: theme('colors.white' / 0.1);
+}
 
-  .prose tbody tr {
-    border-top-color: theme('colors.white' / 0.1);
-  }
+.dark .prose tbody tr {
+  border-top-color: theme('colors.white' / 0.1);
+}
 
-  .prose tbody tr:nth-child(even) {
-    background-color: theme('colors.expert-navy' / 0.1);
-  }
+.dark .prose tbody tr:nth-child(even) {
+  background-color: theme('colors.expert-navy' / 0.1);
+}
 
-  .prose tbody td {
-    color: theme('colors.white' / 0.8);
-  }
+.dark .prose tbody td {
+  color: theme('colors.white' / 0.8);
 }
 
 /* Material Symbols Icons in tables */

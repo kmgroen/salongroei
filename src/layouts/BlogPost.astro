@@ -184,9 +184,8 @@ const currentUrl = Astro.url.pathname;
     color: theme('colors.expert-navy' / 0.8);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .prose {
-      color: theme('colors.white' / 0.8);
-    }
+  /* Dark mode: class-based to match Tailwind config */
+  .dark .prose {
+    color: theme('colors.white' / 0.8);
   }
 </style>
