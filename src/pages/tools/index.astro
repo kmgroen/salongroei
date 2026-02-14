@@ -36,12 +36,12 @@ const sortedTools = allTools.sort((a, b) => {
           <span class="material-symbols-outlined text-base" aria-hidden="true">verified</span>
           {lang === 'nl' ? '10 Tools Vergeleken' : '10 Tools Compared'}
         </div>
-        <h1 class="font-display text-5xl md:text-6xl font-black mb-6 text-expert-navy">
-          {lang === 'nl'
+        <h1 class="font-display text-5xl md:text-6xl font-black mb-6 text-expert-navy"
+          set:html={lang === 'nl'
             ? 'Vind de Perfecte <span class="scribble-underline">Salon Software</span>'
             : 'Find the Perfect <span class="scribble-underline">Salon Software</span>'
           }
-        </h1>
+        />
         <p class="text-xl text-expert-navy/70 mb-8">
           {lang === 'nl'
             ? 'We vergelijken prijzen, functies en reviews van de beste salon management software. Bespaar uren research met onze expert vergelijkingen.'

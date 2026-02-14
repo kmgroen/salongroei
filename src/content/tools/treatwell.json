@@ -44,9 +44,13 @@
           "en": "Basic reporting"
         }
       ],
-      "isFree": true,
+      "isFree": false,
       "hasCommission": true,
-      "commissionRate": 30
+      "commissionRate": 30,
+      "trialNote": {
+        "nl": "Gratis proefperiode beschikbaar",
+        "en": "Free trial available"
+      }
     }
   },
   "features": {
