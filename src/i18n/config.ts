@@ -37,8 +37,8 @@ export const ui = {
     'footer.resources.marketing': 'Marketing Tips',
     'footer.resources.blog': 'Expert Blog',
     'footer.community.stories': 'Succesverhalen',
-    'footer.community.forum': 'Ledenforum',
-    'footer.community.events': 'Evenementen',
+    'footer.community.forum': 'Contact',
+    'footer.community.events': 'Leer Meer',
     'footer.tagline': 'De vriendelijke expert gids voor het laten groeien van je salon.',
     'footer.copyright': '© 2025 Salongroei Editorial. Alle rechten voorbehouden.',
     'footer.privacy': 'Privacybeleid',
@@ -101,7 +101,7 @@ export const ui = {
     'expert.quote': 'I spent 10 years behind the chair. Now I spend my days helping owners like you navigate the overwhelming world of salon software.',
 
     // Meta
-    'meta.description': 'De vriendelijke expert gids',
+    'meta.description': 'Vergelijk 50+ salon software tools en bespaar 10+ uur per week. Onafhankelijke reviews, prijsvergelijkingen en expert gidsen voor kappers, schoonheidsspecialisten en wellness professionals in Nederland.',
 
     // Footer Brand
     'footer.brand.tagline': 'De boutique bron voor moderne salon eigenaren. Samengesteld met liefde, aangedreven door data.',
@@ -153,8 +153,8 @@ export const ui = {
     'footer.resources.marketing': 'Marketing Tips',
     'footer.resources.blog': 'Expert Blog',
     'footer.community.stories': 'Success Stories',
-    'footer.community.forum': 'Member Forum',
-    'footer.community.events': 'Events',
+    'footer.community.forum': 'Contact',
+    'footer.community.events': 'Learn More',
     'footer.tagline': 'The friendly expert guide to growing your salon.',
     'footer.copyright': '© 2025 Salongroei Editorial. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
@@ -217,7 +217,7 @@ export const ui = {
     'expert.quote': 'I spent 10 years behind the chair. Now I spend my days helping owners like you navigate the overwhelming world of salon software.',
 
     // Meta
-    'meta.description': 'The friendly expert guide',
+    'meta.description': 'Compare 50+ salon software tools and save 10+ hours weekly. Independent reviews, pricing comparisons and expert guides for hairdressers, beauty specialists and wellness professionals.',
 
     // Footer Brand
     'footer.brand.tagline': 'The boutique resource for modern salon owners. Curated with love, powered by data.',

@@ -19,7 +19,7 @@
   },
   "pricing": {
     "starter": {
-      "currency": "€",
+      "currency": "EUR",
       "period": "month",
       "label": {
         "nl": "Gratis",
@@ -49,7 +49,7 @@
     },
     "pro": {
       "price": 50,
-      "currency": "€",
+      "currency": "EUR",
       "period": "month",
       "label": {
         "nl": "Plus",

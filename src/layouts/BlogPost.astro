@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import ArticleStructuredData from '../components/seo/ArticleStructuredData.astro';
+import BreadcrumbStructuredData from '../components/seo/BreadcrumbStructuredData.astro';
 import { getVersionedImageUrl } from '../utils/imageVersion';
 import '../styles/tables.css';
 
@@ -26,6 +27,13 @@ const readingTime = lang === 'nl' ? '8 min leestijd' : '8 min read';
 
 // Get current URL for structured data
 const currentUrl = Astro.url.pathname;
+
+// Build breadcrumb items
+const breadcrumbItems = [
+  { name: 'Home', url: lang === 'nl' ? '/' : '/en/' },
+  { name: 'Blog', url: lang === 'nl' ? '/blog' : '/en/blog' },
+  { name: title, url: currentUrl },
+];
 ---
 
 <BaseLayout title={title} description={description} type="article" image={image}>
@@ -38,6 +46,12 @@ const currentUrl = Astro.url.pathname;
     publishedDate={date}
     image={image}
     url={currentUrl}
+    lang={lang}
+  />
+  <!-- Breadcrumb Structured Data -->
+  <BreadcrumbStructuredData
+    slot="head"
+    items={breadcrumbItems}
     lang={lang}
   />
   <main id="main-content">

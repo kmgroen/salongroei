@@ -3,6 +3,7 @@ import BaseLayout from './BaseLayout.astro';
 import Header from '../components/Header.astro';
 import TableOfContents from '../components/guides/TableOfContents.astro';
 import GuideStructuredData from '../components/seo/GuideStructuredData.astro';
+import BreadcrumbStructuredData from '../components/seo/BreadcrumbStructuredData.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
@@ -28,6 +29,13 @@ const { frontmatter, headings } = Astro.props;
 
 // Get current URL for structured data
 const currentUrl = Astro.url.pathname;
+
+// Build breadcrumb items
+const breadcrumbItems = [
+  { name: 'Home', url: lang === 'nl' ? '/' : '/en/' },
+  { name: lang === 'nl' ? 'Gidsen' : 'Guides', url: lang === 'nl' ? '/guides' : '/en/guides' },
+  { name: frontmatter.title, url: currentUrl },
+];
 
 const typeLabels = {
   'buying-guide': lang === 'nl' ? 'Koopgids' : 'Buying Guide',
@@ -76,6 +84,12 @@ const formattedUpdatedDate = frontmatter.updatedDate
     estimatedTime={frontmatter.estimatedTime}
     url={currentUrl}
     image={frontmatter.image}
+    lang={lang}
+  />
+  <!-- Breadcrumb Structured Data -->
+  <BreadcrumbStructuredData
+    slot="head"
+    items={breadcrumbItems}
     lang={lang}
   />
   <Header />

@@ -20,7 +20,7 @@
   "pricing": {
     "starter": {
       "price": 0,
-      "currency": "€",
+      "currency": "EUR",
       "period": "month",
       "label": {
         "nl": "Basis (15% commissie)",
@@ -54,7 +54,7 @@
     },
     "pro": {
       "price": 14.95,
-      "currency": "€",
+      "currency": "EUR",
       "period": "month",
       "label": {
         "nl": "Solo",
@@ -81,7 +81,7 @@
     },
     "team": {
       "price": 9.95,
-      "currency": "€",
+      "currency": "EUR",
       "period": "month",
       "label": {
         "nl": "Team",

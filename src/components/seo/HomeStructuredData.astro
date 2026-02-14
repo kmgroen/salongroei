@@ -1,0 +1,67 @@
+---
+/**
+ * Homepage Structured Data (JSON-LD) Component
+ * Includes Organization and WebSite schemas for salongroei.com
+ */
+
+interface Props {
+  lang: 'nl' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const siteUrl = 'https://salongroei.com';
+
+const organizationData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'Salongroei',
+  url: siteUrl,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/images/logo.svg`,
+    width: 200,
+    height: 60,
+  },
+  description: lang === 'nl' 
+    ? 'De onafhankelijke expert gids voor salon software. Vergelijk tools, lees reviews en groei je salon.'
+    : 'The independent expert guide for salon software. Compare tools, read reviews and grow your salon.',
+  foundingDate: '2024',
+  sameAs: [
+    // Add social media URLs here when available
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    availableLanguage: ['Dutch', 'English'],
+  },
+};
+
+const websiteData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: 'Salongroei',
+  description: lang === 'nl'
+    ? 'Vergelijk 50+ salon software tools en bespaar 10+ uur per week. Onafhankelijke reviews en expert gidsen.'
+    : 'Compare 50+ salon software tools and save 10+ hours weekly. Independent reviews and expert guides.',
+  publisher: {
+    '@id': `${siteUrl}/#organization`,
+  },
+  inLanguage: lang === 'nl' ? 'nl-NL' : 'en-US',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/${lang === 'nl' ? '' : 'en/'}tools?search={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const structuredData = [organizationData, websiteData];
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

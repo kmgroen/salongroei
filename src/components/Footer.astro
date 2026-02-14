@@ -15,9 +15,9 @@ const resourceLinks = [
 ];
 
 const communityLinks = [
-    { text: t('footer.community.stories'), href: '#' },
-    { text: t('footer.community.forum'), href: '#' },
-    { text: t('footer.community.events'), href: '#' }
+    { text: t('footer.community.stories'), href: lang === 'nl' ? '/blog' : '/en/blog' },
+    { text: t('footer.community.forum'), href: 'mailto:contact@salongroei.com' },
+    { text: t('footer.community.events'), href: lang === 'nl' ? '/guides' : '/en/guides' }
 ];
 ---
 <footer class="bg-background-light dark:bg-background-dark border-t border-expert-navy/10 pt-20 pb-10" role="contentinfo">

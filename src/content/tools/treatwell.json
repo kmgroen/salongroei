@@ -20,7 +20,7 @@
   },
   "pricing": {
     "starter": {
-      "currency": "€",
+      "currency": "EUR",
       "period": "booking",
       "label": {
         "nl": "Marketplace",

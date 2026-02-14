@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import SoftwareStructuredData from '../../components/seo/SoftwareStructuredData.astro';
+import BreadcrumbStructuredData from '../../components/seo/BreadcrumbStructuredData.astro';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
@@ -44,6 +45,13 @@ const featuresList = [
   tool.data.features.mobileApp && (lang === 'nl' ? 'Mobiele app' : 'Mobile app'),
   tool.data.features.clientPortal && (lang === 'nl' ? 'Klantportaal' : 'Client portal'),
 ].filter(Boolean) as string[];
+
+// Build breadcrumb items
+const breadcrumbItems = [
+  { name: 'Home', url: lang === 'nl' ? '/' : '/en/' },
+  { name: 'Tools', url: lang === 'nl' ? '/tools' : '/en/tools' },
+  { name: tool.data.name, url: currentUrl },
+];
 ---
 
 <BaseLayout
@@ -64,6 +72,12 @@ const featuresList = [
     offers={tool.data.pricing}
     rating={tool.data.rating}
     features={featuresList}
+    lang={lang}
+  />
+  <!-- Breadcrumb Structured Data -->
+  <BreadcrumbStructuredData
+    slot="head"
+    items={breadcrumbItems}
     lang={lang}
   />
   <Header />

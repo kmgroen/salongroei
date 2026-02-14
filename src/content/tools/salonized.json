@@ -21,7 +21,7 @@
   "pricing": {
     "starter": {
       "price": 29,
-      "currency": "€",
+      "currency": "EUR",
       "period": "month",
       "label": {
         "nl": "Starter",
@@ -50,7 +50,7 @@
     },
     "pro": {
       "price": 59,
-      "currency": "€",
+      "currency": "EUR",
       "period": "month",
       "label": {
         "nl": "Professional",
