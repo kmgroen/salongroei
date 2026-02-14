@@ -104,7 +104,7 @@ const accentClass = accentColorClasses[tool.data.accentColor];
       <div class="flex gap-2">
         <a
           href={`/tools/${tool.data.slug}`}
-          class="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl font-bold text-sm text-center hover:scale-105 transition-transform shadow-lg shadow-primary/20"
+          class="flex-1 bg-primary text-white px-4 py-2.5 rounded-xl font-bold text-sm text-center flex items-center justify-center hover:scale-105 transition-transform shadow-lg shadow-primary/20"
         >
           {lang === 'nl' ? 'Bekijk Details' : 'View Details'}
         </a>
@@ -112,7 +112,7 @@ const accentClass = accentColorClasses[tool.data.accentColor];
           href={tool.data.website}
           target="_blank"
           rel="noopener noreferrer"
-          class="px-4 py-2.5 border-2 border-primary text-primary rounded-xl font-bold text-sm hover:bg-primary hover:text-white transition-colors"
+          class="px-4 py-2.5 border-2 border-primary text-primary rounded-xl font-bold text-sm flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
         >
           <span class="material-symbols-outlined text-lg">open_in_new</span>
         </a>
