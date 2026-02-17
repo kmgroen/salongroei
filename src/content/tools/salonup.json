@@ -24,13 +24,13 @@
       "currency": "EUR",
       "period": "month",
       "label": {
-        "nl": "Basis",
-        "en": "Basic"
+        "nl": "Solo",
+        "en": "Solo"
       },
       "features": [
         {
-          "nl": "Onbeperkte medewerkers",
-          "en": "Unlimited staff"
+          "nl": "1 medewerker (ideaal voor ZZP'ers)",
+          "en": "1 staff member (ideal for freelancers)"
         },
         {
           "nl": "Online boekingen 24/7",
@@ -53,7 +53,7 @@
       "hasCommission": false
     },
     "pro": {
-      "price": 39,
+      "price": 25,
       "currency": "EUR",
       "period": "month",
       "label": {
@@ -62,8 +62,8 @@
       },
       "features": [
         {
-          "nl": "Alles in Basis",
-          "en": "Everything in Basic"
+          "nl": "Alles in Solo + tot 25 medewerkers",
+          "en": "Everything in Solo + up to 25 staff"
         },
         {
           "nl": "Multi-locatie ondersteuning",
@@ -100,8 +100,8 @@
   },
   "pros": [
     {
-      "nl": "Onbeperkte staff accounts inbegrepen",
-      "en": "Unlimited staff accounts included"
+      "nl": "Tot 25 medewerkers in Pro, Solo voor ZZP'ers",
+      "en": "Up to 25 staff in Pro, Solo for freelancers"
     },
     {
       "nl": "Geavanceerde team planning functies",
