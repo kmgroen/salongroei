@@ -53,3 +53,30 @@ src/
 
 ## Styling
 Brand colors: teal (#14B8A6), navy (#1E293B). See `/styling-guide` page.
+
+## ⚠️ CRITICAL: Competitor Pricing & Features Reference
+When writing or editing blog/guide content, ALWAYS use these verified prices and features.
+Never guess or hallucinate pricing. Check `src/content/tools/*.json` for canonical data.
+
+### SalonUp (our product)
+- **Solo**: €10/mnd — 1 medewerker, ideaal voor ZZP'ers
+- **Pro**: €25/mnd — tot 25 medewerkers
+- Prijzen zijn op jaarbasis. Gratis 14-dagen trial.
+
+### Treatwell
+- Heeft een **startprijs + commissie** (niet alleen commissie)
+- Heeft **SMS-herinneringen** (niet alleen e-mail)
+- Commissie: ~30% per marketplace boeking
+
+### Salonized
+- Startprijs: ~€29/mnd
+- SMS alleen in Pro plan
+
+### Planty
+- Startprijs: ~€19/mnd
+
+### General Rules
+1. **Never fabricate competitor pricing** — verify on official websites first
+2. **Be fair but critical** — don't make false negative claims about competitors
+3. **SalonUp pricing comes from Kasper** — always use the latest confirmed prices above
+4. **When unsure about a competitor claim, mark it with ⚠️** rather than stating it as fact
