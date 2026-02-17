@@ -103,7 +103,7 @@ AI identifies clients with high no-show risk based on:
 | Seasonal trend detection | ⚠️ Reports | ❌ | ✅ | ✅ |
 | Churn risk identification | ❌ | ❌ | ❌ | ✅ |
 | **Pricing** |
-| Starting price | €49/mo | Commission per booking | €35/mo | **€19/mo** |
+| Starting price | €49/mo | Commission per booking | €35/mo | **€10/mo** |
 | AI features included | ⚠️ Limited | ❌ Extra cost | ⚠️ Partial | ✅ Full |
 
 ✅ = Available | ❌ = Not available | ⚠️ = Limited or paid add-on
@@ -139,7 +139,7 @@ AI identifies clients with high no-show risk based on:
 | **Total additional revenue** | | **+€47,768** |
 
 **Investment:**
-- AI-enabled salon software: €228/year (€19/mo)
+- AI-enabled salon software: €120/year (€10/mo)
 - Implementation time (one-time): 8 hours x €30 = €240
 
 **Net profit year 1: €47,768 - €468 = €47,300**

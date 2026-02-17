@@ -43,12 +43,12 @@ Het verzenden van herinneringen op het juiste moment is de meest effectieve mani
 | Feature | Salonized | Treatwell | Planty | SalonUp |
 |---------|-----------|-----------|--------|---------|
 | Automatische email herinneringen | ✅ | ✅ | ✅ | ✅ |
-| SMS herinneringen | ⚠️ Pro plan | ❌ | ✅ | ✅ |
+| SMS herinneringen | ⚠️ Pro plan | ✅ | ✅ | ✅ |
 | WhatsApp integratie | ❌ | ❌ | ❌ | ✅ |
 | Aanpasbare timing (72h, 24h) | ✅ | ⚠️ Beperkt | ✅ | ✅ |
 | Multi-taal ondersteuning | ✅ | ❌ | ✅ | ✅ |
 | Automatische follow-up na no-show | ❌ | ❌ | ❌ | ✅ |
-| **Startprijs** | **€29/mnd** | **35% commissie** | **€19/mnd** | **€19/mnd** |
+| **Startprijs** | **€29/mnd** | **35% commissie** | **€19/mnd** | **€10/mnd** |
 
 ✅ = Beschikbaar | ❌ = Niet beschikbaar | ⚠️ = Alleen in hogere plannen
 
@@ -140,7 +140,7 @@ Een salon met gemiddeld **4 no-shows per week à €50** verliest **€10.400 pe
 - **No-shows dalen van 20% → 8%** (60% verbetering)
 - **Jaarlijks verlies: €10.400 → €4.160**
 - **Netto besparing: €6.240 per jaar**
-- **Software kosten: €228/jaar** (€19/mnd × 12)
+- **Software kosten: €120/jaar** (€10/mnd × 12)
 - **ROI: €6.012 netto winst** (2.636% return)
 
 **Volgende stap**: Start een 14-dagen gratis trial met [SalonUp](https://salonup.nl) en ervaar het verschil zelf.
@@ -180,12 +180,12 @@ Sending reminders at the right time is the most effective way to reduce no-shows
 | Feature | Salonized | Treatwell | Planty | SalonUp |
 |---------|-----------|-----------|--------|---------|
 | Automatic email reminders | ✅ | ✅ | ✅ | ✅ |
-| SMS reminders | ⚠️ Pro plan | ❌ | ✅ | ✅ |
+| SMS reminders | ⚠️ Pro plan | ✅ | ✅ | ✅ |
 | WhatsApp integration | ❌ | ❌ | ❌ | ✅ |
 | Customizable timing (72h, 24h) | ✅ | ⚠️ Limited | ✅ | ✅ |
 | Multi-language support | ✅ | ❌ | ✅ | ✅ |
 | Automatic follow-up after no-show | ❌ | ❌ | ❌ | ✅ |
-| **Starting price** | **€29/mo** | **35% commission** | **€19/mo** | **€19/mo** |
+| **Starting price** | **€29/mo** | **35% commission** | **€19/mo** | **€10/mo** |
 
 ✅ = Available | ❌ = Not available | ⚠️ = Only in higher plans
 
@@ -277,7 +277,7 @@ A salon with an average of **4 no-shows per week at €50** loses **€10,400 pe
 - **No-shows drop from 20% → 8%** (60% improvement)
 - **Annual loss: €10,400 → €4,160**
 - **Net savings: €6,240 per year**
-- **Software costs: €228/year** (€19/mo × 12)
+- **Software costs: €120/year** (€10/mo × 12)
 - **ROI: €6,012 net profit** (2,636% return)
 
 **Next step**: Start a 14-day free trial with [SalonUp](https://salonup.nl) and experience the difference yourself.

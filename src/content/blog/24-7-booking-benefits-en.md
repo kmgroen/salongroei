@@ -75,7 +75,7 @@ When do clients actually book? Data from 10,000+ salons shows:
 | WhatsApp booking integration | ❌ | ❌ | ❌ | ✅ |
 | Abandoned booking recovery | ❌ | ❌ | ❌ | ✅ |
 | **Pricing** |
-| Starting price per month | €29 | 35% commission | €19 | €19 |
+| Starting price per month | €29 | 35% commission | €19 | €10 |
 | Commission per booking | None | 35% | None | None |
 | Setup costs | €99 one-time | Free | Free | Free |
 
@@ -101,7 +101,7 @@ When do clients actually book? Data from 10,000+ salons shows:
 ```
 Extra revenue: 40 clients × €65 average = €2,600/month
 Time savings: 4 hours × €25 × 4 weeks = €400/month
-Software costs: -€19/month
+Software costs: -€10/month
 ---
 Net benefit: €2,981/month = €35,772/year
 ```

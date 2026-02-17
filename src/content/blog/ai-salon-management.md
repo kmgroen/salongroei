@@ -102,7 +102,7 @@ AI identificeert klanten met een hoog no-show risico op basis van:
 | Seizoenstrend detectie | ⚠️ Rapportages | ❌ | ✅ | ✅ |
 | Churn-risico identificatie | ❌ | ❌ | ❌ | ✅ |
 | **Prijzen** |
-| Startprijs | €49/mnd | Commissie per boeking | €35/mnd | **€19/mnd** |
+| Startprijs | €49/mnd | Commissie per boeking | €35/mnd | **€10/mnd** |
 | AI-features inbegrepen | ⚠️ Beperkt | ❌ Extra kosten | ⚠️ Deels | ✅ Volledig |
 
 ✅ = Beschikbaar | ❌ = Niet beschikbaar | ⚠️ = Beperkt of betaalde add-on
@@ -138,7 +138,7 @@ AI identificeert klanten met een hoog no-show risico op basis van:
 | **Totale extra omzet** | | **+€47.768** |
 
 **Investering:**
-- AI-enabled salon software: €228/jaar (€19/mnd)
+- AI-enabled salon software: €120/jaar (€10/mnd)
 - Implementatietijd (eenmalig): 8 uur x €30 = €240
 
 **Netto winst jaar 1: €47.768 - €468 = €47.300**

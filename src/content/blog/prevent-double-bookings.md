@@ -107,7 +107,7 @@ Wat nu?
 | Staff notifications for bookings | ✅ | ✅ | ⚠️ Email only | ✅ (SMS/Email/Push) |
 | Team calendar view | ✅ | ✅ | ✅ | ✅ |
 | **Prijzen** |
-| Startprijs | €0 + 15% commissie / €14,95 Solo | €29/mnd | €25/mnd | €19/mnd |
+| Startprijs | €0 + 15% commissie / €14,95 Solo | €29/mnd | €25/mnd | €10/mnd |
 | Commissie | 15% per boeking / Geen (betaald) | Geen | Geen | Geen |
 | Multi-staff included | ⚠️ €9,95 per gebruiker | ✅ | ✅ | ✅ Onbeperkt |
 
@@ -312,7 +312,7 @@ Team gathered rond 1 screen showing today's calendar:
 
 **With real-time sync:**
 - 0-1 double booking/jaar
-- Software cost: €228/jaar (€19/mnd)
+- Software cost: €120/jaar (€10/mnd)
 
 **Net savings: €4.572/jaar**
 
@@ -395,7 +395,7 @@ Compare met:
 
 Double bookings zijn niet "part of the business" - ze zijn **100% preventable** met de juiste tools.
 
-**Investment**: €19-€29/maand
+**Investment**: €10-€29/maand
 **Savings**: €4.572-€13.716/jaar
 **ROI**: 1.985% tot 5.700%
 

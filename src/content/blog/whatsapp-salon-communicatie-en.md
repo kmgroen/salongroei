@@ -76,7 +76,7 @@ Not all salon platforms offer the same WhatsApp capabilities. We compared the fo
 
 | Feature | Salonized | Treatwell | Planty | SalonUp |
 |---------|-----------|-----------|--------|---------|
-| WhatsApp appointment reminders | ❌ (SMS only) | ❌ (email only) | ⚠️ (via Zapier) | ✅ Native |
+| WhatsApp appointment reminders | ❌ (SMS only) | ❌ (SMS & email) | ⚠️ (via Zapier) | ✅ Native |
 | Automated confirmations | ❌ | ❌ | ⚠️ | ✅ Native |
 | Marketing messages | ❌ | ❌ | ❌ | ✅ |
 | Two-way chat | ❌ | ❌ | ❌ | ✅ |
@@ -87,7 +87,7 @@ Not all salon platforms offer the same WhatsApp capabilities. We compared the fo
 
 *Data based on publicly available information and product pages, February 2026*
 
-SalonUp is currently the only platform with a full, native WhatsApp Business API integration. Salonized offers SMS reminders only, Treatwell primarily works via email, and Planty has a limited connection through external tools.
+SalonUp is currently the only platform with a full, native WhatsApp Business API integration. Salonized offers SMS reminders only, Treatwell works via SMS and email, and Planty has a limited connection through external tools.
 
 ## The ROI of WhatsApp communication
 

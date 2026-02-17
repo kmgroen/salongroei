@@ -130,7 +130,7 @@ Track local events:
 | Staff utilization % (real-time) | ❌ | ❌ | ✅ | ✅ |
 | Capacity alerts ("nearly full") | ❌ | ❌ | ❌ | ✅ |
 | **Pricing** |
-| Starting price | $30/mo (~€28) | $29/mo (~€27) | $165/mo (~€153) | **€19/mo** |
+| Starting price | $30/mo (~€28) | $29/mo (~€27) | $165/mo (~€153) | **€10/mo** |
 | Analytics included in base | ⚠️ Basic only | ⚠️ Basic only | ✅ Full | ✅ Full |
 
 ✅ = Available | ❌ = Not available | ⚠️ = Limited or paid add-on

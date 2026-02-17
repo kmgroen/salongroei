@@ -74,7 +74,7 @@ Wanneer boeken klanten eigenlijk? Data van 10.000+ salons toont:
 | WhatsApp booking integratie | ❌ | ❌ | ❌ | ✅ |
 | Abandoned booking recovery | ❌ | ❌ | ❌ | ✅ |
 | **Prijzen** |
-| Startprijs per maand | €29 | 35% commissie | €19 | €19 |
+| Startprijs per maand | €29 | 35% commissie | €19 | €10 |
 | Commissie per boeking | Geen | 35% | Geen | Geen |
 | Setup kosten | €99 eenmalig | Gratis | Gratis | Gratis |
 
@@ -100,7 +100,7 @@ Wanneer boeken klanten eigenlijk? Data van 10.000+ salons toont:
 ```
 Extra omzet: 40 klanten × €65 gemiddeld = €2.600/maand
 Tijdsbesparing: 4 uur × €25 × 4 weken = €400/maand
-Software kosten: -€19/maand
+Software kosten: -€10/maand
 ---
 Netto voordeel: €2.981/maand = €35.772/jaar
 ```

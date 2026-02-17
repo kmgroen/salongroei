@@ -79,7 +79,7 @@ Your calendar looks full. Then it happens:
 | "Join Waitlist" button on booking page | ✅ | ❌ | ✅ | ✅ |
 | Automatic waitlist removal after booking | ✅ | ⚠️ Manual | ✅ | ✅ |
 | **Pricing** |
-| Starting price | $24/mo (~€22) | $30/mo (~€28) | $175/mo (~€162) | **€19/mo** |
+| Starting price | $24/mo (~€22) | $30/mo (~€28) | $175/mo (~€162) | **€10/mo** |
 | Waitlist feature included | ✅ | ⚠️ Pro plan | ✅ | ✅ |
 | SMS costs | From $0.02/msg | From $0.03/msg | Included (250/mo) | **Included (500/mo)** |
 
@@ -179,7 +179,7 @@ Extra filled slots: 2.7 per week × 52 weeks = 140 per year
 Revenue per slot: €65
 Extra annual revenue: €9,100
 
-Software costs: €19/mo × 12 = €228/year
+Software costs: €10/mo × 12 = €120/year
 Net benefit: €8,872/year
 ROI: 3,892%
 ```

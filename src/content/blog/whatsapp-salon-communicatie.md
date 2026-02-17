@@ -75,7 +75,7 @@ Niet alle salonpakketten bieden dezelfde WhatsApp-mogelijkheden. We vergeleken d
 
 | Functie | Salonized | Treatwell | Planty | SalonUp |
 |---------|-----------|-----------|--------|---------|
-| WhatsApp afspraakherinneringen | ❌ (alleen SMS) | ❌ (alleen e-mail) | ⚠️ (via Zapier) | ✅ Native |
+| WhatsApp afspraakherinneringen | ❌ (alleen SMS) | ❌ (SMS & e-mail) | ⚠️ (via Zapier) | ✅ Native |
 | Automatische bevestigingen | ❌ | ❌ | ⚠️ | ✅ Native |
 | Marketing berichten | ❌ | ❌ | ❌ | ✅ |
 | Tweerichtingschat | ❌ | ❌ | ❌ | ✅ |
@@ -86,7 +86,7 @@ Niet alle salonpakketten bieden dezelfde WhatsApp-mogelijkheden. We vergeleken d
 
 *Gegevens gebaseerd op publiek beschikbare informatie en productpagina's, februari 2026*
 
-SalonUp is op dit moment het enige platform met een volledige, native WhatsApp Business API-integratie. Salonized biedt alleen SMS-herinneringen, Treatwell werkt voornamelijk via e-mail, en Planty heeft een beperkte koppeling via externe tools.
+SalonUp is op dit moment het enige platform met een volledige, native WhatsApp Business API-integratie. Salonized biedt alleen SMS-herinneringen, Treatwell werkt via SMS en e-mail, en Planty heeft een beperkte koppeling via externe tools.
 
 ## De ROI van WhatsApp-communicatie
 

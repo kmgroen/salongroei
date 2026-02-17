@@ -78,7 +78,7 @@ Je agenda ziet er vol uit. Dan gebeurt het:
 | "Join Waitlist" button on booking page | ✅ | ❌ | ✅ | ✅ |
 | Automatic waitlist removal after booking | ✅ | ⚠️ Manual | ✅ | ✅ |
 | **Prijzen** |
-| Startprijs | $24/mnd (~€22) | $30/mnd (~€28) | $175/mnd (~€162) | **€19/mnd** |
+| Startprijs | $24/mnd (~€22) | $30/mnd (~€28) | $175/mnd (~€162) | **€10/mnd** |
 | Waitlist feature included | ✅ | ⚠️ Pro plan | ✅ | ✅ |
 | SMS kosten | Vanaf $0.02/msg | Vanaf $0.03/msg | Inbegrepen (250/mnd) | **Inbegrepen (500/mnd)** |
 
@@ -178,7 +178,7 @@ Extra opgevulde slots: 2.7 per week × 52 weken = 140 per jaar
 Omzet per slot: €65
 Extra jaarlijkse omzet: €9.100
 
-Software kosten: €19/mnd × 12 = €228/jaar
+Software kosten: €10/mnd × 12 = €120/jaar
 Netto voordeel: €8.872/jaar
 ROI: 3.892%
 ```

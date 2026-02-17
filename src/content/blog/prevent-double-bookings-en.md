@@ -108,7 +108,7 @@ What now?
 | Staff notifications for bookings | ✅ | ✅ | ⚠️ Email only | ✅ (SMS/Email/Push) |
 | Team calendar view | ✅ | ✅ | ✅ | ✅ |
 | **Pricing** |
-| Starting price | Free* / €14.95 Solo | €29/mo | €25/mo | €19/mo |
+| Starting price | Free* / €14.95 Solo | €29/mo | €25/mo | €10/mo |
 | Commission | 15% (free) / None (paid) | None | None | None |
 | Multi-staff included | ⚠️ €9.95 per user | ✅ | ✅ | ✅ Unlimited |
 
@@ -313,7 +313,7 @@ Team gathered around 1 screen showing today's calendar:
 
 **With real-time sync:**
 - 0-1 double booking/year
-- Software cost: €228/year (€19/mo)
+- Software cost: €120/year (€10/mo)
 
 **Net savings: €4,572/year**
 
@@ -396,7 +396,7 @@ Compare with:
 
 Double bookings are not "part of the business" - they are **100% preventable** with the right tools.
 
-**Investment**: €19-€29/month
+**Investment**: €10-€29/month
 **Savings**: €4,572-€13,716/year
 **ROI**: 1,985% to 5,700%
 

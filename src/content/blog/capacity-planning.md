@@ -129,7 +129,7 @@ Track lokale events:
 | Staff utilization % (real-time) | ❌ | ❌ | ✅ | ✅ |
 | Capacity alerts ("nearly full") | ❌ | ❌ | ❌ | ✅ |
 | **Prijzen** |
-| Startprijs | $30/mnd (~€28) | $29/mnd (~€27) | $165/mnd (~€153) | **€19/mnd** |
+| Startprijs | $30/mnd (~€28) | $29/mnd (~€27) | $165/mnd (~€153) | **€10/mnd** |
 | Analytics included in base | ⚠️ Basic only | ⚠️ Basic only | ✅ Full | ✅ Full |
 
 ✅ = Beschikbaar | ❌ = Niet beschikbaar | ⚠️ = Beperkt of betaalde add-on
